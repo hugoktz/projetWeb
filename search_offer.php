@@ -33,11 +33,9 @@ include 'mysqlfunctions.php';
     if(isset($_POST['insert']))
     {
         $id_internship = $_POST['id_internship'];
-        
         $read_internship = readOffer($id_internship);
         echo $read_internship['internship_skills']." ". $read_internship['internship_company']." ".$read_internship['internship_type_promotion']." ".$read_internship['internship_salary']." ".$read_internship['internship_offer_date']." ".$read_internship['application_validation_sheet']." ".$read_internship['application_internship_agreement']." ".$read_internship['internship_date_start']." ".$read_internship['internship_end_start'];
         echo "<br>";
-
     }
     
 ?>
