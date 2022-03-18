@@ -24,7 +24,7 @@ session_start();
             </div>
 
 
-            <form class="login100-form validate-form" method="POST" action = "">
+            <form class="login100-form validate-form" method="POST" action = "login.php">
                  <div class="wrap-input100 validate-input m-b-26" data-validate="E-mail is required">
                        <span class = "label-input100">E-mail</span>
                        <input class = "input100" type="text" name="login" placeholder="Enter e-mail">
