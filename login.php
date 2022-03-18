@@ -9,7 +9,7 @@
 </head>
 <body>
 
-<h2>Create Pilote</h2>
+<h2>Connect</h2>
 
     <div class="container">
     <form method="POST" action="">
@@ -30,7 +30,7 @@
 
 
 <?php
-/*
+
 include 'database_connexion.php';
     error_reporting(0);
     $connexion = getDatabaseConnexion();
@@ -52,7 +52,7 @@ include 'database_connexion.php';
         
     }
     echo "<br/>Les requêtes construites : ".$sql;
-    */
+    
 ?>
 
 </body>

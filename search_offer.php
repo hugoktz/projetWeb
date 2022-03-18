@@ -26,7 +26,7 @@
 
 
 <?php
-include 'mysqlfunctions.php';
+include 'database_connexion.php';
     error_reporting(0);
     $connexion = getDatabaseConnexion();
 
