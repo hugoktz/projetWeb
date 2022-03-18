@@ -30,6 +30,7 @@
 
 
 <?php
+/*
 include 'database_connexion.php';
     error_reporting(0);
     $connexion = getDatabaseConnexion();
@@ -51,7 +52,8 @@ include 'database_connexion.php';
         
     }
     echo "<br/>Les requêtes construites : ".$sql;
-    
+    */
 ?>
 
 </body>
+</html>
