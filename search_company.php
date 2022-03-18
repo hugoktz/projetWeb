@@ -9,14 +9,13 @@
 </head>
 <body>
 
-<h2>Search a company</h2>
+<h2>Search Company</h2>
 
     <div class="container">
     <form method="POST" action="">
 
-    <label>NoPil</label><br>
-    <input type = "text" class="txt" name="NoPil" placeholder="Enter a NoPil"/><br><br>
-
+    <label>Name</label><br>
+    <input type = "text" class="txt" name="company_name" placeholder="Enter a NoPil"/><br><br>
 
     <input type="submit" name="insert" value="SHOW DATA"/>
 
@@ -32,10 +31,10 @@ include 'mysqlfunctions.php';
 
     if(isset($_POST['insert']))
     {
-        $NoPil = $_POST['NoPil'];
+        $Name_Company = $_POST['company_name'];
         
-        $read_pilot = readPilot($NoPil);
-        echo $read_pilot['NoPil']." ". $read_pilot['NomPil']." ".$read_pilot['NatPil']." ".$read_pilot['NoTV'];
+        $read_Company = readCompany($Name_Company);
+        echo $read_Company['company_name']." ". $read_Company['company_sector']." ".$read_Company['nb_CESI_intern']." ".$read_Company['interns_evaluation']." ".$read_Company['Pilote_trust']." ".$read_Company['internship_nb_available'];
         echo "<br>";
 
     }

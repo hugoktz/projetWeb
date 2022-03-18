@@ -14,8 +14,8 @@
     <div class="container">
     <form method="POST" action="">
 
-    <label>NoPil</label><br>
-    <input type = "text" class="txt" name="NoPil" placeholder="Enter a NoPil"/><br><br>
+    <label>ID</label><br>
+    <input type = "text" class="txt" name="id_internship" placeholder="Enter a NoPil"/><br><br>
 
 
     <input type="submit" name="insert" value="SHOW DATA"/>
@@ -32,10 +32,10 @@ include 'mysqlfunctions.php';
 
     if(isset($_POST['insert']))
     {
-        $NoPil = $_POST['NoPil'];
+        $id_internship = $_POST['id_internship'];
         
-        $read_pilot = readPilot($NoPil);
-        echo $read_pilot['NoPil']." ". $read_pilot['NomPil']." ".$read_pilot['NatPil']." ".$read_pilot['NoTV'];
+        $read_internship = readOffer($id_internship);
+        echo $read_internship['internship_skills']." ". $read_internship['internship_company']." ".$read_internship['internship_type_promotion']." ".$read_internship['internship_salary']." ".$read_internship['internship_offer_date']." ".$read_internship['application_validation_sheet']." ".$read_internship['application_internship_agreement']." ".$read_internship['internship_date_start']." ".$read_internship['internship_end_start'];
         echo "<br>";
 
     }
