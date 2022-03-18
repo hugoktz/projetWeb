@@ -9,6 +9,28 @@
 </head>
 <body>
 
+<div class="limiter">
+    
+    <form class="login100-form validate-form" method="POST" action = "">
+        <div class="wrap-input100 validate-input m-b-26" data-validate="E-mail is required">
+            <span class = "label-input100">E-mail</span>
+            <input class = "input100" type="text" name="login" placeholder="Enter e-mail">
+            <span class = "focus-input100"></span>
+        </div>
+
+        <div class="wrap-input100 validate-input m-b-18" data-validate="Password is required">
+            <span class = "label-input100">Password</span>
+            <input class = "input100" type="password" name="password" placeholder="Enter password">
+            <span class = "focus-input100"></span>
+        </div>
+
+
+    </form>
+</div>
+
+
+
+<!--
 <h2>Connect</h2>
 
     <div class="container">
@@ -27,32 +49,42 @@
 
 </form>
 </div>
-
+-->
 
 <?php
 
 include 'database_connexion.php';
-    error_reporting(0);
-    $connexion = getDatabaseConnexion();
 
-    if(isset($_POST['insert']))
+if (isset($_POST['submit']))
+{
+    $login = $_POST['login'];
+    $password = $_POST['password'];
+
+    $db = new PDO('mysql:host=127.0.0.1;dbname=web_project_try_2', 'root', '');
+
+    $requete = "SELECT * FROM user WHERE login = '$login' ";
+    $result = $db->prepare($sql);
+    $result->execute();
+
+    if($result->rowCount() > 0)
     {
-        $Login = $_POST['Loginn'];
-        $Password = $_POST['Passwordd'];
-        $requete = "SELECT * FROM pilote WHERE Loginn = $Login AND Passwordd = $Password";
-        $stmt = $connexion->query($requete);  
-        $row = $stmt->fetchAll();
-        if (!empty($row))
+        $data = $result->fetchAll();
+        if (password_verify($pass, $data[0]["password"]))
         {
-            return $row[0];
+            echo "Connexion effectuée";
+            $_SESSION['login'] = $login;
         }
-        
-        $connexion->exec($sql);
-
-        
     }
-    echo "<br/>Les requêtes construites : ".$sql;
-    
+    else
+    {
+        $pass = password_hash($pass, PASSWORD_DEFAULT);
+        $sql = "INSERT INTO user (login, password) VALUES ('$login', '$password')";
+        $req = $db->prepare($requete);
+        $req->execute();
+        echo "Enregistrement effectué";
+    }
+}
+
 ?>
 
 </body>
