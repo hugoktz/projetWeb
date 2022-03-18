@@ -14,8 +14,11 @@
     <div class="container">
     <form method="POST" action="">
 
-    <label>NoPil</label><br>
-    <input type = "text" class="txt" name="NoPil" placeholder="Enter a NoPil"/><br><br>
+    <label>First Name</label><br>
+    <input type = "text" class="txt" name="first_name" placeholder="Enter a NoPil"/><br><br>
+
+    <label>Last Name</label><br>
+    <input type = "text" class="txt" name="last_name" placeholder="Enter a NoPil"/><br><br>
 
 
     <input type="submit" name="insert" value="SHOW DATA"/>
@@ -32,10 +35,11 @@ include 'mysqlfunctions.php';
 
     if(isset($_POST['insert']))
     {
-        $NoPil = $_POST['NoPil'];
+        $First_Name_Student = $_POST['first_name'];
+        $Last_Name_Student = $_POST['last_name'];
         
-        $read_pilot = readPilot($NoPil);
-        echo $read_pilot['NoPil']." ". $read_pilot['NomPil']." ".$read_pilot['NatPil']." ".$read_pilot['NoTV'];
+        $read_student = readStudent($First_Name_Student, $Last_Name_Student);
+        echo $read_student['first_name']." ". $read_student['last_name']." ".$read_student['promotion']." ".$read_student['center'];
         echo "<br>";
 
     }
