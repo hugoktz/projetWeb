@@ -9,13 +9,16 @@
 </head>
 <body>
 
-<h2>Read Pilote</h2>
+<h2>Search Pilot</h2>
 
     <div class="container">
     <form method="POST" action="">
 
-    <label>NoPil</label><br>
-    <input type = "text" class="txt" name="NoPil" placeholder="Enter a NoPil"/><br><br>
+    <label>First Name</label><br>
+    <input type = "text" class="txt" name="first_name" placeholder="Enter a NoPil"/><br><br>
+
+    <label>Last Name</label><br>
+    <input type = "text" class="txt" name="last_name" placeholder="Enter a NoPil"/><br><br>
 
 
     <input type="submit" name="insert" value="SHOW DATA"/>
@@ -32,10 +35,11 @@ include 'mysqlfunctions.php';
 
     if(isset($_POST['insert']))
     {
-        $NoPil = $_POST['NoPil'];
+        $First_Name_Pilot = $_POST['first_name'];
+        $Last_Name_Pilot = $_POST['last_name'];
         
-        $read_pilot = readPilot($NoPil);
-        echo $read_pilot['NoPil']." ". $read_pilot['NomPil']." ".$read_pilot['NatPil']." ".$read_pilot['NoTV'];
+        $read_Pilot = readPilot($First_Name_Pilot, $Last_Name_Pilot);
+        echo $read_Pilot['first_name']." ". $read_Pilot['last_name']." ".$read_Pilot['promotion']." ".$read_Pilot['center'];
         echo "<br>";
 
     }
