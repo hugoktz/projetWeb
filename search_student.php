@@ -9,7 +9,7 @@
 </head>
 <body>
 
-<h2>Read Pilote</h2>
+<h2>Search Student</h2>
 
     <div class="container">
     <form method="POST" action="">
