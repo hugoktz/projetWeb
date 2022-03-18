@@ -16,6 +16,47 @@ function getDatabaseConnexion()
     }
 
 
+    function CreateCompany($Company_Name, $Company_Sector, $nb_CESI_intern, $interns_evaluation, $Pilote_trust, $internship_nb_available)
+    {
+        
+        $connexion = getDatabaseConnexion();
+        
+        $requete = "INSERT INTO company (company_name, company_sector, nb_CESI_intern, interns_evaluation, Pilote_trust, internship_nb_available)
+                    VALUES ($Company_Name, $Company_Sector, $nb_CESI_intern, $interns_evaluation, $Pilote_trust, $internship_nb_available)";
+
+        $connexion->exec($requete);
+    }
+
+    function CreateOffer($Internship_skills, $Internship_company, $Internship_type_promotion, $Internship_salary, $Internship_offer_date, $Application_validation_sheet, $Application_internship_agreement, $internship_date_start, $internship_date_end)
+    {
+        $connexion = getDatabaseConnexion();
+
+        $requete = "INSERT INTO internship (internship_skills, internship_company, internship_type_promotion, internship_salary, internship_offer_date, application_validation_sheet, application_internship_agreement, internship_date_start, internship_end_start)
+                    VALUES ($Internship_skills, $Internship_company, $Internship_type_promotion, $Internship_salary, $Internship_offer_date, $Application_validation_sheet, $Application_internship_agreement, $internship_date_start, $internship_date_end)";
+        
+    }
+
+    function CreatePilot($login, $password, $promotion, $center, $last_name, $first_name)
+    {
+        $connexion = getDatabaseConnexion();
+        
+        $requete = "INSERT INTO user (login, password, promotion, center, last_name, first_name)
+                        VALUES ($login, $password, $promotion, $center, $last_name, $first_name)";
+        
+        $connexion->exec($requete);
+    }
+
+    function CreateRepresentative()
+    {
+        
+    }
+
+    function CreateStudent()
+    {
+        
+    }
+
+
     function readCompany($Company_Name) //sert à trouver le Pilot
     {
         $connexion = getDatabaseConnexion();
