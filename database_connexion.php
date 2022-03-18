@@ -46,14 +46,25 @@ function getDatabaseConnexion()
         $connexion->exec($requete);
     }
 
-    function CreateRepresentative()
+    function CreateRepresentative($login, $password, $promotion, $center, $last_name, $first_name)
     {
+        $connexion = getDatabaseConnexion();
+        
+        $requete = "INSERT INTO user (login, password, promotion, center, last_name, first_name)
+                        VALUES ($login, $password, $promotion, $center, $last_name, $first_name)";
+        
+        $connexion->exec($requete);
         
     }
 
-    function CreateStudent()
+    function CreateStudent($login, $password, $promotion, $center, $last_name, $first_name)
     {
+        $connexion = getDatabaseConnexion();
         
+        $requete = "INSERT INTO user (login, password, promotion, center, last_name, first_name)
+                        VALUES ($login, $password, $promotion, $center, $last_name, $first_name)";
+        
+        $connexion->exec($requete);
     }
 
 
@@ -128,6 +139,100 @@ function getDatabaseConnexion()
         }
 
         echo $requete;
+    }
+
+    function updateCompany($id_company, $company_name, $company_sector, $nb_CESI_intern, $interns_evaluation, $Pilote_trust, $internship_nb_available)
+    {
+        $connexion = getDatabaseConnexion();
+        
+        $requete = "UPDATE company SET company_name = $company_name, company_sector = $company_sector, nb_CESI_intern = $nb_CESI_intern, interns_evaluation = $interns_evaluation, Pilote_trust = $Pilote_trust, internship_nb_available = $internship_nb_available;
+                    WHERE id_company = $id_company";
+        
+        $connexion->exec($requete);
+    }
+    
+    function updateOffer($id_internship, $Internship_skills, $Internship_company, $Internship_type_promotion, $Internship_salary, $Internship_offer_date, $Application_validation_sheet, $Application_internship_agreement, $internship_date_start, $internship_date_end, $id_company)
+    {
+        $connexion = getDatabaseConnexion();
+        
+        $requete = "UPDATE internship SET id_internship = $id_internship, Internship_skills = $Internship_skills, Internship_company = $Internship_company, Internship_type_promotion = $Internship_type_promotion, Internship_salary = $Internship_salary, Internship_offer_date = $Internship_offer_date,
+                    Application_validation_sheet = $Application_validation_sheet, Application_internship_agreement = $Application_internship_agreement, internship_date_start = $internship_date_start, internship_date_end = $internship_date_end, id_company = $id_company";
+        $connexion->exec($requete);
+    }
+
+    function updatePilote($id_user, $login, $password, $promotion, $center, $last_name, $first_name)
+    {
+        $connexion = getDatabaseConnexion();
+        
+        $requete = "UPDATE company SET login = $login, password = $password, promotion = $promotion, center = $center, last_name = $last_name, first_name = $first_name)
+                    WHERE id_user = $id_user";
+        
+        $connexion->exec($requete);
+    }
+
+    function updateRepresentative($id_user, $login, $password, $promotion, $center, $last_name, $first_name)
+    {
+        $connexion = getDatabaseConnexion();
+        
+        $requete = "UPDATE company SET login = $login, password = $password, promotion = $promotion, center = $center, last_name = $last_name, first_name = $first_name)
+                    WHERE id_user = $id_user";
+        
+        $connexion->exec($requete);
+    }
+
+    function updateStudent($id_user, $login, $password, $promotion, $center, $last_name, $first_name)
+    {
+        $connexion = getDatabaseConnexion();
+        
+        $requete = "UPDATE company SET login = $login, password = $password, promotion = $promotion, center = $center, last_name = $last_name, first_name = $first_name)
+                    WHERE id_user = $id_user";
+        
+        $connexion->exec($requete);
+    }
+
+    function deleteCompany($id_company)
+    {
+        $connexion = getDatabaseConnexion();
+
+        $requete = "DELETE FROM company WHERE id_company = $id_company";
+    
+        $connexion->exec($requete);
+    }
+
+    function deleteOffer($id_internship)
+    {
+        $connexion = getDatabaseConnexion();
+
+        $requete = "DELETE FROM internship WHERE id_internship = $id_internship";
+    
+        $connexion->exec($requete);
+    }
+
+    function deletePilote($id_user)
+    {
+        $connexion = getDatabaseConnexion();
+
+        $requete = "DELETE FROM user WHERE id_user = $id_user";
+    
+        $connexion->exec($requete);
+    }
+
+    function deleteRepresentative($id_user)
+    {
+        $connexion = getDatabaseConnexion();
+
+        $requete = "DELETE FROM user WHERE id_user = $id_user";
+    
+        $connexion->exec($requete);
+    }
+
+    function deleteStudent($id_user)
+    {
+        $connexion = getDatabaseConnexion();
+
+        $requete = "DELETE FROM user WHERE id_user = $id_user";
+    
+        $connexion->exec($requete);
     }
 
 ?>
