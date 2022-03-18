@@ -31,9 +31,15 @@ body::-webkit-scrollbar-thumb {
 
 /*__________________________________________________________________________*/
 
+html body
+{
+	background-color: var(--clr);
+	color: #fff;
+}
+
 body
 {
-	display: flex;
+	
 	justify-content:center ;
 	align-items: center;
 	min-height: 100vh;
@@ -58,6 +64,7 @@ body
 
 .logo img
 {
+	margin-left:20px ;
 	transition: 0.2s;
 }
 
@@ -68,11 +75,18 @@ body
 	display : flex;
 	justify-content : left;
 	color: #fff;
+	margin: 0;
+
 }
 
 .nav
 {
-	width: 420px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	right: 30%;
+	min-width: 420px;
+	width: 40%;
 	height: 70px;
 	background: #fff;
 	position: fixed;
@@ -82,6 +96,9 @@ body
 	align-items: center;
 	border-radius: 10px;
 	opacity: 1;
+	border: solid 1px var(--clr);
+	box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.472), 0 5px 5px 0 rgba(46, 46, 46, 0.65);
+	z-index: 1;
 }
 
 .nav ul
@@ -195,19 +212,86 @@ body
 	transform: translateX(calc(58.33px * 5));
 }
 
-fieldset 
+/*_________________________Login______________________________*/
+
+
+.login 
 {
-	
+	position: absolute;
+	text-align: center;
+	top: 30%;
+	left: 30%;
+	right: 30%;
+	width: 40%; 
+	min-width: 250px;
+	height: 320px;
+	border: 1px solid var(--clr);
+	border-radius: 10px;
+	background-color: #1f1f1f;
+	box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+}
+
+h2
+{
+	text-align: left;
+	margin-left: 70px;
+	padding-top: 10px;
+	color: #fff;
+	padding-bottom: 15px;
+}
+
+input
+{
+	display: center;
+	width: 70%;
+	min-width: 200px;
+	border-radius: 7px;
+	padding-left: 2%;
+	padding-bottom: 0px;
+}
+
+legend
+{
+	text-align: left;
+	margin-left: 70px;
+	color: #fff;
+
+}
+
+.bouton
+{
+	display: block;
+	width: 30%;
+	margin-left: 110px;
+	margin-top: 30px;
+	padding:0;
+	align-items: center;
+	padding-bottom: 0px;
+}
+
+.text
+{
+	color: #fff;
+	margin-top: 200px;
+	margin-left: 50px;
+	margin-right: 50px;
 }
 
 
+
+/*______________________________Footer_____________________________*/
+
 .footer-basic {
 	position: absolute;
-	padding-bottom: 0;
+	width: 100%;
+	min-width: 100%;
+	margin-top: 40px;
+	height:40px;
 	bottom: 0;
-	padding:40px 0;
-	background-color: #222327	;
-	color:#4b4c4d;
+	padding:20px 0;
+	background-color: var(--clr);
+	box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+	z-index: 1;
   }
   
   .footer-basic ul {
@@ -272,6 +356,28 @@ fieldset
 legend
 {
 	color:white;
+}
+
+
+/*____________________________Responsive____________________________*/
+
+@media screen and (max-width: 910px) {
+
+	.nav
+	{
+		margin-top: 120px;
+	}
+
+	.logo h2
+	{
+		position: relative ;
+		width: 100%;
+		top:42px;
+		left: 65%;
+	}
+
+
+
 }
 
 
