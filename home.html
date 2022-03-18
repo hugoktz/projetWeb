@@ -106,27 +106,26 @@
 
     	</div>
 
-		<form action="" method="get" class="info">
+		<div class="login">
+			<span class="seco">
+				<h2>Login</h2> 	
+			</span>
+			<form method="post">
+				<div class="id">
+					<legend>Id :</legend>
+					<input type="text" id="id" name="id">
+				</div>
+				<div class="mdp">	
+					<legend>Password : </legend>
+					<input type="password" id="mdp" name="mdp">
+				</div>
+				<div class="bouton">
+					<input type="submit">
+				</div>
+			</form>
+		</div>
 
-			<div class ="login">
-
-				<fieldset>
-					<legend>Information : </legend> 
-
-					<div class="identifiant">
-						<legend>Identifiant</legend> 
-						<input class="input" type="text" id="id" name="id" required minlength="4" maxlength="8" size="80">
-					</div>
-					<div class="password"></div>
-						<legend>Password</legend>
-						<input class="input" type="text" id="pw" name="pw" required minlength="4" maxlength="10s" size="80">
-					</div>
-
-				</fieldset>
-
-			</div>
-
-		</form>	
+		
 
 		<div class="footer-basic">
 			<footer>
