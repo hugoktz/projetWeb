@@ -28,11 +28,12 @@ CREATE TABLE internship(
         internship_skills                Varchar (255) NOT NULL ,
         internship_company               Varchar (255) NOT NULL ,
         internship_type_promotion        Varchar (255) NOT NULL ,
-        internship_amount_time           Int NOT NULL ,
         internship_salary                DECIMAL (15,3)  NOT NULL ,
         internship_offer_date            Date NOT NULL ,
         application_validation_sheet     Varchar (255) NOT NULL ,
         application_internship_agreement Varchar (255) NOT NULL ,
+        internship_start_date            Date NOT NULL ,
+        internship_end_date              Date NOT NULL ,
         id_company                       Int NOT NULL
 	,CONSTRAINT internship_PK PRIMARY KEY (id_internship)
 
