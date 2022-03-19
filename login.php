@@ -10,6 +10,8 @@
         if($count>0)
         {
             echo "Login Successful";
+
+            header("Location: interact_with_an_account.php");
         }
         else
         {
