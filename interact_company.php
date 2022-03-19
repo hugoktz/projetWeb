@@ -9,6 +9,18 @@
 <body>
     <h1>Interact with a company account</h1>
 
+    <div class="container">
+    <form method = "GET" action="">
+    <select>
+        <option>Choose an option</option>
+        <option name="create">Create</option>
+        <option name="read">Read</option>
+        <option name="update">Update</option>
+        <option name="delete">Delete</option>
+    </select>
+    </form>
+    </div>
+
     <form method = "GET">
         Company name <br> <input type="text" name="login"/>
         <br>
