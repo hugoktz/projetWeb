@@ -60,16 +60,16 @@ VALUES
 
 INSERT INTO user (login, password, promotion, center, last_name, first_name, id_company, id_promotion)
 VALUES
-('Likasa', 'maey', 'A2', 'Strasbourg', 'EY', 'Maxime', 5, 5),
-('Ridren', 'clru', 'A3', 'Rouen', 'RUZICKA', 'Clement', 4, 2),
-('Rene', 'hukr', 'A4', 'Nancy', 'KRETZ', 'Hugo', 3, 1),
-('Weanplays', 'ewsc', 'A1', 'Bordeaux', 'SCHOEPF', 'Ewan', 10, 4),
-('Nicoloow', 'niwi', 'A5', 'Caen', 'WIRA', 'Nicolas', 1, 4),
-('Mitsu', 'pacl', 'A2', 'La Rochelle', 'CLAUS', 'Paul', 2, 1),
-('Aldresus', 'huch', 'A1', 'Brest', 'CHAMPY', 'Hugo',7, 2),
-('Tarkhen', 'swau', 'A3', 'Nice', 'AUBERTIN', 'Swen', 9, 3),
-('Byoss', 'kamu', 'A5', 'Pau', 'MUCKENSTURM', 'Karim', 6, 1),
-('Rexchris', 'chbo', 'A4', 'Lyon', 'BOSSA', 'Christophe', 8, 5);
+('Likasaa', 'maey', 'A2', 'Strasbourg', 'EY', 'Maxime', 5, 5),
+('Billy', 'amed', 'A3', 'Strasbourg', 'AMANI', 'Eddy', 4, 2),
+('Aodhan', 'hukr', 'A4', 'La Rochelle', 'PONSODA', 'Maxime', 3, 1),
+('Hugo', 'hudu', 'A1', 'Toulouse', 'DUMOULIN', 'Hugo', 10, 4),
+('Wendy', 'wera', 'A5', 'La Rochelle', 'RAVARY', 'Wendy', 1, 4),
+('Asarck', 'lube', 'A2', 'Saint-Nazaire', 'BERTHO', 'Lucien', 2, 1),
+('Aldresus', 'huch', 'A1', 'Strasbourg', 'CHAMPY', 'Hugo',7, 2),
+('Gadery', 'gade', 'A3', 'Le Mans', 'DE RUFFRAY', 'GAETAN', 9, 3),
+('OKAMI', 'leam', 'A5', 'Pau', 'AMERIGO', 'Leo', 6, 1),
+('Papotie', 'pipo', 'A4', 'Lyon', 'POTIE', 'Pierre-Antoine', 8, 5);
 
 
 INSERT INTO application (application_CV, application_motivation_letter, rejected, step_number, id_user, id_internship)
