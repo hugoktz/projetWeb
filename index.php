@@ -1,9 +1,25 @@
 <?php
-session_start();  
+    $connect = mysqli_connect("127.0.0.1","root","","web_project_try_2") or die("Connection failed");
+    if(!empty($_POST['save']))
+    {
+        $username = $_POST['login'];
+        $password = $_POST['password'];
+        $query = "select * from user where login='$username' and password='$password'";
+        $result = mysqli_query($connect, $query);
+        $count = mysqli_num_rows($result);
+        if($count>0)
+        {
+            echo "Login Successful";
+        }
+        else{
+            echo "Login not successful";
+        }
+    }
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -11,48 +27,13 @@ session_start();
     <title>Document</title>
     <script type="text/javascript" src="effets.js"></script>
 </head>
+
 <body>
-<?php 
-if (isset($_SESSION['login']))
-{
-    echo "You are connected as: " . $_SESSION['login'];
-}
-else
-{
-    ?>
-    <div class="limiter">
-
-<div class="container-login100">
-    <div class="wrap-login100">
-        <div class="login100-form-title">
-            <span class = "login100-form-title-1">
-                Sign in
-            </span>
-        </div>
-
-
-        <form class="login100-form validate-form" method="POST" action = "login.php">
-             <div class="wrap-input100 validate-input m-b-26" data-validate="E-mail is required">
-                   <span class = "label-input100">E-mail</span>
-                   <input class = "input100" type="text" name="login" placeholder="Enter e-mail">
-                  <span class = "focus-input100"></span>
-             </div>
-
-              <div class="wrap-input100 validate-input m-b-18" data-validate="Password is required">
-                    <span class = "label-input100">Password</span>
-                       <input class = "input100" type="password" name="password" placeholder="Enter password">
-                      <span class = "focus-input100"></span>
-            </div>
-
-             <div class = "container-login100-form-btn">
-                    <button class = "login100-form-btn" name="submit">
-                         Login
-                    </button>
-            </div>
-        </form>
-    </div>
-</div>
-</div>
-    <?
-};
-?>
+    <form method = "post">
+        Enter your login <input type="text" name="login"/>
+        <br>
+        Enter your password <input type="password" name="password"/>
+        <br>
+        <input type="submit" name="save" value="login"/>
+    </form>
+</body>
