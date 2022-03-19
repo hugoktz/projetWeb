@@ -11,7 +11,8 @@
         {
             echo "Login Successful";
         }
-        else{
+        else
+        {
             echo "Login not successful";
         }
     }
