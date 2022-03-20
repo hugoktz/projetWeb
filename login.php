@@ -1,17 +1,22 @@
 <?php
-    $connect = mysqli_connect("127.0.0.1","root","","web_project_try_2") or die("Connection failed");
+    $connect = mysqli_connect("127.0.0.1","root","","web_project_try_4") or die("Connection failed");
     if(!empty($_POST['save']))
     {
         $username = $_POST['login'];
         $password = $_POST['password'];
-        $query = "select * from user where login='$username' and password='$password'";
+        $query = "select * from user 
+                    INNER JOIN possessing 
+                    ON user.id_user = possessing.id_user 
+                    INNER JOIN roles 
+                    ON possessing.id_role = roles.id_role
+                    WHERE roles.id_role = 4
+                    and user.login = '$username' and user.password = '$password'";
         $result = mysqli_query($connect, $query);
         $count = mysqli_num_rows($result);
         if($count>0)
         {
-            echo "Login Successful";
-
             header("Location: interact_with_an_account.php");
+                        
         }
         else
         {

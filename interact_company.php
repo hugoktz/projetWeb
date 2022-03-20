@@ -24,10 +24,8 @@
     </form>
     </div>
 
-    <form method = "GET">
+    <form method = "GET" action="">
     <br>
-        Company id <br> <input type="txt" name="id"/><br><br>
-
         Company name <br> <input type="text" name="company_name"/>
         <br><br>
         Activity area <br> <input type="text" name="company_sector"/>
@@ -46,9 +44,6 @@
         include 'database_connexion.php';
         $connexion = getDatabaseConnexion();
         if(isset($_POST['save']))
-    {
-
-        if(!empty($_POST['create']) and isset($_POST['lemenu']))
         {
             $company_name = $_POST['company_name'];
             $company_sector = $_POST['company_sector'];
@@ -56,9 +51,9 @@
             $Pilote_trust = $_POST['Pilote_trust'];
             $city = $_POST['city'];
        
-        $sql = "INSERT INTO company (company_name, company_sector, nb_CESI_intern, interns_evaluation, Pilote_trust, internship_nb_available
-                VALUES ($company_name, $company_sector, $nb_CESI_intern, NULL, $Pilote_trust, NULL)";
-                 
+            $sql = "INSERT INTO company (company_name, company_sector, nb_CESI_intern, interns_evaluation, Pilote_trust, internship_nb_available
+                    VALUES ($company_name, $company_sector, $nb_CESI_intern, NULL, $Pilote_trust, NULL)";
+
         $connexion->exec($sql);
         }
 
@@ -96,7 +91,7 @@
             $connexion->exec($sql);
         }
         */
-    }
+    
     ?>
 
     
