@@ -15,18 +15,6 @@ function getDatabaseConnexion()
         }
     }
 
-
-    function CreateCompany($Company_Name, $Company_Sector, $nb_CESI_intern, $interns_evaluation, $Pilote_trust, $internship_nb_available)
-    {
-        
-        $connexion = getDatabaseConnexion();
-        
-        $requete = "INSERT INTO company (company_name, company_sector, nb_CESI_intern, interns_evaluation, Pilote_trust, internship_nb_available)
-                    VALUES ($Company_Name, $Company_Sector, $nb_CESI_intern, $interns_evaluation, $Pilote_trust, $internship_nb_available)";
-
-        $connexion->exec($requete);
-    }
-
     function CreateOffer($Internship_skills, $Internship_company, $Internship_type_promotion, $Internship_salary, $Internship_offer_date, $Application_validation_sheet, $Application_internship_agreement, $internship_date_start, $internship_date_end)
     {
         $connexion = getDatabaseConnexion();
@@ -67,6 +55,35 @@ function getDatabaseConnexion()
         $connexion->exec($requete);
     }
 
+    function CreateCompany($Company_Name, $Company_Sector, $nb_CESI_intern, $interns_evaluation, $Pilote_trust, $internship_nb_available)
+    {
+        $connexion = getDatabaseConnexion();
+        $requete = "INSERT INTO company(company_name, company_sector, nb_CESI_intern, interns_evaluation, Pilote_trust, internship_nb_available, id_company, id_place, street_number, street_name, city, postal_code)
+                    SELECT company_name, company_sector, nb_CESI_intern, interns_evaluation, Pilote_trust, internship_nb_available, id_company, id_place, street_number, street_name, city, postal_code
+                    FROM company
+                    INNER JOIN being_located_in ON company.id_company = being_located_in.id_company
+                    INNER JOIN places ON being_located_in.id_place = placess.id_place;";
+        /*"CREATE VIEW [Company Creation] AS
+                    SELECT company.id_company,
+                            company.company_name,
+                            company.company_sector,
+                            company.nb_CESI_intern,
+                            company.interns_evaluation,
+                            company.Pilote_trust,
+                            company.internship_nb_available
+                    FROM company 
+                    INNER JOIN being_located_in 
+                    ON company.id_company = being_located_in.id_company
+                    INNER JOIn places
+                    ON being_located_in.id_place = places.id_place;
+                         ";*/
+        $stmt = $connexion->query($requete);
+        $row = $stmt->fetchAll();
+        if (!empty($row))
+        {
+            return $row[0];
+        }
+    }
 
     function readCompany($Company_Name) 
     {

@@ -42,7 +42,7 @@
             $internship_nb_available = $_POST['internship_nb_available'];
        
             $sql = "INSERT INTO company (company_name, company_sector, nb_CESI_intern, interns_evaluation, Pilote_trust, internship_nb_available
-                    VALUES ($company_name, $company_sector, $nb_CESI_intern, NULL, $Pilote_trust, NULL)";
+                    VALUES ('$company_name', '$company_sector', $nb_CESI_intern, NULL, $Pilote_trust, NULL)";
 
             $result = mysqli_query($connect, $sql);
             $count = mysqli_num_rows($result);
