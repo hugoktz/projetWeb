@@ -22,6 +22,7 @@
         $connexion = mysqli_connect("127.0.0.1","root","","web_project_try_4") or die("Connection failed");
         if(!empty($_POST['save']))
         {
+            $pdo->query('SET foreign_key_checks = 0');
             $id_user = $_POST['id_user'];
             $sql = "DELETE us FROM user AS us 
                     LEFT JOIN possessing AS po
@@ -31,6 +32,7 @@
                     WHERE us.id_user = $id_user
                     AND ro.role_name = 'representative';";
 
+            $pdo->query('SET foreign_key_checks = 1');
             $result = mysqli_query($connect, $sql);
             $count = mysqli_num_rows($result);
             if($count>0)

@@ -23,6 +23,7 @@
         if(!empty($_POST['save']))
         {
             $id_user = $_POST['id_user'];
+            $pdo->query('SET foreign_key_checks = 0');
             $sql = "DELETE us FROM user AS us 
                     LEFT JOIN possessing AS po
                     ON us.id_user = po.id_user
@@ -31,6 +32,7 @@
                     WHERE us.id_user = $id_user
                     AND ro.role_name = 'student';";
 
+            $pdo->query('SET foreign_key_checks = 1');
             $result = mysqli_query($connect, $sql);
             $count = mysqli_num_rows($result);
             if($count>0)

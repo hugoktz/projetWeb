@@ -5,7 +5,7 @@ function getDatabaseConnexion()
         try {
             $user = "root";
             $pass = "";
-            $dbh = new PDO('mysql:host=127.0.0.1;dbname=prosit7', $user, $pass);
+            $dbh = new PDO('mysql:host=127.0.0.1;dbname=web_project_try_4', $user, $pass);
             $dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             return $dbh;
 
@@ -100,7 +100,7 @@ function getDatabaseConnexion()
     {
         $connexion = getDatabaseConnexion();
         $requete = "SELECT * FROM user INNER JOIN possessing ON user.id_user = possessing.id_user INNER JOIN roles 
-        ON possessing.id_role = roles.id_role WHERE role_name = pilot and First_Name_Pilot = $First_Name_Pilot and Last_Name_Pilot = $Last_Name_Pilot";
+        ON possessing.id_role = roles.id_role WHERE role_name = 'pilot' and first_name = $First_Name_Pilot and last_name = $Last_Name_Pilot;";
         $stmt = $connexion->query($requete);  
         $row = $stmt->fetchAll();
         if (!empty($row))
