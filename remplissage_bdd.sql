@@ -11,6 +11,10 @@ VALUES
 ('Bouygues', 'Telecommunications', 14, 3.3, 69, 7),
 ('CNP Assurances', 'Insurance', 2, 2.8, 55, 0);
 
+INSERT INTO company (company_name, company_sector, nb_CESI_intern, interns_evaluation, Pilote_trust, internship_nb_available)
+VALUES
+('Hager', 'Electrical Systems', 4, 3.5, 80, 2),
+
 
 INSERT INTO places (city, street_name, street_number, postal_code)
 VALUES
