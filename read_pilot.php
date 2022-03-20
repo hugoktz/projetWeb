@@ -8,25 +8,24 @@
 </head>
 <body>
     <h1>Read a pilot account</h1>
+    <div class="container">
+    <form method = "POST">
+        <label>First name</label> <br> <input type="text" name="First_name"/>
+        <br>
+        <label>Last name</label> <br> <input type="text" name="Last_name"/>
+        <br><br>
 
-    <form method = "GET">
-        First name <br> <input type="text" name="First_name"/>
-        <br>
-        Last name <br> <input type="text" name="Last_name"/>
-        <br>
-        Locality (-ies) <br> <input type = "text" name = "locality"/>
-        <br>
-
-        <input type="submit" name="save" value="submit"/>
+        <input type="submit" name="insert" value="submit"/>
     </form>
+</div>
 
     <?php
 
     include 'database_connexion.php';
-
+    error_reporting(0);
     $connexion = getDatabaseConnexion();
 
-    if(isset($_POST['save']))
+    if(isset($_POST['insert']))
     {
         $First_name = $_POST['First_name'];
         $Last_name = $_POST['Last_name'];

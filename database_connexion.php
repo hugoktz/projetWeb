@@ -96,18 +96,27 @@ function getDatabaseConnexion()
         echo $requete;
     }
 
+    function getAllPilots()
+    {
+        $connexion = getDatabaseConnexion();
+        $requete = 'Select * from pilote';
+        $row = $connexion->query($requete);
+        return $row;
+    }
+
     function readPilot($First_Name_Pilot, $Last_Name_Pilot) //sert à trouver le Pilot
     {
         $connexion = getDatabaseConnexion();
+        
         $requete = "SELECT * FROM user INNER JOIN possessing ON user.id_user = possessing.id_user INNER JOIN roles 
-        ON possessing.id_role = roles.id_role WHERE role_name = 'pilot' and first_name = $First_Name_Pilot and last_name = $Last_Name_Pilot;";
+        ON possessing.id_role = roles.id_role WHERE role_name = 'pilot' and first_name = '$First_Name_Pilot' and last_name = '$Last_Name_Pilot';";
+        
         $stmt = $connexion->query($requete);  
         $row = $stmt->fetchAll();
         if (!empty($row))
         {
             return $row[0];
         }
-
         echo $requete;
     }
 
@@ -115,7 +124,7 @@ function getDatabaseConnexion()
     {
         $connexion = getDatabaseConnexion();
         $requete = "SELECT * FROM user INNER JOIN possessing ON user.id_user = possessing.id_user INNER JOIN roles 
-        ON possessing.id_role = roles.id_role WHERE role_name = pilot and First_Name_Representative = $First_Name_Representative and Last_Name_Representative = $Last_Name_Representative";
+        ON possessing.id_role = roles.id_role WHERE role_name = 'pilot' and first_name = '$First_Name_Representative' and last_name = '$Last_Name_Representative';";
         $stmt = $connexion->query($requete);  
         $row = $stmt->fetchAll();
         if (!empty($row))
@@ -123,7 +132,6 @@ function getDatabaseConnexion()
             return $row[0];
         }
 
-        echo $requete;
     }
 
     function readStudent($First_Name_Student, $Last_Name_Student) //sert à trouver le Pilot
