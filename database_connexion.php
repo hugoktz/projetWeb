@@ -68,24 +68,38 @@ function getDatabaseConnexion()
     }
 
 
-    function readCompany($Company_Name) //sert à trouver le Pilot
+    function readCompany($Company_Name) 
     {
         $connexion = getDatabaseConnexion();
-        $requete = "SELECT * FROM company WHERE Company_Name = $Company_Name";
+        $requete = "SELECT * FROM company WHERE company_name = '$Company_Name';";
         $stmt = $connexion->query($requete);  
         $row = $stmt->fetchAll();
         if (!empty($row))
         {
             return $row[0];
         }
-
+    }
+    
+    function readPilot($First_Name_Pilot, $Last_Name_Pilot) 
+    {
+        $connexion = getDatabaseConnexion();
+        
+        $requete = "SELECT * FROM user INNER JOIN possessing ON user.id_user = possessing.id_user INNER JOIN roles 
+        ON possessing.id_role = roles.id_role WHERE role_name = 'pilot' and first_name = '$First_Name_Pilot' and last_name = '$Last_Name_Pilot';";
+        
+        $stmt = $connexion->query($requete);  
+        $row = $stmt->fetchAll();
+        if (!empty($row))
+        {
+            return $row[0];
+        }
         echo $requete;
     }
 
     function readOffer($id_internship) //sert à trouver le Pilot
     {
         $connexion = getDatabaseConnexion();
-        $requete = "SELECT * FROM internship WHERE id_internship = $id_internship";
+        $requete = "SELECT * FROM internship WHERE id_internship = '$id_internship'";
         $stmt = $connexion->query($requete);  
         $row = $stmt->fetchAll();
         if (!empty($row))
@@ -102,22 +116,6 @@ function getDatabaseConnexion()
         $requete = 'Select * from pilote';
         $row = $connexion->query($requete);
         return $row;
-    }
-
-    function readPilot($First_Name_Pilot, $Last_Name_Pilot) 
-    {
-        $connexion = getDatabaseConnexion();
-        
-        $requete = "SELECT * FROM user INNER JOIN possessing ON user.id_user = possessing.id_user INNER JOIN roles 
-        ON possessing.id_role = roles.id_role WHERE role_name = 'pilot' and first_name = '$First_Name_Pilot' and last_name = '$Last_Name_Pilot';";
-        
-        $stmt = $connexion->query($requete);  
-        $row = $stmt->fetchAll();
-        if (!empty($row))
-        {
-            return $row[0];
-        }
-        echo $requete;
     }
 
     function readRepresentative($First_Name_Representative, $Last_Name_Representative) 
