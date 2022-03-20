@@ -113,6 +113,10 @@ VALUES
 ('OKAMI', 'leam', 'A5', 'Pau', 'AMERIGO', 'Leo', 6, 1),
 ('Papotie', 'pipo', 'A4', 'Lyon', 'POTIE', 'Pierre-Antoine', 8, 5);
 
+INSERT INTO user (login, password, promotion, center, last_name, first_name, id_company, id_promotion)
+VALUES
+('Olivier', 'olsa', 'A5', 'Strasbourg', 'SANDEL', 'OLIVIER', 5, 5),
+
 
 INSERT INTO application (application_CV, application_motivation_letter, rejected, step_number, id_user, id_internship)
 VALUES
@@ -256,3 +260,13 @@ INSERT INTO corresponding_to (id_permission, id_role) VALUES
 (34, 1),
 (34, 4),
 (35, 1);
+
+
+DELETE us FROM user AS us 
+                    LEFT JOIN possessing AS po
+                    ON us.id_user = po.id_user
+                    LEFT JOIN roles AS ro
+                    ON po.id_role = ro.id_role
+                    WHERE us.id_user = 11
+                    AND ro.role_name = 'student';
+
