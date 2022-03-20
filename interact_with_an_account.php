@@ -13,33 +13,33 @@
 
     <h2>Interact with an account of:</h2>
 
-    <h3><a href="interact_company.php">a company</a></h3>
+    <h3>a company</h3>
 <ul>
-    <li>Create a company</li>
-    <li>Read a company</li>
-    <li>Update a company</li>
-    <li>Delete a company</li>
+    <li><a href="create_company.php">Create a company</a></li>
+    <li><a href="read_company.php">Read a company</a></li>
+    <li><a href="update_company.php">Update a company</a></li>
+    <li><a href="delete_company.php">Delete a company</a></li>
 </ul>
-<h3><a href="interact_student.php">a student</a></h3>
+<h3>a student</h3>
 <ul>
-    <li>Create a student</li>
-    <li>Read a student</li>
-    <li>Update a student</li>
-    <li>Delete a student</li>
+    <li><a href="create_student.php">Create a student</a></li>
+    <li><a href="read_student.php">Read a student</a></li>
+    <li><a href="update_student.php">Update a student</a></li>
+    <li><a href="delete_student.php">Delete a student</a></li>
 </ul>
-<h3> <a href="interact_representative.php">a representative</a></h3>
+<h3>a representative</h3>
 <ul>
-    <li>Create a representative</li>
-    <li>Read a representative</li>
-    <li>Update a representative</li>
-    <li>Delete a representative</li>
+    <li><a href="create_representative.php">Create a representative</a></li>
+    <li><a href="read_representative.php">Read a representative</a></li>
+    <li><a href="update_representative.php">Update a representative</a></li>
+    <li><a href="delete_representative.php">Delete a representative</a></li>
 </ul>
-<h3> <a href="interact_pilot.php">a pilot</a></h3>
+<h3> a pilot</h3>
 <ul>
-    <li>Create a pilot</li>
-    <li>Read a pilot</li>
-    <li>Update a pilot</li>
-    <li>Delete a pilot</li>
+    <li><a href="create_pilot.php">Create a pilot</a></li>
+    <li><a href="read_pilot.php">Read a pilot</a></li>
+    <li><a href="update_pilot.php">Update a pilot</a></li>
+    <li><a href="delete_pilot.php">Delete a pilot</a></li>
 </ul>
 </body>
 </html>
