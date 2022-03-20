@@ -25,27 +25,27 @@
     </div>
 
     <form method = "GET">
+    <br>
+        Company id <br> <input type="txt" name="id"/><br><br>
 
-        Company id <br> <input type="txt" name="id"/>
-
-        Company name <br> <input type="text" name="login"/>
-        <br>
-        Activity area <br> <input type="text" name="password"/>
-        <br>
+        Company name <br> <input type="text" name="company_name"/>
+        <br><br>
+        Activity area <br> <input type="text" name="company_sector"/>
+        <br><br>
         Locality (-ies) <br> <input type = "text" name = "city"/>
-        <br>
-        Number of student already taken: <br> <input type = "text" name = "already_taken"/>
-        <br>
-        Pilot trust rate: <br> <input type = "tex" name = "trust"/>
-
+        <br><br>
+        Number of student already taken: <br> <input type = "text" name = "nb_CESI_intern"/>
+        <br><br>
+        Pilot trust rate: <br> <input type = "tex" name = "Pilote_trust"/>
+        <br><br>
         <input type="submit" name="save" value="submit"/>
     </form>
 
     <?php
 
-
+        include 'database_connexion.php';
         $connexion = getDatabaseConnexion();
-  if(isset($_POST['save']))
+        if(isset($_POST['save']))
     {
 
         if(!empty($_POST['create']) and isset($_POST['lemenu']))
@@ -56,15 +56,14 @@
             $Pilote_trust = $_POST['Pilote_trust'];
             $city = $_POST['city'];
        
-        $sql = ("INSERT INTO company (company_name, company_sector, nb_CESI_intern, Pilote_trust, internship_nb_available)
-                 SET company.company_name = '$company_name', company.company_sector = '$company_sector',
-                 company.nb_CESI_intern = '$nb_CESI_intern', company.Pilote_trust = '$Pilote_trust', places.city = '$city' 
-                 FROM places 
-                 INNER JOIN being_located_in 
-                 ON places.id_place = being_located_in.id_place 
-                 INNER JOIN company ON company.id_company = being_located_in.id_company");
+        $sql = "INSERT INTO company (company_name, company_sector, nb_CESI_intern, interns_evaluation, Pilote_trust, internship_nb_available
+                VALUES ($company_name, $company_sector, $nb_CESI_intern, NULL, $Pilote_trust, NULL)";
+                 
         $connexion->exec($sql);
         }
+
+
+    /*
         if(!empty($_POST['read']) and isset($_POST['lemenu']))
         {
             $company_name = $_POST['company_name'];
@@ -96,6 +95,7 @@
             $sql = ("DELETE FROM company WHERE id_company = '$id_company'");
             $connexion->exec($sql);
         }
+        */
     }
     ?>
 
