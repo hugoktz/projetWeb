@@ -12,48 +12,42 @@
 
     <form method = "POST" action="">
     <br>
-        login <br> <input type="text" name="company_name"/>
+        login <br> <input type="text" name="login"/>
         <br><br>
-        password <br> <input type="text" name="company_sector"/>
+        password <br> <input type="text" name="password"/>
         <br><br>
-        password <br> <input type="text" name="street_number"/>
+        center <br> <input type = "text" name = "center"/>
         <br><br>
-        promotion <br> <input type="text" name="street_name"/>
+        last name <br> <input type = "text" name = "last_name"/>
+        <br><br>  
+        first name <br> <input type = "tex" name = "first_name"/>
         <br><br>
-        center <br> <input type = "text" name = "city"/>
+        ID company <br> <input type="text" name = "id_company"/>
         <br><br>
-        last name <br> <input type = "text" name = "postal_code"/>
+        Promotion <br><input type="text" name="promotion"/>
         <br><br>
-        First name <br> <input type = "text" name = "nb_CESI_intern"/>
-        <br><br>
-        Evaluation of the interns (if none insert the average value of 3): <br> <input type = "text" name = "interns_evaluation"/>
-        <br><br>        
-        Pilot trust rate: <br> <input type = "text" name = "Pilote_trust"/>
-        <br><br>
-        Number of available internships: <br> <input type="text" name = "internship_nb_available"/>
-        <br><br>
+        
+        
         <input type="submit" name="save" value="submit"/>
     </form>
 
     <?php
         include 'database_connexion.php';
-        $connexion = mysqli_connect("127.0.0.1","root","","web_project_try_4") or die("Connection failed");
+        $connexion = getDatabaseConnexion();
         if(!empty($_POST['save']))
         {
-            $company_name = $_POST['company_name'];
-            $company_sector = $_POST['company_sector'];
-            $nb_CESI_intern = $_POST['nb_CESI_intern'];
-            $interns_evaluation = $_POST['interns_evaluation'];
-            $Pilote_trust = $_POST['Pilote_trust'];
-            $internship_nb_available = $_POST['internship_nb_available'];
-            $street_number = $_POST['street_number'];
-            $street_name = $_POST['street_name'];
-            $city = $_POST['city'];
-            $postal_code = $_POST['postal_code'];
-            
-            $create_company = CreatePilot($company_name, $company_sector, $nb_CESI_intern, $interns_evaluation, $Pilote_trust, $internship_nb_available, $street_number, $street_name, $city, $postal_code);
+            $login = $_POST['login'];
+            $password = $_POST['password'];
+            $center = $_POST['center'];
+            $last_name = $_POST['last_name'];
+            $first_name = $_POST['first_name'];
+            $id_company = $_POST['id_company'];
+            $promotion = $_POST['promotion'];
+
+            $create_company = CreatePilot($login, $password, $center, $last_name, $first_name, $id_company, $promotion);
             
         }
+    
     ?>
 
     

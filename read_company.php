@@ -7,7 +7,7 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>Read a representative account</h1>
+    <h1>Read a company account</h1>
     <div class="container">
     <form method = "POST">
         <label>Company name</label> <br> <input type="text" name="Company_name"/>

@@ -24,17 +24,69 @@ function getDatabaseConnexion()
         
     }
 
-    function CreatePilot($login, $password, $promotion, $center, $last_name, $first_name)
+    function CreatePilot($login, $password, $center, $last_name, $first_name, $id_company, $promotion)
     {
         $connexion = getDatabaseConnexion();
         
-        $requete = "SELECT login, password, promotion, center, last_name, first_name FROM user s
-                    INNER JOIN being_in_charge_of 
-                    ON users.id_user = being_in_charge_of.id_user 
-                    INNER JOIN promotions 
-                    ON being_in_charge_of.id_promotion = promotions.id_promotion 
-                    ORDER BY users.id_user;";
+        $requete = "INSERT INTO company2 (login, password, center, last_name, first_name, id_company, promotion, role_name)
+        VALUES ('$login',
+        '$password',
+        '$center',
+        '$last_name',
+        '$first_name',
+        '$id_company',
+        '$promotion',
+        'pilot';";
         $connexion->exec($requete);
+    }
+    /*
+    SELECT login, password, center, last_name, first_name, id_company, promotions.promotion, roles.role_name 
+    FROM `users` 
+    INNER JOIN possessing 
+    ON users.id_user = possessing.id_user 
+    INNER JOIN roles 
+    ON possessing.id_role = roles.id_role 
+    INNER JOIN being_in_charge_of 
+    ON users.id_user = being_in_charge_of.id_user 
+    INNER JOIN promotions 
+    ON being_in_charge_of.id_promotion = promotions.id_promotion 
+    WHERE roles.role_name = 'pilot';
+
+INSERT INTO users2 (users.id_user, login, password, center, last_name, first_name, id_company, promotion, role_name)
+SELECT users.id_user, login, password, center, last_name, first_name, id_company, promotions.promotion, roles.role_name
+FROM users
+INNER JOIN possessing 
+        ON users.id_user = possessing.id_user 
+        INNER JOIN roles 
+        ON possessing.id_role = roles.id_role 
+        INNER JOIN being_in_charge_of 
+        ON users.id_user = being_in_charge_of.id_user 
+        INNER JOIN promotions 
+        ON being_in_charge_of.id_promotion = promotions.id_promotion 
+        WHERE roles.role_name = 'pilot';
+
+    */
+    function CreateCompany($company_name, $company_sector, $nb_CESI_intern, $interns_evaluation, $Pilote_trust, $internship_nb_available, $id_place, $street_number, $street_name, $city, $postal_code)
+    {
+        $connexion = getDatabaseConnexion();
+        
+        if(isset($_POST['save']))
+        {
+        $requete = "INSERT INTO company2 (company_name, company_sector, nb_CESI_intern, interns_evaluation, Pilote_trust, internship_nb_available, id_place, street_number, street_name, city, postal_code)
+                    VALUES ('$company_name',
+					'$company_sector',
+                    '$nb_CESI_intern',
+                    '$interns_evaluation',
+                    '$Pilote_trust',
+                    '$internship_nb_available',
+                    '$id_place',
+                    '$street_number',
+                    '$street_name',
+                    '$city',
+                    '$postal_code');";
+
+         $connexion->exec($requete);
+        }
     }
 
     function CreateRepresentative($login, $password, $promotion, $center, $last_name, $first_name)
@@ -58,31 +110,6 @@ function getDatabaseConnexion()
         $connexion->exec($requete);
     }
 
-    function CreateCompany($company_name, $company_sector, $nb_CESI_intern, $interns_evaluation, $Pilote_trust, $internship_nb_available, $street_number, $street_name, $city, $postal_code)
-    {
-        $connexion = getDatabaseConnexion();
-        $requete = "INSERT INTO company2 (company_name, company_sector, nb_CESI_intern, interns_evaluation, Pilote_trust, internship_nb_available, street_number, street_name, city, postal_code)
-                    VALUES ('$company_name',
-					'$company_sector',
-                    '$nb_CESI_intern',
-                    '$interns_evaluation',
-                    '$Pilote_trust',
-                    '$internship_nb_available',
-                    '$street_number',
-                    '$street_name',
-                    '$city',
-                    '$postal_code');";
-                    
-					/*FROM company
-                    INNER JOIN being_located_in 
-                    ON company.id_company = being_located_in.id_company 
-                    INNER JOIN places 
-                    ON being_located_in.id_place = places.id_place
-                    ORDER BY company.id_company;";
-                    */
-
-         $connexion->exec($requete);
-    }
 
     function readCompany($Company_Name) 
     {
