@@ -24,24 +24,6 @@ function getDatabaseConnexion()
         
     }
 
-    function CreatePilot($login, $password, $center, $last_name, $first_name, $id_company, $promotion)
-    {
-        $connexion = getDatabaseConnexion();
-        
-        if(isset($_POST['save']))
-        {
-        $requete = "INSERT INTO users2 (login, password, center, last_name, first_name, id_company, promotion, role_name)
-        VALUES ('$login',
-        '$password',
-        '$center',
-        '$last_name',
-        '$first_name',
-        '$id_company',
-        '$promotion',
-        'pilot');";
-        $connexion->exec($requete);
-        }
-    }
     /*
     SELECT login, password, center, last_name, first_name, id_company, promotions.promotion, roles.role_name 
     FROM `users` 
@@ -247,34 +229,84 @@ INNER JOIN possessing
         $connexion->exec($requete);
     }
 
-    function updatePilote($id_user, $login, $password, $promotion, $center, $last_name, $first_name)
+    
+    function CreatePilot($login, $password, $center, $last_name, $first_name, $id_company, $promotion)
     {
         $connexion = getDatabaseConnexion();
         
-        $requete = "UPDATE company SET login = $login, password = $password, promotion = $promotion, center = $center, last_name = $last_name, first_name = $first_name)
-                    WHERE id_user = $id_user";
-        
+        if(isset($_POST['save']))
+        {
+        $requete = "INSERT INTO users2 (login, password, center, last_name, first_name, id_company, promotion, role_name)
+        VALUES ('$login',
+        '$password',
+        '$center',
+        '$last_name',
+        '$first_name',
+        '$id_company',
+        '$promotion',
+        'pilot');";
         $connexion->exec($requete);
+        }
     }
 
-    function updateRepresentative($id_user, $login, $password, $promotion, $center, $last_name, $first_name)
+    function updatePilote($id_user, $login, $password, $center, $last_name, $first_name, $id_company, $promotion)
     {
         $connexion = getDatabaseConnexion();
         
-        $requete = "UPDATE company SET login = $login, password = $password, promotion = $promotion, center = $center, last_name = $last_name, first_name = $first_name)
-                    WHERE id_user = $id_user";
+        if(isset($_POST['save']))
+        {
+        $requete = "UPDATE users2 
+                    SET login = '$login', 
+                    password = '$password', 
+                    center = '$center',
+                    last_name = '$last_name', 
+                    first_name = '$first_name', 
+                    id_company = $id_company, 
+                    promotion = '$promotion'
+                    WHERE id_user = '$id_user' and role_name = 'pilot'";
         
         $connexion->exec($requete);
+        }
     }
 
-    function updateStudent($id_user, $login, $password, $promotion, $center, $last_name, $first_name)
+    function updateRepresentative($id_user, $login, $password, $center, $last_name, $first_name, $id_company, $promotion)
     {
         $connexion = getDatabaseConnexion();
         
-        $requete = "UPDATE company SET login = $login, password = $password, promotion = $promotion, center = $center, last_name = $last_name, first_name = $first_name)
-                    WHERE id_user = $id_user";
+        if(isset($_POST['save']))
+        {
+        $requete = "UPDATE users2 
+                    SET login = '$login', 
+                    password = '$password', 
+                    center = '$center',
+                    last_name = '$last_name', 
+                    first_name = '$first_name', 
+                    id_company = $id_company, 
+                    promotion = '$promotion'
+                    WHERE id_user = '$id_user' and role_name = 'representative'";
         
         $connexion->exec($requete);
+        }
+    }
+
+    function updateStudent($id_user, $login, $password, $center, $last_name, $first_name, $id_company, $promotion)
+    {
+        $connexion = getDatabaseConnexion();
+        
+        if(isset($_POST['save']))
+        {
+        $requete = "UPDATE users2 
+                    SET login = '$login', 
+                    password = '$password', 
+                    center = '$center',
+                    last_name = '$last_name', 
+                    first_name = '$first_name', 
+                    id_company = $id_company, 
+                    promotion = '$promotion'
+                    WHERE id_user = '$id_user' and role_name = 'student'";
+        
+        $connexion->exec($requete);
+        }
     }
 
     function deleteCompany($id_company)
