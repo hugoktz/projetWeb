@@ -24,11 +24,36 @@ function getDatabaseConnexion()
         
     }
 
+    function CreateCompany($company_name, $company_sector, $nb_CESI_intern, $interns_evaluation, $Pilote_trust, $internship_nb_available, $id_place, $street_number, $street_name, $city, $postal_code)
+    {
+        $connexion = getDatabaseConnexion();
+        
+        if(isset($_POST['save']))
+        {
+        $requete = "INSERT INTO company2 (company_name, company_sector, nb_CESI_intern, interns_evaluation, Pilote_trust, internship_nb_available, id_place, street_number, street_name, city, postal_code)
+                    VALUES ('$company_name',
+					'$company_sector',
+                    '$nb_CESI_intern',
+                    '$interns_evaluation',
+                    '$Pilote_trust',
+                    '$internship_nb_available',
+                    '$id_place',
+                    '$street_number',
+                    '$street_name',
+                    '$city',
+                    '$postal_code');";
+
+         $connexion->exec($requete);
+        }
+    }
+
     function CreatePilot($login, $password, $center, $last_name, $first_name, $id_company, $promotion)
     {
         $connexion = getDatabaseConnexion();
         
-        $requete = "INSERT INTO company2 (login, password, center, last_name, first_name, id_company, promotion, role_name)
+        if(isset($_POST['save']))
+        {
+        $requete = "INSERT INTO users2 (login, password, center, last_name, first_name, id_company, promotion, role_name)
         VALUES ('$login',
         '$password',
         '$center',
@@ -36,8 +61,9 @@ function getDatabaseConnexion()
         '$first_name',
         '$id_company',
         '$promotion',
-        'pilot';";
+        'pilot');";
         $connexion->exec($requete);
+        }
     }
     /*
     SELECT login, password, center, last_name, first_name, id_company, promotions.promotion, roles.role_name 
@@ -66,48 +92,43 @@ INNER JOIN possessing
         WHERE roles.role_name = 'pilot';
 
     */
-    function CreateCompany($company_name, $company_sector, $nb_CESI_intern, $interns_evaluation, $Pilote_trust, $internship_nb_available, $id_place, $street_number, $street_name, $city, $postal_code)
+
+    function CreateRepresentative($login, $password, $center, $last_name, $first_name, $id_company, $promotion)
     {
         $connexion = getDatabaseConnexion();
         
         if(isset($_POST['save']))
         {
-        $requete = "INSERT INTO company2 (company_name, company_sector, nb_CESI_intern, interns_evaluation, Pilote_trust, internship_nb_available, id_place, street_number, street_name, city, postal_code)
-                    VALUES ('$company_name',
-					'$company_sector',
-                    '$nb_CESI_intern',
-                    '$interns_evaluation',
-                    '$Pilote_trust',
-                    '$internship_nb_available',
-                    '$id_place',
-                    '$street_number',
-                    '$street_name',
-                    '$city',
-                    '$postal_code');";
-
-         $connexion->exec($requete);
+        $requete = "INSERT INTO users2 (login, password, center, last_name, first_name, id_company, promotion, role_name)
+        VALUES ('$login',
+        '$password',
+        '$center',
+        '$last_name',
+        '$first_name',
+        '$id_company',
+        '$promotion',
+        'representative');";
+        $connexion->exec($requete);
         }
     }
 
-    function CreateRepresentative($login, $password, $promotion, $center, $last_name, $first_name)
+    function CreateStudent($login, $password, $center, $last_name, $first_name, $id_company, $promotion)
     {
         $connexion = getDatabaseConnexion();
         
-        $requete = "INSERT INTO users (login, password, promotion, center, last_name, first_name)
-                        VALUES ($login, $password, $promotion, $center, $last_name, $first_name)";
-        
+        if(isset($_POST['save']))
+        {
+        $requete = "INSERT INTO users2 (login, password, center, last_name, first_name, id_company, promotion, role_name)
+        VALUES ('$login',
+        '$password',
+        '$center',
+        '$last_name',
+        '$first_name',
+        '$id_company',
+        '$promotion',
+        'student');";
         $connexion->exec($requete);
-        
-    }
-
-    function CreateStudent($login, $password, $promotion, $center, $last_name, $first_name)
-    {
-        $connexion = getDatabaseConnexion();
-        
-        $requete = "INSERT INTO users (login, password, promotion, center, last_name, first_name)
-                        VALUES ($login, $password, $promotion, $center, $last_name, $first_name)";
-        
-        $connexion->exec($requete);
+        }
     }
 
 
