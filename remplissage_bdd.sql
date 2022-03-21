@@ -84,8 +84,7 @@ VALUES
 ('Inform that application is on step 6');
 
 
-INSERT INTO internship (internship_skills, internship_company, internship_type_promotion, internship_salary, internship_offer_date, application_validation_sheet, application_internship_agreement, internship_date_start, 
-internship_date_end, id_company)
+INSERT INTO internship (internship_skills, internship_company, internship_type_promotion, internship_salary, internship_offer_date, application_validation_sheet, application_internship_agreement, internship_start_date, internship_end_date, id_company)
 VALUES
 ('HTML, CSS, JS, PHP', 'Orange', 'A2,A3', 3.90, '2021-12-21', 'the mission will be developping a website for us', 'according to the article 1.3 of the labor code we will work together in the respect', '2022-03-31', '2022-09-30', 5),
 ('Networks', 'Bouygues', 'A4', 4.10, '2022-02-12', 'the mission will be to help one of our employees to rearange our network','according to the article 1.3 of the labor code we will work together in the respect', '2022-04-02', '2022-06-01', 9),
@@ -100,18 +99,18 @@ VALUES
 
 
 
-INSERT INTO user (login, password, promotion, center, last_name, first_name, id_company, id_promotion)
+INSERT INTO users (login, password, center, last_name, first_name, id_company, id_promotion)
 VALUES
-('Likasaa', 'maey', 'A2', 'Strasbourg', 'EY', 'Maxime', 5, 5),
-('Billy', 'amed', 'A3', 'Strasbourg', 'AMANI', 'Eddy', 4, 2),
-('Aodhan', 'hukr', 'A4', 'La Rochelle', 'PONSODA', 'Maxime', 3, 1),
-('Hugo', 'hudu', 'A1', 'Toulouse', 'DUMOULIN', 'Hugo', 10, 4),
-('Wendy', 'wera', 'A5', 'La Rochelle', 'RAVARY', 'Wendy', 1, 4),
-('Asarck', 'lube', 'A2', 'Saint-Nazaire', 'BERTHO', 'Lucien', 2, 1),
-('Aldresus', 'huch', 'A1', 'Strasbourg', 'CHAMPY', 'Hugo',7, 2),
-('Gadery', 'gade', 'A3', 'Le Mans', 'DE RUFFRAY', 'GAETAN', 9, 3),
-('OKAMI', 'leam', 'A5', 'Pau', 'AMERIGO', 'Leo', 6, 1),
-('Papotie', 'pipo', 'A4', 'Lyon', 'POTIE', 'Pierre-Antoine', 8, 5);
+('Likasaa', 'maey', 'Strasbourg', 'EY', 'Maxime', 5, 5),
+('Billy', 'amed', 'Strasbourg', 'AMANI', 'Eddy', 4, 2),
+('Aodhan', 'hukr', 'La Rochelle', 'PONSODA', 'Maxime', 3, 1),
+('Hugo', 'hudu', 'Toulouse', 'DUMOULIN', 'Hugo', 10, 4),
+('Wendy', 'wera', 'La Rochelle', 'RAVARY', 'Wendy', 1, 4),
+('Asarck', 'lube', 'Saint-Nazaire', 'BERTHO', 'Lucien', 2, 1),
+('Aldresus', 'huch', 'Strasbourg', 'CHAMPY', 'Hugo',7, 2),
+('Gadery', 'gade', 'Le Mans', 'DE RUFFRAY', 'GAETAN', 9, 3),
+('OKAMI', 'leam', 'Pau', 'AMERIGO', 'Leo', 6, 1),
+('Papotie', 'pipo', 'Lyon', 'POTIE', 'Pierre-Antoine', 8, 5);
 
 INSERT INTO user (login, password, promotion, center, last_name, first_name, id_company, id_promotion)
 VALUES
@@ -262,11 +261,5 @@ INSERT INTO corresponding_to (id_permission, id_role) VALUES
 (35, 1);
 
 
-DELETE us FROM user AS us 
-                    LEFT JOIN possessing AS po
-                    ON us.id_user = po.id_user
-                    LEFT JOIN roles AS ro
-                    ON po.id_role = ro.id_role
-                    WHERE us.id_user = 11
-                    AND ro.role_name = 'student';
+
 
