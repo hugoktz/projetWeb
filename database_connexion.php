@@ -5,7 +5,7 @@ function getDatabaseConnexion()
         try {
             $user = "root";
             $pass = "";
-            $dbh = new PDO('mysql:host=127.0.0.1;dbname=web_project_try_4', $user, $pass);
+            $dbh = new PDO('mysql:host=127.0.0.1;dbname=web_project_try_5', $user, $pass);
             $dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             return $dbh;
 
@@ -28,9 +28,12 @@ function getDatabaseConnexion()
     {
         $connexion = getDatabaseConnexion();
         
-        $requete = "INSERT INTO user (login, password, promotion, center, last_name, first_name)
-                        VALUES ($login, $password, $promotion, $center, $last_name, $first_name)";
-        
+        $requete = "SELECT login, password, promotion, center, last_name, first_name FROM user s
+                    INNER JOIN being_in_charge_of 
+                    ON users.id_user = being_in_charge_of.id_user 
+                    INNER JOIN promotions 
+                    ON being_in_charge_of.id_promotion = promotions.id_promotion 
+                    ORDER BY users.id_user;";
         $connexion->exec($requete);
     }
 
@@ -38,7 +41,7 @@ function getDatabaseConnexion()
     {
         $connexion = getDatabaseConnexion();
         
-        $requete = "INSERT INTO user (login, password, promotion, center, last_name, first_name)
+        $requete = "INSERT INTO users (login, password, promotion, center, last_name, first_name)
                         VALUES ($login, $password, $promotion, $center, $last_name, $first_name)";
         
         $connexion->exec($requete);
@@ -49,7 +52,7 @@ function getDatabaseConnexion()
     {
         $connexion = getDatabaseConnexion();
         
-        $requete = "INSERT INTO user (login, password, promotion, center, last_name, first_name)
+        $requete = "INSERT INTO users (login, password, promotion, center, last_name, first_name)
                         VALUES ($login, $password, $promotion, $center, $last_name, $first_name)";
         
         $connexion->exec($requete);
@@ -58,17 +61,17 @@ function getDatabaseConnexion()
     function CreateCompany($company_name, $company_sector, $nb_CESI_intern, $interns_evaluation, $Pilote_trust, $internship_nb_available, $street_number, $street_name, $city, $postal_code)
     {
         $connexion = getDatabaseConnexion();
-        $requete = "INSERT INTO company2(company_name, company_sector, nb_CESI_intern, interns_evaluation, Pilote_trust, internship_nb_available, street_number, street_name, city, postal_code)
-                    VALUES '$company_name',
+        $requete = "INSERT INTO company2 (company_name, company_sector, nb_CESI_intern, interns_evaluation, Pilote_trust, internship_nb_available, street_number, street_name, city, postal_code)
+                    VALUES ('$company_name',
 					'$company_sector',
-                    $nb_CESI_intern,
-                    $interns_evaluation,
-                    $Pilote_trust,
-                    $internship_nb_available,
-                    $street_number,
+                    '$nb_CESI_intern',
+                    '$interns_evaluation',
+                    '$Pilote_trust',
+                    '$internship_nb_available',
+                    '$street_number',
                     '$street_name',
                     '$city',
-                    $postal_code;";
+                    '$postal_code');";
                     
 					/*FROM company
                     INNER JOIN being_located_in 
@@ -77,13 +80,8 @@ function getDatabaseConnexion()
                     ON being_located_in.id_place = places.id_place
                     ORDER BY company.id_company;";
                     */
-                    
-        $stmt = $connexion->query($requete);
-        $row = $stmt->fetchAll();
-        if (!empty($row))
-        {
-            return $row[0];
-        }
+
+         $connexion->exec($requete);
     }
 
     function readCompany($Company_Name) 
@@ -102,7 +100,7 @@ function getDatabaseConnexion()
     {
         $connexion = getDatabaseConnexion();
         
-        $requete = "SELECT * FROM user INNER JOIN possessing ON user.id_user = possessing.id_user INNER JOIN roles 
+        $requete = "SELECT * FROM users INNER JOIN possessing ON users.id_user = possessing.id_user INNER JOIN roles 
         ON possessing.id_role = roles.id_role WHERE role_name = 'pilot' and first_name = '$First_Name_Pilot' and last_name = '$Last_Name_Pilot';";
         
         $stmt = $connexion->query($requete);  
@@ -140,7 +138,7 @@ function getDatabaseConnexion()
     {
         $connexion = getDatabaseConnexion();
 
-        $requete = "SELECT * FROM user INNER JOIN possessing ON user.id_user = possessing.id_user INNER JOIN roles 
+        $requete = "SELECT * FROM users INNER JOIN possessing ON users.id_user = possessing.id_user INNER JOIN roles 
         ON possessing.id_role = roles.id_role WHERE role_name = 'representative' and first_name = '$First_Name_Representative' and last_name = '$Last_Name_Representative';";
         
         $stmt = $connexion->query($requete);  
@@ -157,7 +155,7 @@ function getDatabaseConnexion()
     {
         $connexion = getDatabaseConnexion();
 
-        $requete = "SELECT * FROM user INNER JOIN possessing ON user.id_user = possessing.id_user INNER JOIN roles 
+        $requete = "SELECT * FROM users INNER JOIN possessing ON users.id_user = possessing.id_user INNER JOIN roles 
         ON possessing.id_role = roles.id_role WHERE role_name = 'student' and first_name = '$First_Name_Student' and last_name = '$Last_Name_Student';";
         
         $stmt = $connexion->query($requete);  
@@ -166,7 +164,6 @@ function getDatabaseConnexion()
         {
             return $row[0];
         }
-        echo $requete;
     }
 
     function updateCompany($id_company, $company_name, $company_sector, $nb_CESI_intern, $interns_evaluation, $Pilote_trust, $internship_nb_available)
@@ -240,7 +237,7 @@ function getDatabaseConnexion()
     {
         $connexion = getDatabaseConnexion();
 
-        $requete = "DELETE FROM user WHERE id_user = $id_user";
+        $requete = "DELETE FROM users WHERE id_user = $id_user";
     
         $connexion->exec($requete);
     }
@@ -249,7 +246,7 @@ function getDatabaseConnexion()
     {
         $connexion = getDatabaseConnexion();
 
-        $requete = "DELETE FROM user WHERE id_user = $id_user";
+        $requete = "DELETE FROM users WHERE id_user = $id_user";
     
         $connexion->exec($requete);
     }
@@ -258,7 +255,7 @@ function getDatabaseConnexion()
     {
         $connexion = getDatabaseConnexion();
 
-        $requete = "DELETE FROM user WHERE id_user = $id_user";
+        $requete = "DELETE FROM users WHERE id_user = $id_user";
     
         $connexion->exec($requete);
     }

@@ -34,8 +34,6 @@
         echo $read_pilot['first_name']." ".$read_pilot['last_name']." ".$read_pilot['promotion']." ".$read_pilot['center']." ".$read_pilot['role_name'];
         echo "<br>";
     }
-
-
     ?>
 
 

@@ -31,7 +31,7 @@
         $Last_name = $_POST['Last_name'];
 
         $read_student = readStudent($First_name, $Last_name);
-        echo $read_student['first_name']." ".$read_student['last_name']." ".$read_student['promotion']." ".$read_student['center']." ".$read_student['role_name'];
+        echo $read_student['first_name']." "." ".$read_student['center']." ".$read_student['role_name'];
         echo "<br>";
     }
 

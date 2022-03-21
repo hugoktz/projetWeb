@@ -10,7 +10,7 @@
     <h1>Create a company account</h1>
 
 
-    <form method = "GET" action="">
+    <form method = "POST" action="">
     <br>
         Company name <br> <input type="text" name="company_name"/>
         <br><br>
