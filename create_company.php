@@ -14,9 +14,15 @@
     <br>
         Company name <br> <input type="text" name="company_name"/>
         <br><br>
-        Activity area <br> <input type="text" name="company_sector"/>
+        Company sector <br> <input type="text" name="company_sector"/>
         <br><br>
-        Locality (-ies) <br> <input type = "text" name = "city"/>
+        Street number <br> <input type="text" name="street_number"/>
+        <br><br>
+        Street name <br> <input type="text" name="street_name"/>
+        <br><br>
+        City <br> <input type = "text" name = "city"/>
+        <br><br>
+        Postal code <br> <input type = "text" name = "postal_code"/>
         <br><br>
         Number of student already taken: <br> <input type = "text" name = "nb_CESI_intern"/>
         <br><br>
@@ -30,26 +36,23 @@
     </form>
 
     <?php
+        include 'database_connexion.php';
         $connexion = mysqli_connect("127.0.0.1","root","","web_project_try_4") or die("Connection failed");
         if(!empty($_POST['save']))
         {
             $company_name = $_POST['company_name'];
             $company_sector = $_POST['company_sector'];
-            $city = $_POST['city'];
             $nb_CESI_intern = $_POST['nb_CESI_intern'];
             $interns_evaluation = $_POST['interns_evaluation'];
             $Pilote_trust = $_POST['Pilote_trust'];
             $internship_nb_available = $_POST['internship_nb_available'];
-       
-            $sql = "INSERT INTO company (company_name, company_sector, nb_CESI_intern, interns_evaluation, Pilote_trust, internship_nb_available
-                    VALUES ('$company_name', '$company_sector', $nb_CESI_intern, NULL, $Pilote_trust, NULL)";
-
-            $result = mysqli_query($connect, $sql);
-            $count = mysqli_num_rows($result);
-            if($count>0)
-            {
-                $connexion->PDO::exec($sql);
-            }
+            $street_number = $_POST['street_number'];
+            $street_name = $_POST['street_name'];
+            $city = $_POST['city'];
+            $postal_code = $_POST['postal_code'];
+            
+            $create_company = CreateCompany($company_name, $company_sector, $nb_CESI_intern, $interns_evaluation, $Pilote_trust, $internship_nb_available, $street_number, $street_name, $city, $postal_code);
+            
         }
 
 

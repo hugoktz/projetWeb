@@ -55,28 +55,28 @@ function getDatabaseConnexion()
         $connexion->exec($requete);
     }
 
-    function CreateCompany($Company_Name, $Company_Sector, $nb_CESI_intern, $interns_evaluation, $Pilote_trust, $internship_nb_available)
+    function CreateCompany($company_name, $company_sector, $nb_CESI_intern, $interns_evaluation, $Pilote_trust, $internship_nb_available, $street_number, $street_name, $city, $postal_code)
     {
         $connexion = getDatabaseConnexion();
-        $requete = "INSERT INTO company(company_name, company_sector, nb_CESI_intern, interns_evaluation, Pilote_trust, internship_nb_available, id_company, id_place, street_number, street_name, city, postal_code)
-                    SELECT company_name, company_sector, nb_CESI_intern, interns_evaluation, Pilote_trust, internship_nb_available, id_company, id_place, street_number, street_name, city, postal_code
-                    FROM company
-                    INNER JOIN being_located_in ON company.id_company = being_located_in.id_company
-                    INNER JOIN places ON being_located_in.id_place = placess.id_place;";
-        /*"CREATE VIEW [Company Creation] AS
-                    SELECT company.id_company,
-                            company.company_name,
-                            company.company_sector,
-                            company.nb_CESI_intern,
-                            company.interns_evaluation,
-                            company.Pilote_trust,
-                            company.internship_nb_available
-                    FROM company 
+        $requete = "INSERT INTO company2(company_name, company_sector, nb_CESI_intern, interns_evaluation, Pilote_trust, internship_nb_available, id_place, street_number, street_name, city, postal_code)
+                    SELECT company_name,
+					company_sector,
+                    nb_CESI_intern,
+                    interns_evaluation,
+                    Pilote_trust,
+                    internship_nb_available,
+                    being_located_in.id_place,
+                    street_number,
+                    street_name,
+                    city,
+                    postal_code
+					FROM company
                     INNER JOIN being_located_in 
-                    ON company.id_company = being_located_in.id_company
-                    INNER JOIn places
-                    ON being_located_in.id_place = places.id_place;
-                         ";*/
+                    ON company.id_company = being_located_in.id_company 
+                    INNER JOIN places 
+                    ON being_located_in.id_place = places.id_place
+                    ORDER BY company.id_company;";
+        
         $stmt = $connexion->query($requete);
         $row = $stmt->fetchAll();
         if (!empty($row))
