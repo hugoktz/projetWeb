@@ -10,6 +10,9 @@
 </head>
 
 <body>
+
+    
+
     <form method = "post">
         Enter your login <input type="text" name="login"/>
         <br>
@@ -37,7 +40,7 @@
         $count = mysqli_num_rows($result);
         if($count>0)
         {
-            header("Location: interact_with_an_account.php");
+            header("Location: perms_admin.php");
                         
         }
         else
