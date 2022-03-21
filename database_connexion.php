@@ -24,29 +24,6 @@ function getDatabaseConnexion()
         
     }
 
-    function CreateCompany($company_name, $company_sector, $nb_CESI_intern, $interns_evaluation, $Pilote_trust, $internship_nb_available, $id_place, $street_number, $street_name, $city, $postal_code)
-    {
-        $connexion = getDatabaseConnexion();
-        
-        if(isset($_POST['save']))
-        {
-        $requete = "INSERT INTO company2 (company_name, company_sector, nb_CESI_intern, interns_evaluation, Pilote_trust, internship_nb_available, id_place, street_number, street_name, city, postal_code)
-                    VALUES ('$company_name',
-					'$company_sector',
-                    '$nb_CESI_intern',
-                    '$interns_evaluation',
-                    '$Pilote_trust',
-                    '$internship_nb_available',
-                    '$id_place',
-                    '$street_number',
-                    '$street_name',
-                    '$city',
-                    '$postal_code');";
-
-         $connexion->exec($requete);
-        }
-    }
-
     function CreatePilot($login, $password, $center, $last_name, $first_name, $id_company, $promotion)
     {
         $connexion = getDatabaseConnexion();
@@ -214,14 +191,51 @@ INNER JOIN possessing
         }
     }
 
-    function updateCompany($id_company, $company_name, $company_sector, $nb_CESI_intern, $interns_evaluation, $Pilote_trust, $internship_nb_available)
+    function CreateCompany($company_name, $company_sector, $nb_CESI_intern, $interns_evaluation, $Pilote_trust, $internship_nb_available, $id_place, $street_number, $street_name, $city, $postal_code)
     {
         $connexion = getDatabaseConnexion();
         
-        $requete = "UPDATE company SET company_name = $company_name, company_sector = $company_sector, nb_CESI_intern = $nb_CESI_intern, interns_evaluation = $interns_evaluation, Pilote_trust = $Pilote_trust, internship_nb_available = $internship_nb_available;
+        if(isset($_POST['save']))
+        {
+        $requete = "INSERT INTO company2 (company_name, company_sector, nb_CESI_intern, interns_evaluation, Pilote_trust, internship_nb_available, id_place, street_number, street_name, city, postal_code)
+                    VALUES ('$company_name',
+					'$company_sector',
+                    '$nb_CESI_intern',
+                    '$interns_evaluation',
+                    '$Pilote_trust',
+                    '$internship_nb_available',
+                    '$id_place',
+                    '$street_number',
+                    '$street_name',
+                    '$city',
+                    '$postal_code');";
+
+         $connexion->exec($requete);
+        }
+    }
+
+    function updateCompany($id_company, $company_name, $company_sector, $nb_CESI_intern, $interns_evaluation, $Pilote_trust, $internship_nb_available, $id_place, $street_number, $street_name, $city, $postal_code)
+    {
+        $connexion = getDatabaseConnexion();
+        
+        if(isset($_POST['save']))
+        {
+        $requete = "UPDATE company2 
+                    SET company_name = '$company_name', 
+                    company_sector = '$company_sector', 
+                    nb_CESI_intern = $nb_CESI_intern, 
+                    interns_evaluation = $interns_evaluation,
+                    Pilote_trust = $Pilote_trust, 
+                    internship_nb_available = $internship_nb_available, 
+                    id_place = $id_place, 
+                    street_number = $street_number, 
+                    street_name = '$street_name', 
+                    city = '$city', 
+                    postal_code = $postal_code
                     WHERE id_company = $id_company";
         
         $connexion->exec($requete);
+        }
     }
     
     function updateOffer($id_internship, $Internship_skills, $Internship_company, $Internship_type_promotion, $Internship_salary, $Internship_offer_date, $Application_validation_sheet, $Application_internship_agreement, $internship_date_start, $internship_date_end, $id_company)
