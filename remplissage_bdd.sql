@@ -192,7 +192,7 @@ INSERT INTO corresponding_to (id_permission, id_role) VALUES
 (2, 4),
 (3, 1),
 (3, 2),
-(4, 1)
+(4, 1),
 (4, 2),
 (5, 1),
 (5, 2),
@@ -231,11 +231,11 @@ INSERT INTO corresponding_to (id_permission, id_role) VALUES
 (20, 1),
 (20, 2),
 (21, 1),
-(21, 2)
+(21, 2),
 (22, 1),
 (22, 2),
 (23, 1),
-(23, 2)
+(23, 2),
 (24, 1),
 (24, 2),
 (25, 1),
@@ -243,11 +243,11 @@ INSERT INTO corresponding_to (id_permission, id_role) VALUES
 (26, 1),
 (26, 2),
 (27, 1),
-(27, 4)
+(27, 4),
 (28, 1),
-(28, 4)
+(28, 4),
 (29, 1),
-(29, 4)
+(29, 4),
 (30, 1),
 (30, 4),
 (31, 1),

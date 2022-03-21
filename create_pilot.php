@@ -22,8 +22,6 @@
         <br><br>  
         first name <br> <input type = "tex" name = "first_name"/>
         <br><br>
-        ID company <br> <input type="text" name = "id_company"/>
-        <br><br>
         Promotion <br><input type="text" name="promotion"/>
         <br><br>
         
@@ -41,10 +39,9 @@
             $center = $_POST['center'];
             $last_name = $_POST['last_name'];
             $first_name = $_POST['first_name'];
-            $id_company = $_POST['id_company'];
             $promotion = $_POST['promotion'];
 
-            $create_company = CreatePilot($login, $password, $center, $last_name, $first_name, $id_company, $promotion);
+            $create_company = CreatePilot($login, $password, $center, $last_name, $first_name, $promotion);
             
         }
     
