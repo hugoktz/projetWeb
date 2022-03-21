@@ -263,3 +263,22 @@ INSERT INTO corresponding_to (id_permission, id_role) VALUES
 
 
 
+/*
+INSERT INTO internship2 (internship2.id_internship, skills, street_number, street_name, city, postal_code, company_name, promotions, start_date, end_date, salary, offer_date, nb_available)
+SELECT internship.id_internship, internship.internship_skills, places.street_number, places.street_name, places.city, places.postal_code, company.company_name, promotions.promotion, internship.internship_start_date, internship.internship_end_date, internship.internship_salary, internship.internship_offer_date, company.internship_nb_available
+FROM internship
+INNER JOIN company 
+        ON internship.id_company = company.id_company 
+        INNER JOIN being_located_in 
+        ON company.id_company = being_located_in.id_company 
+        INNER JOIN places 
+        ON being_located_in.id_place = places.id_place 
+        INNER JOIN application 
+        ON application.id_internship = internship.id_internship
+        INNER JOIN users
+        ON users.id_user = application.id_user
+		INNER JOIN being_in_charge_of
+        ON users.id_promotion = being_in_charge_of.id_promotion
+        INNER JOIN promotions
+        ON being_in_charge_of.id_promotion = promotions.id_promotion;
+*/
