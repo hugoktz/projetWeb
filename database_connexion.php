@@ -15,43 +15,6 @@ function getDatabaseConnexion()
         }
     }
 
-    function CreateOffer($Internship_skills, $Internship_company, $Internship_type_promotion, $Internship_salary, $Internship_offer_date, $Application_validation_sheet, $Application_internship_agreement, $internship_date_start, $internship_date_end)
-    {
-        $connexion = getDatabaseConnexion();
-
-        $requete = "INSERT INTO internship (internship_skills, internship_company, internship_type_promotion, internship_salary, internship_offer_date, application_validation_sheet, application_internship_agreement, internship_date_start, internship_end_start)
-                    VALUES ($Internship_skills, $Internship_company, $Internship_type_promotion, $Internship_salary, $Internship_offer_date, $Application_validation_sheet, $Application_internship_agreement, $internship_date_start, $internship_date_end)";
-        
-    }
-
-    /*
-    SELECT login, password, center, last_name, first_name, id_company, promotions.promotion, roles.role_name 
-    FROM `users` 
-    INNER JOIN possessing 
-    ON users.id_user = possessing.id_user 
-    INNER JOIN roles 
-    ON possessing.id_role = roles.id_role 
-    INNER JOIN being_in_charge_of 
-    ON users.id_user = being_in_charge_of.id_user 
-    INNER JOIN promotions 
-    ON being_in_charge_of.id_promotion = promotions.id_promotion 
-    WHERE roles.role_name = 'pilot';
-
-INSERT INTO users2 (users.id_user, login, password, center, last_name, first_name, id_company, promotion, role_name)
-SELECT users.id_user, login, password, center, last_name, first_name, id_company, promotions.promotion, roles.role_name
-FROM users
-INNER JOIN possessing 
-        ON users.id_user = possessing.id_user 
-        INNER JOIN roles 
-        ON possessing.id_role = roles.id_role 
-        INNER JOIN being_in_charge_of 
-        ON users.id_user = being_in_charge_of.id_user 
-        INNER JOIN promotions 
-        ON being_in_charge_of.id_promotion = promotions.id_promotion 
-        WHERE roles.role_name = 'pilot';
-
-    */
-
     function CreateRepresentative($login, $password, $center, $last_name, $first_name, $id_company, $promotion)
     {
         $connexion = getDatabaseConnexion();
@@ -70,6 +33,87 @@ INNER JOIN possessing
         $connexion->exec($requete);
         }
     }
+
+
+    function CreateOffer($internship_skills, $internship_company, $internship_type_promotion, $internship_salary, $internship_offer_date, $application_validation_sheet, $application_internship_agreement, $internship_start_date, $internship_end_date)
+    {
+        $connexion = getDatabaseConnexion();
+
+        if(isset($_POST['save']))
+        {
+        $requete = "INSERT INTO internship2 (internship_skills, internship_type_promotion, internship_salary, internship_offer_date, application_validation_sheet, application_internship_agreement, internship_date_start, internship_end_start)
+                    VALUES ('$internship_skills', 
+                            '$internship_type_promotion',
+                            '$internship_salary', 
+                            '$internship_offer_date', 
+                            '$application_validation_sheet', 
+                            '$application_internship_agreement', 
+                            '$internship_start_date', 
+                            '$internship_end_date');";
+        $connexion->exec($requete);
+        }
+        
+    }
+
+        function CreatePilot($login, $password, $center, $last_name, $first_name, $promotion)
+    {
+        $connexion = getDatabaseConnexion();
+        
+        if(isset($_POST['save']))
+        {
+        $requete = "INSERT INTO pilots (login, password, center, last_name, first_name, id_company, promotion, role_name)
+        VALUES ('$login',
+        '$password',
+        '$center',
+        '$last_name',
+        '$first_name',
+        '$promotion',
+        'pilot');";
+        $connexion->exec($requete);
+        }
+    }
+
+
+    /*
+    SELECT login, password, center, last_name, first_name, id_company, promotions.promotion, roles.role_name 
+    FROM `users` 
+    INNER JOIN possessing 
+    ON users.id_user = possessing.id_user 
+    INNER JOIN roles 
+    ON possessing.id_role = roles.id_role 
+    INNER JOIN being_in_charge_of 
+    ON users.id_user = being_in_charge_of.id_user 
+    INNER JOIN promotions 
+    ON being_in_charge_of.id_promotion = promotions.id_promotion 
+    WHERE roles.role_name = 'pilot';
+
+    INSERT INTO pilots (id_pilot, login, password, first_name, last_name, center, promotion)
+SELECT users.id_user, login, password, first_name, last_name, center, promotions.promotion
+FROM users
+INNER JOIN possessing 
+        ON users.id_user = possessing.id_user 
+        INNER JOIN roles 
+        ON possessing.id_role = roles.id_role 
+        INNER JOIN being_in_charge_of 
+        ON users.id_user = being_in_charge_of.id_user 
+        INNER JOIN promotions 
+        ON being_in_charge_of.id_promotion = promotions.id_promotion 
+        WHERE roles.role_name = 'pilot';
+
+INSERT INTO users2 (users.id_user, login, password, center, last_name, first_name, id_company, promotion, role_name)
+SELECT users.id_user, login, password, center, last_name, first_name, id_company, promotions.promotion, roles.role_name
+FROM users
+INNER JOIN possessing 
+        ON users.id_user = possessing.id_user 
+        INNER JOIN roles 
+        ON possessing.id_role = roles.id_role 
+        INNER JOIN being_in_charge_of 
+        ON users.id_user = being_in_charge_of.id_user 
+        INNER JOIN promotions 
+        ON being_in_charge_of.id_promotion = promotions.id_promotion 
+        WHERE roles.role_name = 'pilot';
+
+    */
 
     function CreateStudent($login, $password, $center, $last_name, $first_name, $id_company, $promotion)
     {
@@ -230,24 +274,6 @@ INNER JOIN possessing
     }
 
     
-    function CreatePilot($login, $password, $center, $last_name, $first_name, $id_company, $promotion)
-    {
-        $connexion = getDatabaseConnexion();
-        
-        if(isset($_POST['save']))
-        {
-        $requete = "INSERT INTO users2 (login, password, center, last_name, first_name, id_company, promotion, role_name)
-        VALUES ('$login',
-        '$password',
-        '$center',
-        '$last_name',
-        '$first_name',
-        '$id_company',
-        '$promotion',
-        'pilot');";
-        $connexion->exec($requete);
-        }
-    }
 
     function updatePilote($id_user, $login, $password, $center, $last_name, $first_name, $id_company, $promotion)
     {
