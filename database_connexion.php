@@ -34,6 +34,23 @@ function getDatabaseConnexion()
         }
     }
 
+    function CreatePilot($login, $password, $first_name, $last_name, $center, $promotion)
+    {
+        $connexion = getDatabaseConnexion();
+        
+        if(isset($_POST['save']))
+        {
+        $requete = "INSERT INTO pilots (login, password, first_name, last_name, center, promotion)
+                    VALUES ('$login',
+                        '$password',
+                        '$first_name',
+                        '$last_name',
+                        '$center',
+                        '$promotion');";
+        $connexion->exec($requete);
+        }
+    }
+
 
     function CreateOffer($internship_skills, $internship_company, $internship_type_promotion, $internship_salary, $internship_offer_date, $application_validation_sheet, $application_internship_agreement, $internship_start_date, $internship_end_date)
     {
@@ -55,23 +72,7 @@ function getDatabaseConnexion()
         
     }
 
-        function CreatePilot($login, $password, $center, $last_name, $first_name, $promotion)
-    {
-        $connexion = getDatabaseConnexion();
-        
-        if(isset($_POST['save']))
-        {
-        $requete = "INSERT INTO pilots (login, password, center, last_name, first_name, id_company, promotion, role_name)
-        VALUES ('$login',
-        '$password',
-        '$center',
-        '$last_name',
-        '$first_name',
-        '$promotion',
-        'pilot');";
-        $connexion->exec($requete);
-        }
-    }
+
 
 
     /*
@@ -115,35 +116,20 @@ INNER JOIN possessing
 
     */
 
-    function CreateStudent($login, $password, $center, $last_name, $first_name, $id_company, $promotion)
+    function CreateStudent($login, $password, $first_name, $last_name, $center, $promotion)
     {
         $connexion = getDatabaseConnexion();
         
         if(isset($_POST['save']))
         {
-        $requete = "INSERT INTO users2 (login, password, center, last_name, first_name, id_company, promotion, role_name)
-        VALUES ('$login',
-        '$password',
-        '$center',
-        '$last_name',
-        '$first_name',
-        '$id_company',
-        '$promotion',
-        'student');";
+        $requete = "INSERT INTO students (login, password, first_name, last_name, center, promotion)
+                    VALUES ('$login',
+                        '$password',
+                        '$first_name',
+                        '$last_name',
+                        '$center',
+                        '$promotion');";
         $connexion->exec($requete);
-        }
-    }
-
-
-    function readCompany($Company_Name) 
-    {
-        $connexion = getDatabaseConnexion();
-        $requete = "SELECT * FROM company WHERE company_name = '$Company_Name';";
-        $stmt = $connexion->query($requete);  
-        $row = $stmt->fetchAll();
-        if (!empty($row))
-        {
-            return $row[0];
         }
     }
     
@@ -151,8 +137,7 @@ INNER JOIN possessing
     {
         $connexion = getDatabaseConnexion();
         
-        $requete = "SELECT * FROM users INNER JOIN possessing ON users.id_user = possessing.id_user INNER JOIN roles 
-        ON possessing.id_role = roles.id_role WHERE role_name = 'pilot' and first_name = '$First_Name_Pilot' and last_name = '$Last_Name_Pilot';";
+        $requete = "SELECT * FROM pilots WHERE first_name = '$First_Name_Pilot' and last_name = '$Last_Name_Pilot';";
         
         $stmt = $connexion->query($requete);  
         $row = $stmt->fetchAll();
@@ -160,7 +145,18 @@ INNER JOIN possessing
         {
             return $row[0];
         }
-        echo $requete;
+    }
+
+    function readCompany($Company_Name) 
+    {
+        $connexion = getDatabaseConnexion();
+        $requete = "SELECT * FROM company2 WHERE company_name = '$Company_Name';";
+        $stmt = $connexion->query($requete);  
+        $row = $stmt->fetchAll();
+        if (!empty($row))
+        {
+            return $row[0];
+        }
     }
 
     function readOffer($id_internship) //sert à trouver le Pilot
@@ -202,12 +198,11 @@ INNER JOIN possessing
 
     }
 
-    function readStudent($First_Name_Student, $Last_Name_Student) //sert à trouver le Pilot
+    function readStudent($First_Name_Student, $Last_Name_Student)
     {
         $connexion = getDatabaseConnexion();
-
-        $requete = "SELECT * FROM users INNER JOIN possessing ON users.id_user = possessing.id_user INNER JOIN roles 
-        ON possessing.id_role = roles.id_role WHERE role_name = 'student' and first_name = '$First_Name_Student' and last_name = '$Last_Name_Student';";
+        
+        $requete = "SELECT * FROM students WHERE first_name = '$First_Name_Student' and last_name = '$Last_Name_Student';";
         
         $stmt = $connexion->query($requete);  
         $row = $stmt->fetchAll();
@@ -275,21 +270,20 @@ INNER JOIN possessing
 
     
 
-    function updatePilote($id_user, $login, $password, $center, $last_name, $first_name, $id_company, $promotion)
+    function updatePilote($id_user, $login, $password, $first_name, $last_name, $center, $promotion)
     {
         $connexion = getDatabaseConnexion();
         
         if(isset($_POST['save']))
         {
-        $requete = "UPDATE users2 
+        $requete = "UPDATE pilots 
                     SET login = '$login', 
                     password = '$password', 
                     center = '$center',
                     last_name = '$last_name', 
                     first_name = '$first_name', 
-                    id_company = $id_company, 
                     promotion = '$promotion'
-                    WHERE id_user = '$id_user' and role_name = 'pilot'";
+                    WHERE id_pilot = '$id_user'; ";
         
         $connexion->exec($requete);
         }
@@ -315,21 +309,20 @@ INNER JOIN possessing
         }
     }
 
-    function updateStudent($id_user, $login, $password, $center, $last_name, $first_name, $id_company, $promotion)
+    function updateStudent($id_user, $login, $password, $first_name, $last_name, $center, $promotion)
     {
         $connexion = getDatabaseConnexion();
         
         if(isset($_POST['save']))
         {
-        $requete = "UPDATE users2 
+        $requete = "UPDATE students 
                     SET login = '$login', 
                     password = '$password', 
                     center = '$center',
                     last_name = '$last_name', 
                     first_name = '$first_name', 
-                    id_company = $id_company, 
                     promotion = '$promotion'
-                    WHERE id_user = '$id_user' and role_name = 'student'";
+                    WHERE id_student = '$id_user'; ";
         
         $connexion->exec($requete);
         }

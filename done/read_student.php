@@ -7,7 +7,7 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>Read a student account</h1>
+    <h1>Read a pilot account</h1>
     <div class="container">
     <form method = "POST">
         <label>First name</label> <br> <input type="text" name="First_name"/>
@@ -30,8 +30,8 @@
         $First_name = $_POST['First_name'];
         $Last_name = $_POST['Last_name'];
 
-        $read_student = readStudent($First_name, $Last_name);
-        echo $read_student['first_name']." "." ".$read_student['center']." ".$read_student['role_name'];
+        $read_pilot = readStudent($First_name, $Last_name);
+        echo $read_pilot['first_name']." ".$read_pilot['last_name']." ".$read_pilot['promotion']." ".$read_pilot['center'];
         echo "<br>";
     }
 

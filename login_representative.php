@@ -40,7 +40,7 @@
         $count = mysqli_num_rows($result);
         if($count>0)
         {
-            header("Location: interact_with_an_account.php");
+            header("Location: perms_representative.php");
                         
         }
         else

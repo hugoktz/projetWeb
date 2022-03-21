@@ -31,7 +31,7 @@
         $Last_name = $_POST['Last_name'];
 
         $read_pilot = readPilot($First_name, $Last_name);
-        echo $read_pilot['first_name']." ".$read_pilot['last_name']." ".$read_pilot['promotion']." ".$read_pilot['center']." ".$read_pilot['role_name'];
+        echo $read_pilot['first_name']." ".$read_pilot['last_name']." ".$read_pilot['promotion']." ".$read_pilot['center'];
         echo "<br>";
     }
 

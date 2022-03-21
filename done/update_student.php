@@ -7,25 +7,26 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>Create a student account</h1>
+    <h1>Update a pilot account</h1>
 
 
     <form method = "POST" action="">
     <br>
-        login <br> <input type="text" name="login"/>
+        User id <br> <input type="text" name="id_user"/>
         <br><br>
-        password <br> <input type="text" name="password"/>
+        Login <br> <input type="text" name="login"/>
         <br><br>
-        center <br> <input type = "text" name = "center"/>
+        Password <br> <input type="text" name="password"/>
         <br><br>
-        last name <br> <input type = "text" name = "last_name"/>
+        First name <br> <input type = "text" name = "first_name"/>
+        <br><br>
+        Last name <br> <input type = "text" name = "last_name"/>
         <br><br>  
-        first name <br> <input type = "tex" name = "first_name"/>
+        Center <br> <input type = "text" name = "center"/>
+        <br><br> 
+        Promotion <br> <input type="text" name = "promotion"/>
         <br><br>
-        ID company <br> <input type="text" name = "id_company"/>
-        <br><br>
-        Promotion <br><input type="text" name="promotion"/>
-        <br><br>
+        
         
         
         <input type="submit" name="save" value="submit"/>
@@ -36,15 +37,15 @@
         $connexion = getDatabaseConnexion();
         if(!empty($_POST['save']))
         {
+            $id_user = $_POST['id_user'];
             $login = $_POST['login'];
             $password = $_POST['password'];
-            $center = $_POST['center'];
-            $last_name = $_POST['last_name'];
             $first_name = $_POST['first_name'];
-            $id_company = $_POST['id_company'];
+            $last_name = $_POST['last_name'];
+            $center = $_POST['center'];
             $promotion = $_POST['promotion'];
 
-            $create_company = CreateStudent($login, $password, $center, $last_name, $first_name, $id_company, $promotion);
+            $update_pilot = updateStudent($id_user, $login, $password, $first_name, $last_name, $center, $promotion);
             
         }
     

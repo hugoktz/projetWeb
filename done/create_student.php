@@ -7,48 +7,42 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>Update a pilot account</h1>
+    <h1>Create a pilot account</h1>
 
-
+    <div class="container">
     <form method = "POST" action="">
     <br>
-        User id <br> <input type="text" name="id_user"/>
+        login <br> <input type="text" name="login"/>
         <br><br>
-        Login <br> <input type="text" name="login"/>
+        password <br> <input type="text" name="password"/>
         <br><br>
-        Password <br> <input type="text" name="password"/>
+        first name <br> <input type = "text" name = "first_name"/>
         <br><br>
-        Center <br> <input type = "text" name = "center"/>
-        <br><br>
-        Last name <br> <input type = "text" name = "last_name"/>
+        last name <br> <input type = "text" name = "last_name"/>
         <br><br>  
-        First name <br> <input type = "text" name = "first_name"/>
-        <br><br> 
-        Id company <br> <input type = "tex" name = "id_company"/>
+        center <br> <input type = "tex" name = "center"/>
         <br><br>
-        Promotion <br> <input type="text" name = "promotion"/>
+        Promotion <br><input type="text" name="promotion"/>
         <br><br>
-        
         
         
         <input type="submit" name="save" value="submit"/>
     </form>
+    </div>
 
     <?php
         include 'database_connexion.php';
         $connexion = getDatabaseConnexion();
         if(!empty($_POST['save']))
         {
-            $id_user = $_POST['id_user'];
             $login = $_POST['login'];
             $password = $_POST['password'];
             $center = $_POST['center'];
             $last_name = $_POST['last_name'];
             $first_name = $_POST['first_name'];
-            $id_company = $_POST['id_company'];
             $promotion = $_POST['promotion'];
 
-            $update_pilot = updatePilote($id_user, $login, $password, $center, $last_name, $first_name, $id_company, $promotion);
+            $create_company = CreateStudent($login, $password, $first_name, $last_name, $center, $promotion);
             
         }
     

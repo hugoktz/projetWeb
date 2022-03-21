@@ -34,13 +34,13 @@
                     ON user.id_user = possessing.id_user 
                     INNER JOIN roles 
                     ON possessing.id_role = roles.id_role
-                    WHERE roles.id_role = 1
+                    WHERE roles.id_role = 2
                     and user.login = '$username' and user.password = '$password'";
         $result = mysqli_query($connect, $query);
         $count = mysqli_num_rows($result);
         if($count>0)
         {
-            header("Location: interact_with_an_account.php");
+            header("Location: perms_pilot.php");
                         
         }
         else

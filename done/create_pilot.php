@@ -9,18 +9,18 @@
 <body>
     <h1>Create a pilot account</h1>
 
-
+    <div class="container">
     <form method = "POST" action="">
     <br>
         login <br> <input type="text" name="login"/>
         <br><br>
         password <br> <input type="text" name="password"/>
         <br><br>
-        center <br> <input type = "text" name = "center"/>
+        first name <br> <input type = "text" name = "first_name"/>
         <br><br>
         last name <br> <input type = "text" name = "last_name"/>
         <br><br>  
-        first name <br> <input type = "tex" name = "first_name"/>
+        center <br> <input type = "tex" name = "center"/>
         <br><br>
         Promotion <br><input type="text" name="promotion"/>
         <br><br>
@@ -28,6 +28,7 @@
         
         <input type="submit" name="save" value="submit"/>
     </form>
+    </div>
 
     <?php
         include 'database_connexion.php';
@@ -41,7 +42,7 @@
             $first_name = $_POST['first_name'];
             $promotion = $_POST['promotion'];
 
-            $create_company = CreatePilot($login, $password, $center, $last_name, $first_name, $promotion);
+            $create_company = CreatePilot($login, $password, $first_name, $last_name, $center, $promotion);
             
         }
     
