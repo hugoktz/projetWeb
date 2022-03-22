@@ -52,22 +52,27 @@ function getDatabaseConnexion()
     }
 
 
-    function CreateOffer($internship_skills, $internship_company, $internship_type_promotion, $internship_salary, $internship_offer_date, $application_validation_sheet, $application_internship_agreement, $internship_start_date, $internship_end_date)
+    function CreateOffer($skills, $street_number, $street_name, $city, $postal_code, $company_name, $promotions, $start_date, $end_date, $salary, $offer_date, $nb_available)
     {
         $connexion = getDatabaseConnexion();
 
         if(isset($_POST['save']))
         {
-        $requete = "INSERT INTO internship2 (internship_skills, internship_type_promotion, internship_salary, internship_offer_date, application_validation_sheet, application_internship_agreement, internship_date_start, internship_end_start)
-                    VALUES ('$internship_skills', 
-                            '$internship_type_promotion',
-                            '$internship_salary', 
-                            '$internship_offer_date', 
-                            '$application_validation_sheet', 
-                            '$application_internship_agreement', 
-                            '$internship_start_date', 
-                            '$internship_end_date');";
+        $requete = "INSERT INTO internship2 (skills, street_number, street_name, city, postal_code, company_name, promotions, start_date, end_date, salary, offer_date, nb_available)
+                    VALUES ('$skills', 
+                            '$street_number',
+                            '$street_name', 
+                            '$city', 
+                            '$postal_code', 
+                            '$company_name',
+                            '$promotions',
+                            '$start_date',
+                            '$end_date',
+                            '$salary',
+                            '$offer_date',
+                            '$nb_available');";
         $connexion->exec($requete);
+
         }
         
     }
@@ -162,7 +167,7 @@ INNER JOIN possessing
     function readOffer($id_internship) //sert à trouver le Pilot
     {
         $connexion = getDatabaseConnexion();
-        $requete = "SELECT * FROM internship WHERE id_internship = '$id_internship'";
+        $requete = "SELECT * FROM internship2 WHERE id_internship = '$id_internship'";
         $stmt = $connexion->query($requete);  
         $row = $stmt->fetchAll();
         if (!empty($row))
@@ -259,12 +264,13 @@ INNER JOIN possessing
         }
     }
     
-    function updateOffer($id_internship, $Internship_skills, $Internship_company, $Internship_type_promotion, $Internship_salary, $Internship_offer_date, $Application_validation_sheet, $Application_internship_agreement, $internship_date_start, $internship_date_end, $id_company)
+    function UpdateOffer($id_internship, $skills, $street_number, $street_name, $city, $postal_code, $company_name, $promotions, $start_date, $end_date, $salary, $offer_date, $nb_available)
     {
         $connexion = getDatabaseConnexion();
         
-        $requete = "UPDATE internship SET id_internship = $id_internship, Internship_skills = $Internship_skills, Internship_company = $Internship_company, Internship_type_promotion = $Internship_type_promotion, Internship_salary = $Internship_salary, Internship_offer_date = $Internship_offer_date,
-                    Application_validation_sheet = $Application_validation_sheet, Application_internship_agreement = $Application_internship_agreement, internship_date_start = $internship_date_start, internship_date_end = $internship_date_end, id_company = $id_company";
+        $requete = "UPDATE internship2 SET skills = '$skills', street_number = '$street_number', street_name = '$street_name', city = '$city', postal_code = '$postal_code',
+                    company_name = '$company_name', promotions = '$promotions', start_date = '$start_date', end_date = '$end_date', salary = $salary, offer_date = '$offer_date', nb_available = $nb_available
+                    WHERE id_internship = $id_internship;";
         $connexion->exec($requete);
     }
 

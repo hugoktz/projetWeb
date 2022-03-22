@@ -7,29 +7,35 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>Create a company account</h1>
+    <h1>Create a offer</h1>
 
 
     <form method = "POST" action="">
     <br>
-        Skills needed <br> <input type="text" name="internship_skills"/>
+    skills needed <br> <input type="text" name="skills"/>
         <br><br>
-        Company <br> <input type="text" name="internship_company"/>
+        street_number <br> <input type="text" name="street_number"/>
         <br><br>
-        Promotion(s) <br> <input type = "text" name = "internship_type_promotion"/>
+        street name <br> <input type = "text" name = "street_name"/>
         <br><br>
-        Salary<br> <input type = "text" name = "internship_salary"/>
+        city <br> <input type = "text" name = "city"/>
         <br><br>  
-        Offer date <br> <input type = "tex" name = "internship_offer_date"/>
+        Postal code <br> <input type = "tex" name = "postal_code"/>
         <br><br>
-        Validation sheet <br> <input type="text" name = "application_validation_sheet"/>
+        Company name <br> <input type="text" name = "company_name"/>
         <br><br>
-        Internship agreement<br><input type="text" name="application_internship_agreement"/>
+        promotions<br><input type="text" name="promotions"/>
         <br><br>
-        Start date <br> <input type="text" name="internship_start_date"/>
+        start date<br> <input type="text" name="start_date"/>
         <br><br>
-        End date <br> <input type="text" name="internship_end_date"/>
-        <br><br>     
+        end date<br> <input type="text" name="end_date"/>
+        <br><br>
+        Salary <br> <input type = "text" name = "salary"/>
+        <br><br>
+        Offer date <br> <input type = "text" name = "offer_date"/>
+        <br><br>      
+        number of places available<br> <input type = "text" name = "nb_available"/>
+        <br><br> 
         
         
         <input type="submit" name="save" value="submit"/>
@@ -40,17 +46,20 @@
         $connexion = getDatabaseConnexion();
         if(!empty($_POST['save']))
         {
-            $internship_skills = $_POST['internship_skills'];
-            $internship_company = $_POST['internship_company'];
-            $internship_type_promotion = $_POST['internship_type_promotion'];
-            $internship_salary = $_POST['internship_salary'];
-            $internship_offer_date = $_POST['internship_offer_date'];
-            $application_validation_sheet = $_POST['application_validation_sheet'];
-            $application_internship_agreement = $_POST['application_internship_agreement'];
-            $internship_start_date = $_POST['internship_start_date'];
-            $internship_end_date = $_POST['internship_end_date'];
+            $skills = $_POST['skills'];
+            $street_number = $_POST['street_number'];
+            $street_name = $_POST['street_name'];
+            $city = $_POST['city'];
+            $postal_code = $_POST['postal_code'];
+            $company_name = $_POST['company_name'];
+            $promotions = $_POST['promotions'];
+            $start_date = $_POST['start_date'];
+            $end_date = $_POST['end_date'];
+            $salary = $_POST['salary'];
+            $offer_date = $_POST['offer_date'];
+            $nb_available = $_POST['nb_available'];
 
-            $create_offer = CreateOffer($internship_skills, $internship_company, $internship_type_promotion, $internship_salary, $internship_offer_date, $application_validation_sheet, $application_internship_agreement, $internship_start_date, $internship_end_date);
+            $create_offer = CreateOffer($skills, $street_number, $street_name, $city, $postal_code, $company_name, $promotions, $start_date, $end_date, $salary, $offer_date, $nb_available);
             
         }
     
