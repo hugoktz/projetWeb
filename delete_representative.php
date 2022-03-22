@@ -7,36 +7,27 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>Delete a representative account</h1>
+    <h1>Delete a pilot account</h1>
 
 
-    <form method = "GET" action="">
+    <form method = "POST" action="">
     <br>
-        Company id <br> <input type="text" name="id_user"/>
+        Representative id <br> <input type="text" name="id_representative"/>
         <br><br>
         
         <input type="submit" name="save" value="submit"/>
     </form>
 
     <?php
-        $connexion = mysqli_connect("127.0.0.1","root","","web_project_try_4") or die("Connection failed");
+        include 'database_connexion.php';
+        $connexion = getDatabaseConnexion();
         if(!empty($_POST['save']))
         {
-            $pdo->query('SET foreign_key_checks = 0');
-            $id_user = $_POST['id_user'];
-            $sql = "DELETE us FROM user AS us 
-                    LEFT JOIN possessing AS po
-                    ON us.id_user = po.id_user
-                    LEFT JOIN roles AS ro
-                    ON po.id_role = ro.id_role
-                    WHERE us.id_user = $id_user
-                    AND ro.role_name = 'representative';";
+            $id_representative = $_POST['id_representative'];
 
-            $pdo->query('SET foreign_key_checks = 1');
-            $result = mysqli_query($connect, $sql);
-            $count = mysqli_num_rows($result);
-            if($count>0)
-            {
-                $connexion->PDO::exec($sql);
-            }
+            $delete_representative = deleteRepresentative($id_representative);
         }
+    ?>
+
+</body>
+</html>

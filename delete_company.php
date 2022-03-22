@@ -10,7 +10,7 @@
     <h1>Delete a company account</h1>
 
 
-    <form method = "GET" action="">
+    <form method = "POST" action="">
     <br>
         Company id <br> <input type="text" name="id_company"/>
         <br><br>
@@ -19,17 +19,15 @@
     </form>
 
     <?php
-        $connexion = mysqli_connect("127.0.0.1","root","","web_project_try_4") or die("Connection failed");
+        include 'database_connexion.php';
+        $connexion = getDatabaseConnexion();
         if(!empty($_POST['save']))
         {
             $id_company = $_POST['id_company'];
-            $sql = "DELETE FROM company 
-                    WHERE id_company = '$id_company';";
 
-            $result = mysqli_query($connect, $sql);
-            $count = mysqli_num_rows($result);
-            if($count>0)
-            {
-                $connexion->PDO::exec($sql);
-            }
+            $delete_company = deleteCompany($id_company);
         }
+    ?>
+
+</body>
+</html>

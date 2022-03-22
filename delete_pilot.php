@@ -10,31 +10,24 @@
     <h1>Delete a pilot account</h1>
 
 
-    <form method = "GET" action="">
+    <form method = "POST" action="">
     <br>
-        Company id <br> <input type="text" name="id_user"/>
+        Pilot id <br> <input type="text" name="id_pilot"/>
         <br><br>
         
         <input type="submit" name="save" value="submit"/>
     </form>
 
     <?php
-        $connexion = mysqli_connect("127.0.0.1","root","","web_project_try_4") or die("Connection failed");
+        include 'database_connexion.php';
+        $connexion = getDatabaseConnexion();
         if(!empty($_POST['save']))
         {
-            $id_user = $_POST['id_user'];
-            $sql = "DELETE us FROM user AS us 
-                    LEFT JOIN possessing AS po
-                    ON us.id_user = po.id_user
-                    LEFT JOIN roles AS ro
-                    ON po.id_role = ro.id_role
-                    WHERE us.id_user = $id_user
-                    AND ro.role_name = 'pilot';";
+            $id_pilot = $_POST['id_pilot'];
 
-            $result = mysqli_query($connect, $sql);
-            $count = mysqli_num_rows($result);
-            if($count>0)
-            {
-                $connexion->PDO::exec($sql);
-            }
+            $delete_pilot = deletePilote($id_pilot);
         }
+    ?>
+
+</body>
+</html>

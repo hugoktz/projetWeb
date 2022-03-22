@@ -43,7 +43,7 @@
             $promotion = $_POST['promotion'];
 
             $create_company = CreatePilot($login, $password, $first_name, $last_name, $center, $promotion);
-            
+
         }
     
     ?>

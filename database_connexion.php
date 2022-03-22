@@ -9,7 +9,8 @@ function getDatabaseConnexion()
             $dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             return $dbh;
 
-        } catch (PDOException $e) {
+        } catch (PDOException $e) 
+        {
             print "Erreur !: " . $e->getMessage() . "<br/>";
             die();
         }
@@ -70,14 +71,8 @@ function getDatabaseConnexion()
                             '$offer_date',
                             '$nb_available');";
         $connexion->exec($requete);
-
         }
-        
     }
-
-
-
-
     /*
     SELECT login, password, center, last_name, first_name, id_company, promotions.promotion, roles.role_name 
     FROM `users` 
@@ -334,46 +329,61 @@ INNER JOIN possessing
     function deleteCompany($id_company)
     {
         $connexion = getDatabaseConnexion();
-
-        $requete = "DELETE FROM company WHERE id_company = $id_company";
+        
+        if(isset($_POST['save']))
+        {
+        $requete = "DELETE FROM company2 WHERE id_company = '$id_company';";
     
         $connexion->exec($requete);
+        }
     }
 
     function deleteOffer($id_internship)
     {
         $connexion = getDatabaseConnexion();
 
-        $requete = "DELETE FROM internship WHERE id_internship = $id_internship";
+        if(isset($_POST['save']))
+        {
+        $requete = "DELETE FROM internship2 WHERE id_internship = $id_internship";
     
         $connexion->exec($requete);
+        }
     }
 
-    function deletePilote($id_user)
+    function deletePilote($id_pilot)
     {
         $connexion = getDatabaseConnexion();
 
-        $requete = "DELETE FROM users WHERE id_user = $id_user";
-    
+        if(isset($_POST['save']))
+        {
+        $requete = "DELETE FROM pilots WHERE id_pilot = $id_pilot";
+
         $connexion->exec($requete);
+        }
     }
 
-    function deleteRepresentative($id_user)
+    function deleteRepresentative($id_representative)
     {
         $connexion = getDatabaseConnexion();
 
-        $requete = "DELETE FROM users WHERE id_user = $id_user";
+        if(isset($_POST['save']))
+        {
+        $requete = "DELETE FROM representatives WHERE id_representative = $id_representative";
     
         $connexion->exec($requete);
+        }
     }
 
-    function deleteStudent($id_user)
+    function deleteStudent($id_student)
     {
         $connexion = getDatabaseConnexion();
 
-        $requete = "DELETE FROM users WHERE id_user = $id_user";
+        if(isset($_POST['save']))
+        {
+        $requete = "DELETE FROM students WHERE id_student = $id_student";
     
         $connexion->exec($requete);
+        }
     }
 
 ?>
