@@ -7,7 +7,7 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>Create a offer</h1>
+    <h1>Update an offer</h1>
 
 
     <form method = "POST" action="">

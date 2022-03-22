@@ -12,23 +12,20 @@
 
     <form method = "POST" action="">
     <br>
-        User id <br> <input type="text" name="id_user"/>
+        ID <br> <input type="text" name="id_representative"/>
         <br><br>
-        Login <br> <input type="text" name="login"/>
+        login <br> <input type="text" name="login"/>
         <br><br>
-        Password <br> <input type="text" name="password"/>
+        password <br> <input type="text" name="password"/>
         <br><br>
-        Center <br> <input type = "text" name = "center"/>
+        center <br> <input type = "text" name = "center"/>
         <br><br>
-        Last name <br> <input type = "text" name = "last_name"/>
-        <br><br>  
         First name <br> <input type = "text" name = "first_name"/>
-        <br><br> 
-        Id company <br> <input type = "tex" name = "id_company"/>
+        <br><br>  
+        Last name <br> <input type = "tex" name = "last_name"/>
         <br><br>
-        Promotion <br> <input type="text" name = "promotion"/>
+        Permissions <br><input type="text" name="permissions"/>
         <br><br>
-        
         
         
         <input type="submit" name="save" value="submit"/>
@@ -39,16 +36,15 @@
         $connexion = getDatabaseConnexion();
         if(!empty($_POST['save']))
         {
-            $id_user = $_POST['id_user'];
+            $id_representative = $_POST['id_representative'];
             $login = $_POST['login'];
             $password = $_POST['password'];
-            $center = $_POST['center'];
-            $last_name = $_POST['last_name'];
             $first_name = $_POST['first_name'];
-            $id_company = $_POST['id_company'];
-            $promotion = $_POST['promotion'];
+            $last_name = $_POST['last_name'];
+            $center = $_POST['center'];
+            $permissions = $_POST['permissions'];
 
-            $update_representative = updateRepresentative($id_user, $login, $password, $center, $last_name, $first_name, $id_company, $promotion);
+            $create_company = UpdateRepresentative($id_representative, $login, $password, $first_name, $last_name, $center, $permissions);
             
         }
     

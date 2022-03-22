@@ -7,7 +7,7 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>Read a pilot account</h1>
+    <h1>Read a student account</h1>
     <div class="container">
     <form method = "POST">
         <label>First name</label> <br> <input type="text" name="First_name"/>
