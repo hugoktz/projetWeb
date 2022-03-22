@@ -7,7 +7,7 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>Delete a student account</h1>
+    <h1>Delete a representative account</h1>
 
 
     <form method = "GET" action="">

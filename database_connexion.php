@@ -15,21 +15,19 @@ function getDatabaseConnexion()
         }
     }
 
-    function CreateRepresentative($login, $password, $center, $last_name, $first_name, $id_company, $promotion)
+    function CreateRepresentative($login, $password, $first_name, $last_name, $center, $permissions)
     {
         $connexion = getDatabaseConnexion();
         
         if(isset($_POST['save']))
         {
-        $requete = "INSERT INTO users2 (login, password, center, last_name, first_name, id_company, promotion, role_name)
+        $requete = "INSERT INTO representatives (login, password, first_name, last_name, center, permissions)
         VALUES ('$login',
         '$password',
-        '$center',
-        '$last_name',
         '$first_name',
-        '$id_company',
-        '$promotion',
-        'representative');";
+        '$last_name',
+        '$center',
+        '$permissions');";
         $connexion->exec($requete);
         }
     }
@@ -295,21 +293,20 @@ INNER JOIN possessing
         }
     }
 
-    function updateRepresentative($id_user, $login, $password, $center, $last_name, $first_name, $id_company, $promotion)
+    function updateRepresentative($id_representative, $login, $password, $first_name, $last_name, $center, $permissions)
     {
         $connexion = getDatabaseConnexion();
         
         if(isset($_POST['save']))
         {
-        $requete = "UPDATE users2 
+        $requete = "UPDATE representatives 
                     SET login = '$login', 
                     password = '$password', 
                     center = '$center',
                     last_name = '$last_name', 
-                    first_name = '$first_name', 
-                    id_company = $id_company, 
-                    promotion = '$promotion'
-                    WHERE id_user = '$id_user' and role_name = 'representative'";
+                    first_name = '$first_name',
+                    permissions = '$permissions'
+                    WHERE id_representative = '$id_representative'";
         
         $connexion->exec($requete);
         }

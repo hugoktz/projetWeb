@@ -7,7 +7,7 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>Update a pilot account</h1>
+    <h1>Update a student account</h1>
 
 
     <form method = "POST" action="">

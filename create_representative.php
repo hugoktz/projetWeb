@@ -18,13 +18,11 @@
         <br><br>
         center <br> <input type = "text" name = "center"/>
         <br><br>
-        last name <br> <input type = "text" name = "last_name"/>
+        First name <br> <input type = "text" name = "first_name"/>
         <br><br>  
-        first name <br> <input type = "tex" name = "first_name"/>
+        Last name <br> <input type = "tex" name = "last_name"/>
         <br><br>
-        ID company <br> <input type="text" name = "id_company"/>
-        <br><br>
-        Promotion <br><input type="text" name="promotion"/>
+        Permissions <br><input type="text" name="permissions"/>
         <br><br>
         
         
@@ -38,13 +36,12 @@
         {
             $login = $_POST['login'];
             $password = $_POST['password'];
-            $center = $_POST['center'];
-            $last_name = $_POST['last_name'];
             $first_name = $_POST['first_name'];
-            $id_company = $_POST['id_company'];
-            $promotion = $_POST['promotion'];
+            $last_name = $_POST['last_name'];
+            $center = $_POST['center'];
+            $permissions = $_POST['permissions'];
 
-            $create_company = CreateRepresentative($login, $password, $center, $last_name, $first_name, $id_company, $promotion);
+            $create_company = CreateRepresentative($login, $password, $first_name, $last_name, $center, $permissions);
             
         }
     

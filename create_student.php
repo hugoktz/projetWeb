@@ -7,7 +7,7 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>Create a pilot account</h1>
+    <h1>Create a student account</h1>
 
     <div class="container">
     <form method = "POST" action="">
