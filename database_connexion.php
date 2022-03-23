@@ -22,8 +22,7 @@ function CreateRepresentative($login, $password, $first_name, $last_name, $cente
         {
         $connexion = getDatabaseConnexion();
         
-        if(isset($_POST['save']))
-        {
+               
         $requete = $connexion->prepare("INSERT INTO representatives (login, password, first_name, last_name, center, permissions)
         VALUES (:login, :password, :first_name, :last_name, :center, :permissions)");
             
@@ -33,6 +32,10 @@ function CreateRepresentative($login, $password, $first_name, $last_name, $cente
         $requete->bindParam(':last_name', $last_name);
         $requete->bindParam(':center', $center);
         $requete->bindParam(':permissions', $permissions);
+
+        if(!empty($_POST['save']))
+        {
+        $requete->execute();
         }
 
         }
@@ -48,15 +51,18 @@ function CreatePilot($login, $password, $first_name, $last_name, $center, $promo
         try {
         $connexion = getDatabaseConnexion();
         
+        $requete = $connexion->prepare( "INSERT INTO pilots (login, password, first_name, last_name, center, promotion)
+                    VALUES (:login, :password, :first_name, :last_name, :center, :promotion);");
+        $requete->bindParam(':login', $login);
+        $requete->bindParam(':password', $password);
+        $requete->bindParam(':first_name', $first_name);
+        $requete->bindParam(':last_name', $last_name);
+        $requete->bindParam(':center', $center);
+        $requete->bindParam(':permissions', $permissions);
+
+
         if(isset($_POST['save']))
         {
-        $requete = "INSERT INTO pilots (login, password, first_name, last_name, center, promotion)
-                    VALUES ('$login',
-                        '$password',
-                        '$first_name',
-                        '$last_name',
-                        '$center',
-                        '$promotion');";
         $connexion->exec($requete);
         }
     }
@@ -72,21 +78,24 @@ function CreateOffer($skills, $street_number, $street_name, $city, $postal_code,
         try {
         $connexion = getDatabaseConnexion();
 
+        
+        $requete = $connexion->prepare( "INSERT INTO internship2 (skills, street_number, street_name, city, postal_code, company_name, promotions, start_date, end_date, salary, offer_date, nb_available)
+                    VALUES (:skills, :street_number, :street_name, :city, :postal_code, :company_name, :promotions, :start_date, :end_date, :salary, :offer_date, :nb_available);");
+        $requete->bindParam(':skills', $skills);
+        $requete->bindParam(':street_number', $street_number);
+        $requete->bindParam(':street_name', $street_name);
+        $requete->bindParam(':city', $city);
+        $requete->bindParam(':postal_code', $postal_code);
+        $requete->bindParam(':company_name', $company_name);
+        $requete->bindParam(':promotions', $promotions);
+        $requete->bindParam(':start_date', $start_date);
+        $requete->bindParam(':end_date', $end_date);
+        $requete->bindParam(':salary', $salary);
+        $requete->bindParam(':offer_date', $offer_date);
+        $requete->bindParam(':nb_available', $nb_available);
+        
         if(isset($_POST['save']))
         {
-        $requete = "INSERT INTO internship2 (skills, street_number, street_name, city, postal_code, company_name, promotions, start_date, end_date, salary, offer_date, nb_available)
-                    VALUES ('$skills', 
-                            '$street_number',
-                            '$street_name', 
-                            '$city', 
-                            '$postal_code', 
-                            '$company_name',
-                            '$promotions',
-                            '$start_date',
-                            '$end_date',
-                            '$salary',
-                            '$offer_date',
-                            '$nb_available');";
         $connexion->exec($requete);
         }
     }
@@ -95,61 +104,25 @@ function CreateOffer($skills, $street_number, $street_name, $city, $postal_code,
             echo $requete. "<br>". $e->getMessage();
         }
     }
-    /*
-    SELECT login, password, center, last_name, first_name, id_company, promotions.promotion, roles.role_name 
-    FROM `users` 
-    INNER JOIN possessing 
-    ON users.id_user = possessing.id_user 
-    INNER JOIN roles 
-    ON possessing.id_role = roles.id_role 
-    INNER JOIN being_in_charge_of 
-    ON users.id_user = being_in_charge_of.id_user 
-    INNER JOIN promotions 
-    ON being_in_charge_of.id_promotion = promotions.id_promotion 
-    WHERE roles.role_name = 'pilot';
-
-    INSERT INTO pilots (id_pilot, login, password, first_name, last_name, center, promotion)
-SELECT users.id_user, login, password, first_name, last_name, center, promotions.promotion
-FROM users
-INNER JOIN possessing 
-        ON users.id_user = possessing.id_user 
-        INNER JOIN roles 
-        ON possessing.id_role = roles.id_role 
-        INNER JOIN being_in_charge_of 
-        ON users.id_user = being_in_charge_of.id_user 
-        INNER JOIN promotions 
-        ON being_in_charge_of.id_promotion = promotions.id_promotion 
-        WHERE roles.role_name = 'pilot';
-
-INSERT INTO users2 (users.id_user, login, password, center, last_name, first_name, id_company, promotion, role_name)
-SELECT users.id_user, login, password, center, last_name, first_name, id_company, promotions.promotion, roles.role_name
-FROM users
-INNER JOIN possessing 
-        ON users.id_user = possessing.id_user 
-        INNER JOIN roles 
-        ON possessing.id_role = roles.id_role 
-        INNER JOIN being_in_charge_of 
-        ON users.id_user = being_in_charge_of.id_user 
-        INNER JOIN promotions 
-        ON being_in_charge_of.id_promotion = promotions.id_promotion 
-        WHERE roles.role_name = 'pilot';
-
-    */
+    
 
 function CreateStudent($login, $password, $first_name, $last_name, $center, $promotion)
     {
         try {
         $connexion = getDatabaseConnexion();
         
+        
+        $requete = $connexion->prepare( "INSERT INTO students (login, password, first_name, last_name, center, promotion)
+                    VALUES (:login, :password, :first_name, :last_name, :center, :promotion);");
+        $requete->bindParam(':login', $login);
+        $requete->bindParam(':password', $password);
+        $requete->bindParam(':first_name', $first_name);
+        $requete->bindParam(':last_name', $last_name);
+        $requete->bindParam(':center', $center);
+        $requete->bindParam(':promotion', $promotion);
+        
         if(isset($_POST['save']))
         {
-        $requete = "INSERT INTO students (login, password, first_name, last_name, center, promotion)
-                    VALUES ('$login',
-                        '$password',
-                        '$first_name',
-                        '$last_name',
-                        '$center',
-                        '$promotion');";
         $connexion->exec($requete);
         }
     }
@@ -274,22 +247,25 @@ function readRepresentative($First_Name_Representative, $Last_Name_Representativ
         try {
         $connexion = getDatabaseConnexion();
         
+        
+        $requete = $connexion->prepare("INSERT INTO company2 (company_name, company_sector, nb_CESI_intern, interns_evaluation, Pilote_trust, internship_nb_available, id_place, street_number, street_name, city, postal_code)
+                    VALUES (:company_name, :company_sector, :nb_CESI_intern, :interns_evaluation, :Pilote_trust, :internship_nb_available, :id_place, :street_number, :street_name, :city, :postal_code);");
+        
+        $requete->bindParam(':company_name', $company_name);
+        $requete->bindParam(':company_sector', $company_sector);
+        $requete->bindParam(':nb_CESI_intern', $nb_CESI_intern);
+        $requete->bindParam(':interns_evaluation', $interns_evaluation);
+        $requete->bindParam(':Pilote_trust', $Pilote_trust);
+        $requete->bindParam(':internship_nb_available', $internship_nb_available);
+        $requete->bindParam(':id_place', $id_place);
+        $requete->bindParam(':street_number', $street_number);
+        $requete->bindParam(':street_name', $street_name);
+        $requete->bindParam(':city', $city);
+        $requete->bindParam(':postal_code', $postal_code);
+        
         if(isset($_POST['save']))
-        {
-        $requete = "INSERT INTO company2 (company_name, company_sector, nb_CESI_intern, interns_evaluation, Pilote_trust, internship_nb_available, id_place, street_number, street_name, city, postal_code)
-                    VALUES ('$company_name',
-					'$company_sector',
-                    '$nb_CESI_intern',
-                    '$interns_evaluation',
-                    '$Pilote_trust',
-                    '$internship_nb_available',
-                    '$id_place',
-                    '$street_number',
-                    '$street_name',
-                    '$city',
-                    '$postal_code');";
-
-         $connexion->exec($requete);
+        { 
+        $connexion->exec($requete);
         }
     }
     catch(PDOException $e)
@@ -303,22 +279,35 @@ function readRepresentative($First_Name_Representative, $Last_Name_Representativ
         try {
         $connexion = getDatabaseConnexion();
         
+        $requete = $connexion->prepare("UPDATE company2 
+                    SET company_name = :company_name, 
+                    company_sector = :company_sector, 
+                    nb_CESI_intern = :nb_CESI_intern, 
+                    interns_evaluation = :interns_evaluation,
+                    Pilote_trust = :Pilote_trust, 
+                    internship_nb_available = :internship_nb_available, 
+                    id_place = :id_place, 
+                    street_number = :street_number, 
+                    street_name = :street_name, 
+                    city = :city, 
+                    postal_code = :postal_code
+                    WHERE id_company = :id_company");
+
+        $requete->bindParam(':company_name', $company_name);
+        $requete->bindParam(':company_sector', $company_sector);
+        $requete->bindParam(':nb_CESI_intern', $nb_CESI_intern);
+        $requete->bindParam(':interns_evaluation', $interns_evaluation);
+        $requete->bindParam(':Pilote_trust', $Pilote_trust);
+        $requete->bindParam(':internship_nb_available', $internship_nb_available);
+        $requete->bindParam(':id_place', $id_place);
+        $requete->bindParam(':street_number', $street_number);
+        $requete->bindParam(':street_name', $street_name);
+        $requete->bindParam(':city', $city);
+        $requete->bindParam(':postal_code', $postal_code);
+        $requete->bindParam(':id_company', $id_company);
+        
         if(isset($_POST['save']))
         {
-        $requete = "UPDATE company2 
-                    SET company_name = '$company_name', 
-                    company_sector = '$company_sector', 
-                    nb_CESI_intern = $nb_CESI_intern, 
-                    interns_evaluation = $interns_evaluation,
-                    Pilote_trust = $Pilote_trust, 
-                    internship_nb_available = $internship_nb_available, 
-                    id_place = $id_place, 
-                    street_number = $street_number, 
-                    street_name = '$street_name', 
-                    city = '$city', 
-                    postal_code = $postal_code
-                    WHERE id_company = $id_company";
-        
         $connexion->exec($requete);
         }
     }
@@ -333,10 +322,27 @@ function readRepresentative($First_Name_Representative, $Last_Name_Representativ
         try {
         $connexion = getDatabaseConnexion();
         
-        $requete = "UPDATE internship2 SET skills = '$skills', street_number = '$street_number', street_name = '$street_name', city = '$city', postal_code = '$postal_code',
-                    company_name = '$company_name', promotions = '$promotions', start_date = '$start_date', end_date = '$end_date', salary = $salary, offer_date = '$offer_date', nb_available = $nb_available
-                    WHERE id_internship = $id_internship;";
+        $requete = $connexion->prepare("UPDATE internship2 SET skills = :skills, street_number = :street_number, street_name = :street_name, city = :city, postal_code = :postal_code,
+                    company_name = :company_name, promotions = :promotions, start_date = :start_date, end_date = :end_date, salary = :salary, offer_date = :offer_date, nb_available = :nb_available
+                    WHERE id_internship = :id_internship;");
+
+        $requete->bindParam(':skills', $skills);
+        $requete->bindParam(':street_number', $street_number);
+        $requete->bindParam(':street_name', $street_name);
+        $requete->bindParam(':city', $city);
+        $requete->bindParam(':postal_code', $postal_code);
+        $requete->bindParam(':company_name', $company_name);
+        $requete->bindParam(':promotions', $promotions);
+        $requete->bindParam(':start_date', $start_date);
+        $requete->bindParam(':end_date', $end_date);
+        $requete->bindParam(':salary', $salary);
+        $requete->bindParam(':offer_date', $offer_date);
+        $requete->bindParam(':nb_available', $nb_available);
+
+        if(isset($_POST['save']))
+        {
         $connexion->exec($requete);
+        }
         }
         catch(PDOException $e)
         {
@@ -351,17 +357,25 @@ function readRepresentative($First_Name_Representative, $Last_Name_Representativ
         try {
         $connexion = getDatabaseConnexion();
         
+        $requete = $connexion->prepare("UPDATE pilots 
+                    SET login = :login, 
+                    password = :password, 
+                    center = :center,
+                    last_name = :last_name, 
+                    first_name = :first_name, 
+                    promotion = :promotion
+                    WHERE id_pilot = :id_user;");
+
+        $requete->bindParam(':login', $login);
+        $requete->bindParam(':password', $password);
+        $requete->bindParam(':center', $center);
+        $requete->bindParam(':last_name', $last_name);
+        $requete->bindParam(':first_name', $first_name);
+        $requete->bindParam(':promotion', $promotion);
+        $requete->bindParam(':id_pilot', $id_pilot);
+
         if(isset($_POST['save']))
         {
-        $requete = "UPDATE pilots 
-                    SET login = '$login', 
-                    password = '$password', 
-                    center = '$center',
-                    last_name = '$last_name', 
-                    first_name = '$first_name', 
-                    promotion = '$promotion'
-                    WHERE id_pilot = '$id_user'; ";
-        
         $connexion->exec($requete);
         }
     }
@@ -376,17 +390,26 @@ function readRepresentative($First_Name_Representative, $Last_Name_Representativ
         try {
         $connexion = getDatabaseConnexion();
         
+        
+        $requete = $connexion->prepare("UPDATE representatives 
+                    SET login = :login, 
+                    password = :password, 
+                    center = :center,
+                    last_name = :last_name, 
+                    first_name = :first_name,
+                    permissions = :permissions
+                    WHERE id_representative = :id_representative");
+
+        $requete->bindParam(':login', $login);
+        $requete->bindParam(':password', $password);
+        $requete->bindParam(':center', $center);
+        $requete->bindParam(':last_name', $last_name);
+        $requete->bindParam(':first_name', $first_name);
+        $requete->bindParam(':permissions', $permissions);
+        $requete->bindParam(':id_representative', $id_representative);
+        
         if(isset($_POST['save']))
         {
-        $requete = "UPDATE representatives 
-                    SET login = '$login', 
-                    password = '$password', 
-                    center = '$center',
-                    last_name = '$last_name', 
-                    first_name = '$first_name',
-                    permissions = '$permissions'
-                    WHERE id_representative = '$id_representative'";
-        
         $connexion->exec($requete);
         }
     }
@@ -401,17 +424,26 @@ function readRepresentative($First_Name_Representative, $Last_Name_Representativ
         try {
         $connexion = getDatabaseConnexion();
         
-        if(isset($_POST['save']))
-        {
-        $requete = "UPDATE students 
+        
+        $requete =  $connexion->prepare("UPDATE students 
                     SET login = '$login', 
                     password = '$password', 
                     center = '$center',
                     last_name = '$last_name', 
                     first_name = '$first_name', 
                     promotion = '$promotion'
-                    WHERE id_student = '$id_user'; ";
+                    WHERE id_student = '$id_user';");
+
+        $requete->bindParam(':login', $login);
+        $requete->bindParam(':password', $password);
+        $requete->bindParam(':center', $center);
+        $requete->bindParam(':last_name', $last_name);
+        $requete->bindParam(':first_name', $first_name);
+        $requete->bindParam(':promotion', $promotion);
+        $requete->bindParam(':id_student', $id_student);
         
+        if(isset($_POST['save']))
+        {
         $connexion->exec($requete);
         }
     }
@@ -426,10 +458,13 @@ function readRepresentative($First_Name_Representative, $Last_Name_Representativ
         try {
         $connexion = getDatabaseConnexion();
         
+        
+        $requete = $connexion->prepare("DELETE FROM company2 WHERE id_company = :id_company;");
+
+        $requete->bindParam(':id_company', $id_company);
+    
         if(isset($_POST['save']))
         {
-        $requete = "DELETE FROM company2 WHERE id_company = '$id_company';";
-    
         $connexion->exec($requete);
         }
     }
@@ -445,10 +480,13 @@ function readRepresentative($First_Name_Representative, $Last_Name_Representativ
         {
         $connexion = getDatabaseConnexion();
 
+        
+        $requete = $connexion->prepare("DELETE FROM internship2 WHERE id_internship = :id_internship");
+
+        $requete->bindParam(':id_internship', $id_internship);
+    
         if(isset($_POST['save']))
         {
-        $requete = "DELETE FROM internship2 WHERE id_internship = $id_internship";
-    
         $connexion->exec($requete);
         }
         }
@@ -462,11 +500,13 @@ function readRepresentative($First_Name_Representative, $Last_Name_Representativ
     {
         try {
         $connexion = getDatabaseConnexion();
+        
+        $requete = $connexion->prepare("DELETE FROM pilots WHERE id_pilot = :id_pilot");
+
+        $requete->bindParam(':id_pilot', $id_pilot);
 
         if(isset($_POST['save']))
         {
-        $requete = "DELETE FROM pilots WHERE id_pilot = $id_pilot";
-
         $connexion->exec($requete);
         }
     }
@@ -480,11 +520,13 @@ function readRepresentative($First_Name_Representative, $Last_Name_Representativ
     {
         try {
         $connexion = getDatabaseConnexion();
+        
+        $requete = $connexion->prepare("DELETE FROM representatives WHERE id_representative = :id_representative");
 
+        $requete->bindParam(':id_representative', $id_representative);
+    
         if(isset($_POST['save']))
         {
-        $requete = "DELETE FROM representatives WHERE id_representative = $id_representative";
-    
         $connexion->exec($requete);
         }
     }
@@ -498,11 +540,13 @@ function readRepresentative($First_Name_Representative, $Last_Name_Representativ
     {
         try {
         $connexion = getDatabaseConnexion();
+        
+        $requete = $connexion->prepare("DELETE FROM students WHERE id_student = :id_student");
 
+        $requete->bindParam(':id_student', $id_student);
+    
         if(isset($_POST['save']))
         {
-        $requete = "DELETE FROM students WHERE id_student = $id_student";
-    
         $connexion->exec($requete);
         }
     }
@@ -517,12 +561,15 @@ function change_step_number1($seeked_application)
     try {
         $connexion = getDatabaseConnexion();
 
+        
+            $requete = $connexion->prepare("UPDATE application 
+                        SET step_number = 1
+                        WHERE id_application = :seeked_application;");
+
+            $requete->bindParam(':seeked_application', $seeked_application);            
+
         if(isset($_POST['save']))
         {
-            $requete = "UPDATE application 
-                        SET step_number = 1
-                        WHERE id_application = $seeked_application;";
-
             $connexion->exec($requete);
         }
     } 
@@ -537,12 +584,15 @@ function change_step_number2($seeked_application)
     try {
         $connexion = getDatabaseConnexion();
 
+        
+            $requete = $connexion->prepare("UPDATE application 
+                        SET step_number = 2
+                        WHERE id_application = :seeked_application;");
+
+            $requete->bindParam(':seeked_application', $seeked_application);            
+
         if(isset($_POST['save']))
         {
-            $requete = "UPDATE application 
-                        SET step_number = 2
-                        WHERE id_application = $seeked_application;";
-
             $connexion->exec($requete);
         }
     } 
@@ -557,12 +607,15 @@ function change_step_number3($seeked_application)
     try {
         $connexion = getDatabaseConnexion();
 
+        
+            $requete = $connexion->prepare("UPDATE application 
+                        SET step_number = 3
+                        WHERE id_application = :seeked_application;");
+
+            $requete->bindParam(':seeked_application', $seeked_application);            
+
         if(isset($_POST['save']))
         {
-            $requete = "UPDATE application 
-                        SET step_number = 3
-                        WHERE id_application = $seeked_application;";
-
             $connexion->exec($requete);
         }
     } 
@@ -577,12 +630,15 @@ function change_step_number4($seeked_application)
     try {
         $connexion = getDatabaseConnexion();
 
+        
+            $requete = $connexion->prepare("UPDATE application 
+                        SET step_number = 4
+                        WHERE id_application = :seeked_application;");
+
+            $requete->bindParam(':seeked_application', $seeked_application);            
+
         if(isset($_POST['save']))
         {
-            $requete = "UPDATE application 
-                        SET step_number = 4
-                        WHERE id_application = $seeked_application;";
-
             $connexion->exec($requete);
         }
     } 
@@ -597,12 +653,15 @@ function change_step_number5($seeked_application)
     try {
         $connexion = getDatabaseConnexion();
 
+        
+            $requete = $connexion->prepare("UPDATE application 
+                        SET step_number = 5
+                        WHERE id_application = :seeked_application;");
+
+            $requete->bindParam(':seeked_application', $seeked_application);            
+
         if(isset($_POST['save']))
         {
-            $requete = "UPDATE application 
-                        SET step_number = 5
-                        WHERE id_application = $seeked_application;";
-
             $connexion->exec($requete);
         }
     } 
@@ -617,12 +676,15 @@ function change_step_number6($seeked_application)
     try {
         $connexion = getDatabaseConnexion();
 
+        
+            $requete = $connexion->prepare("UPDATE application 
+                        SET step_number = 6
+                        WHERE id_application = :seeked_application;");
+
+            $requete->bindParam(':seeked_application', $seeked_application);            
+
         if(isset($_POST['save']))
         {
-            $requete = "UPDATE application 
-                        SET step_number = 6
-                        WHERE id_application = $seeked_application;";
-
             $connexion->exec($requete);
         }
     } 

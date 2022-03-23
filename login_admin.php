@@ -27,8 +27,9 @@
     $connect = mysqli_connect("127.0.0.1","root","","web_project_try_4") or die("Connection failed");
     if(!empty($_POST['save']))
     {
-        $username = $_POST['login'];
-        $password = $_POST['password'];
+        
+        $username = $_COOKIE['login'];
+        $password = $_COOKIE['password'];
         $query = "select * from user 
                     INNER JOIN possessing 
                     ON user.id_user = possessing.id_user 
