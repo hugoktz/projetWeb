@@ -16,8 +16,9 @@ function getDatabaseConnexion()
         }
     }
 
-    function CreateRepresentative($login, $password, $first_name, $last_name, $center, $permissions)
+function CreateRepresentative($login, $password, $first_name, $last_name, $center, $permissions)
     {
+        try {
         $connexion = getDatabaseConnexion();
         
         if(isset($_POST['save']))
@@ -31,10 +32,17 @@ function getDatabaseConnexion()
         '$permissions');";
         $connexion->exec($requete);
         }
+
+        }
+        catch(PDOException $e)
+        {
+            echo $requete. "<br>". $e->getMessage();
+        }
     }
 
-    function CreatePilot($login, $password, $first_name, $last_name, $center, $promotion)
+function CreatePilot($login, $password, $first_name, $last_name, $center, $promotion)
     {
+        try {
         $connexion = getDatabaseConnexion();
         
         if(isset($_POST['save']))
@@ -49,10 +57,16 @@ function getDatabaseConnexion()
         $connexion->exec($requete);
         }
     }
+    catch(PDOException $e)
+        {
+            echo $requete. "<br>". $e->getMessage();
+        }
+    }
 
 
-    function CreateOffer($skills, $street_number, $street_name, $city, $postal_code, $company_name, $promotions, $start_date, $end_date, $salary, $offer_date, $nb_available)
+function CreateOffer($skills, $street_number, $street_name, $city, $postal_code, $company_name, $promotions, $start_date, $end_date, $salary, $offer_date, $nb_available)
     {
+        try {
         $connexion = getDatabaseConnexion();
 
         if(isset($_POST['save']))
@@ -71,6 +85,11 @@ function getDatabaseConnexion()
                             '$offer_date',
                             '$nb_available');";
         $connexion->exec($requete);
+        }
+    }
+    catch(PDOException $e)
+        {
+            echo $requete. "<br>". $e->getMessage();
         }
     }
     /*
@@ -114,8 +133,9 @@ INNER JOIN possessing
 
     */
 
-    function CreateStudent($login, $password, $first_name, $last_name, $center, $promotion)
+function CreateStudent($login, $password, $first_name, $last_name, $center, $promotion)
     {
+        try {
         $connexion = getDatabaseConnexion();
         
         if(isset($_POST['save']))
@@ -130,9 +150,15 @@ INNER JOIN possessing
         $connexion->exec($requete);
         }
     }
+    catch(PDOException $e)
+        {
+            echo $requete. "<br>". $e->getMessage();
+        }
+    }
     
-    function readPilot($First_Name_Pilot, $Last_Name_Pilot) 
+function readPilot($First_Name_Pilot, $Last_Name_Pilot) 
     {
+        try {
         $connexion = getDatabaseConnexion();
         
         $requete = "SELECT * FROM pilots WHERE first_name = '$First_Name_Pilot' and last_name = '$Last_Name_Pilot';";
@@ -144,9 +170,15 @@ INNER JOIN possessing
             return $row[0];
         }
     }
+    catch(PDOException $e)
+        {
+            echo $requete. "<br>". $e->getMessage();
+        }
+    }
 
-    function readCompany($Company_Name) 
+function readCompany($Company_Name) 
     {
+        try {
         $connexion = getDatabaseConnexion();
         $requete = "SELECT * FROM company2 WHERE company_name = '$Company_Name';";
         $stmt = $connexion->query($requete);  
@@ -156,9 +188,15 @@ INNER JOIN possessing
             return $row[0];
         }
     }
+    catch(PDOException $e)
+        {
+            echo $requete. "<br>". $e->getMessage();
+        }
+    }
 
-    function readOffer($id_internship) //sert à trouver le Pilot
+function readOffer($id_internship) //sert à trouver le Pilot
     {
+        try {
         $connexion = getDatabaseConnexion();
         $requete = "SELECT * FROM internship2 WHERE id_internship = '$id_internship'";
         $stmt = $connexion->query($requete);  
@@ -167,20 +205,27 @@ INNER JOIN possessing
         {
             return $row[0];
         }
+    }
+        catch(PDOException $e)
+        {
+            echo $requete. "<br>". $e->getMessage();
+        }
 
         echo $requete;
     }
 
-    function getAllPilots()
+function getAllPilots()
     {
+        
         $connexion = getDatabaseConnexion();
         $requete = 'Select * from pilote';
         $row = $connexion->query($requete);
         return $row;
     }
 
-    function readRepresentative($First_Name_Representative, $Last_Name_Representative) 
+function readRepresentative($First_Name_Representative, $Last_Name_Representative) 
     {
+        try {
         $connexion = getDatabaseConnexion();
 
         $requete = "SELECT * FROM users INNER JOIN possessing ON users.id_user = possessing.id_user INNER JOIN roles 
@@ -193,11 +238,17 @@ INNER JOIN possessing
             return $row[0];
         }
         echo $requete;
+    }
+    catch(PDOException $e)
+        {
+            echo $requete. "<br>". $e->getMessage();
+        }
 
     }
 
     function readStudent($First_Name_Student, $Last_Name_Student)
     {
+        try {
         $connexion = getDatabaseConnexion();
         
         $requete = "SELECT * FROM students WHERE first_name = '$First_Name_Student' and last_name = '$Last_Name_Student';";
@@ -209,9 +260,15 @@ INNER JOIN possessing
             return $row[0];
         }
     }
+    catch(PDOException $e)
+        {
+            echo $requete. "<br>". $e->getMessage();
+        }
+    }
 
     function CreateCompany($company_name, $company_sector, $nb_CESI_intern, $interns_evaluation, $Pilote_trust, $internship_nb_available, $id_place, $street_number, $street_name, $city, $postal_code)
     {
+        try {
         $connexion = getDatabaseConnexion();
         
         if(isset($_POST['save']))
@@ -232,9 +289,15 @@ INNER JOIN possessing
          $connexion->exec($requete);
         }
     }
+    catch(PDOException $e)
+        {
+            echo $requete. "<br>". $e->getMessage();
+        }
+    }
 
     function updateCompany($id_company, $company_name, $company_sector, $nb_CESI_intern, $interns_evaluation, $Pilote_trust, $internship_nb_available, $id_place, $street_number, $street_name, $city, $postal_code)
     {
+        try {
         $connexion = getDatabaseConnexion();
         
         if(isset($_POST['save']))
@@ -256,21 +319,33 @@ INNER JOIN possessing
         $connexion->exec($requete);
         }
     }
+    catch(PDOException $e)
+        {
+            echo $requete. "<br>". $e->getMessage();
+        }
+    }
     
     function UpdateOffer($id_internship, $skills, $street_number, $street_name, $city, $postal_code, $company_name, $promotions, $start_date, $end_date, $salary, $offer_date, $nb_available)
     {
+        try {
         $connexion = getDatabaseConnexion();
         
         $requete = "UPDATE internship2 SET skills = '$skills', street_number = '$street_number', street_name = '$street_name', city = '$city', postal_code = '$postal_code',
                     company_name = '$company_name', promotions = '$promotions', start_date = '$start_date', end_date = '$end_date', salary = $salary, offer_date = '$offer_date', nb_available = $nb_available
                     WHERE id_internship = $id_internship;";
         $connexion->exec($requete);
+        }
+        catch(PDOException $e)
+        {
+            echo $requete. "<br>". $e->getMessage();
+        }
     }
 
     
 
     function updatePilote($id_user, $login, $password, $first_name, $last_name, $center, $promotion)
     {
+        try {
         $connexion = getDatabaseConnexion();
         
         if(isset($_POST['save']))
@@ -287,9 +362,15 @@ INNER JOIN possessing
         $connexion->exec($requete);
         }
     }
+    catch(PDOException $e)
+        {
+            echo $requete. "<br>". $e->getMessage();
+        }
+    }
 
     function updateRepresentative($id_representative, $login, $password, $first_name, $last_name, $center, $permissions)
     {
+        try {
         $connexion = getDatabaseConnexion();
         
         if(isset($_POST['save']))
@@ -306,9 +387,15 @@ INNER JOIN possessing
         $connexion->exec($requete);
         }
     }
+    catch(PDOException $e)
+        {
+            echo $requete. "<br>". $e->getMessage();
+        }
+    }
 
     function updateStudent($id_user, $login, $password, $first_name, $last_name, $center, $promotion)
     {
+        try {
         $connexion = getDatabaseConnexion();
         
         if(isset($_POST['save']))
@@ -325,9 +412,15 @@ INNER JOIN possessing
         $connexion->exec($requete);
         }
     }
+    catch(PDOException $e)
+        {
+            echo $requete. "<br>". $e->getMessage();
+        }
+    }
 
     function deleteCompany($id_company)
     {
+        try {
         $connexion = getDatabaseConnexion();
         
         if(isset($_POST['save']))
@@ -337,9 +430,16 @@ INNER JOIN possessing
         $connexion->exec($requete);
         }
     }
+    catch(PDOException $e)
+        {
+            echo $requete. "<br>". $e->getMessage();
+        }
+    }
 
     function deleteOffer($id_internship)
     {
+        try 
+        {
         $connexion = getDatabaseConnexion();
 
         if(isset($_POST['save']))
@@ -348,10 +448,16 @@ INNER JOIN possessing
     
         $connexion->exec($requete);
         }
+        }
+    catch(PDOException $e)
+    {
+        echo $requete. "<br>". $e->getMessage();
     }
+}
 
     function deletePilote($id_pilot)
     {
+        try {
         $connexion = getDatabaseConnexion();
 
         if(isset($_POST['save']))
@@ -361,9 +467,15 @@ INNER JOIN possessing
         $connexion->exec($requete);
         }
     }
+    catch(PDOException $e)
+        {
+            echo $requete. "<br>". $e->getMessage();
+        }
+    }
 
     function deleteRepresentative($id_representative)
     {
+        try {
         $connexion = getDatabaseConnexion();
 
         if(isset($_POST['save']))
@@ -373,9 +485,15 @@ INNER JOIN possessing
         $connexion->exec($requete);
         }
     }
+    catch(PDOException $e)
+        {
+            echo $requete. "<br>". $e->getMessage();
+        }
+    }
 
     function deleteStudent($id_student)
     {
+        try {
         $connexion = getDatabaseConnexion();
 
         if(isset($_POST['save']))
@@ -385,5 +503,11 @@ INNER JOIN possessing
         $connexion->exec($requete);
         }
     }
+    catch(PDOException $e)
+        {
+            echo $requete. "<br>". $e->getMessage();
+        }
+    }
 
-?>
+
+?> 

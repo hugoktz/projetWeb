@@ -34,7 +34,7 @@
                     ON user.id_user = possessing.id_user 
                     INNER JOIN roles 
                     ON possessing.id_role = roles.id_role
-                    WHERE roles.id_role = 4
+                    WHERE roles.id_role = 1
                     and user.login = '$username' and user.password = '$password'";
         $result = mysqli_query($connect, $query);
         $count = mysqli_num_rows($result);
