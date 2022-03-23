@@ -211,3 +211,14 @@ CREATE TABLE corresponding_to(
 	,CONSTRAINT corresponding_to_roles0_FK FOREIGN KEY (id_role) REFERENCES roles(id_role)
 )ENGINE=InnoDB;
 
+CREATE TABLE application (
+        id_application INT PRIMARY KEY NOT NULL Auto_increment,
+        application_CV Varchar(255),
+        application_motivation_letter Varchar(255),
+        rejected Bool,
+        step_number int,
+        id_user int not null,
+        id_internship int not null,
+
+        
+)

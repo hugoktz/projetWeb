@@ -50,8 +50,8 @@
 
 <h3>an application</h3>
 <ul>
-    <li><a href="step_3.php">Inform that an application is on step 3</a></li>
-    <li><a href="step_4.php">Inform that an application is on step 4</a></li>
+    <li><a href="application_step_3.php">Inform that an application is on step 3</a></li>
+    <li><a href="application_step_4.php">Inform that an application is on step 4</a></li>
 </ul>
 </body>
 </html>
