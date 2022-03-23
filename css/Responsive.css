@@ -1,0 +1,50 @@
+/*____________________________Responsive____________________________*/
+
+@media screen and (max-width: 910px) {
+
+.logo {
+	position: absolute;
+    top:20px;
+	left: 35%;
+	margin-left: auto;
+	margin-right: auto;
+	display : flex;
+	justify-content : left;
+}
+.logo h2  {
+	position: absolute ;
+	width: 100%;
+	top: 100px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.nav {
+	width: 100%;
+	position: absolute;
+	top: 200px;
+	left: 2%;
+	min-width: 300px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+#titreSection {
+	margin-top: 310px;
+}
+
+.footer-basic {
+	position: relative;
+}
+
+#usericon {
+	text-align: center;
+}
+
+}
+
+
+
+@media screen and (max-width: 1200) {
+	
+}
