@@ -119,16 +119,16 @@ VALUES
 
 INSERT INTO application (application_CV, application_motivation_letter, rejected, step_number, id_user, id_internship)
 VALUES
-('I am CESI student number 1', 'I really would like to join your company', 0, 1, 5, 8),
-('I am CESI student number 2', 'I really would like to join your company', 0, 4, 4, 9),
-('I am CESI student number 3', 'I really would like to join your company', 0, 6, 1, 10),
-('I am CESI student number 4', 'I really would like to join your company', 0, 2, 10, 2),
-('I am CESI student number 5', 'I really would like to join your company', 1, 3, 7, 7),
-('I am CESI student number 6', 'I really would like to join your company', 1, 3, 8, 1),
-('I am CESI student number 7', 'I really would like to join your company', 0, 5, 3, 6),
-('I am CESI student number 8', 'I really would like to join your company', 0, 1, 2, 4),
-('I am CESI student number 9', 'I really would like to join your company', 1, 2, 9, 6),
-('I am CESI student number 10', 'I really would like to join your company', 1, 6, 6, 3);
+('I am CESI student number 1', 'I really would like to join your company', false, 1, 5, 8),
+('I am CESI student number 2', 'I really would like to join your company', false, 4, 4, 9),
+('I am CESI student number 3', 'I really would like to join your company', false, 6, 1, 10),
+('I am CESI student number 4', 'I really would like to join your company', false, 2, 10, 2),
+('I am CESI student number 5', 'I really would like to join your company', true, 3, 7, 7),
+('I am CESI student number 6', 'I really would like to join your company', true, 3, 8, 1),
+('I am CESI student number 7', 'I really would like to join your company', false, 5, 3, 6),
+('I am CESI student number 8', 'I really would like to join your company', false, 1, 2, 4),
+('I am CESI student number 9', 'I really would like to join your company', true, 2, 9, 6),
+('I am CESI student number 10', 'I really would like to join your company', true, 6, 6, 3);
 
 
 INSERT INTO living (id_place, id_user) VALUES

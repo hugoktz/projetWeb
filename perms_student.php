@@ -32,9 +32,9 @@
     <li><a href="add_wish_list.php">Add an offer to the wish-list</a></li>
     <li><a href="delete_wish_list.php">Delete an offer from the wish-list</a></li>
     <li><a href="apply_offer.php">Apply to an offer</a></li>
-    <li><a href="step_1.php">Inform that an application is on step 1</a></li>
-    <li><a href="step_2.php">Inform that an application is on step 2</a></li>
-    <li><a href="step_5.php">Inform that an application is on step 5</a></li>
+    <li><a href="application_step_1.php">Inform that an application is on step 1</a></li>
+    <li><a href="application_step_2.php">Inform that an application is on step 2</a></li>
+    <li><a href="application_step_5.php">Inform that an application is on step 5</a></li>
 </ul>
 </body>
 </html>

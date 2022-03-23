@@ -18,19 +18,21 @@ function getDatabaseConnexion()
 
 function CreateRepresentative($login, $password, $first_name, $last_name, $center, $permissions)
     {
-        try {
+        try 
+        {
         $connexion = getDatabaseConnexion();
         
         if(isset($_POST['save']))
         {
-        $requete = "INSERT INTO representatives (login, password, first_name, last_name, center, permissions)
-        VALUES ('$login',
-        '$password',
-        '$first_name',
-        '$last_name',
-        '$center',
-        '$permissions');";
-        $connexion->exec($requete);
+        $requete = $connexion->prepare("INSERT INTO representatives (login, password, first_name, last_name, center, permissions)
+        VALUES (:login, :password, :first_name, :last_name, :center, :permissions)");
+            
+        $requete->bindParam(':login', $login);
+        $requete->bindParam(':password', $password);
+        $requete->bindParam(':first_name', $first_name);
+        $requete->bindParam(':last_name', $last_name);
+        $requete->bindParam(':center', $center);
+        $requete->bindParam(':permissions', $permissions);
         }
 
         }
@@ -39,6 +41,7 @@ function CreateRepresentative($login, $password, $first_name, $last_name, $cente
             echo $requete. "<br>". $e->getMessage();
         }
     }
+
 
 function CreatePilot($login, $password, $first_name, $last_name, $center, $promotion)
     {
@@ -509,5 +512,123 @@ function readRepresentative($First_Name_Representative, $Last_Name_Representativ
         }
     }
 
+function change_step_number1($seeked_application)
+{
+    try {
+        $connexion = getDatabaseConnexion();
 
+        if(isset($_POST['save']))
+        {
+            $requete = "UPDATE application 
+                        SET step_number = 1
+                        WHERE id_application = $seeked_application;";
+
+            $connexion->exec($requete);
+        }
+    } 
+    catch (PDOException $e) 
+        {
+        echo $requete. "<br>". $e->getMessage();
+        }
+}
+
+function change_step_number2($seeked_application)
+{
+    try {
+        $connexion = getDatabaseConnexion();
+
+        if(isset($_POST['save']))
+        {
+            $requete = "UPDATE application 
+                        SET step_number = 2
+                        WHERE id_application = $seeked_application;";
+
+            $connexion->exec($requete);
+        }
+    } 
+    catch (PDOException $e) 
+        {
+        echo $requete. "<br>". $e->getMessage();
+        }
+}
+
+function change_step_number3($seeked_application)
+{
+    try {
+        $connexion = getDatabaseConnexion();
+
+        if(isset($_POST['save']))
+        {
+            $requete = "UPDATE application 
+                        SET step_number = 3
+                        WHERE id_application = $seeked_application;";
+
+            $connexion->exec($requete);
+        }
+    } 
+    catch (PDOException $e) 
+        {
+        echo $requete. "<br>". $e->getMessage();
+        }
+}
+
+function change_step_number4($seeked_application)
+{
+    try {
+        $connexion = getDatabaseConnexion();
+
+        if(isset($_POST['save']))
+        {
+            $requete = "UPDATE application 
+                        SET step_number = 4
+                        WHERE id_application = $seeked_application;";
+
+            $connexion->exec($requete);
+        }
+    } 
+    catch (PDOException $e) 
+        {
+        echo $requete. "<br>". $e->getMessage();
+        }
+}
+
+function change_step_number5($seeked_application)
+{
+    try {
+        $connexion = getDatabaseConnexion();
+
+        if(isset($_POST['save']))
+        {
+            $requete = "UPDATE application 
+                        SET step_number = 5
+                        WHERE id_application = $seeked_application;";
+
+            $connexion->exec($requete);
+        }
+    } 
+    catch (PDOException $e) 
+        {
+        echo $requete. "<br>". $e->getMessage();
+        }
+}
+
+function change_step_number6($seeked_application)
+{
+    try {
+        $connexion = getDatabaseConnexion();
+
+        if(isset($_POST['save']))
+        {
+            $requete = "UPDATE application 
+                        SET step_number = 6
+                        WHERE id_application = $seeked_application;";
+
+            $connexion->exec($requete);
+        }
+    } 
+    catch (PDOException $e) 
+        {
+        echo $requete. "<br>". $e->getMessage();
+        }
+}
 ?> 
