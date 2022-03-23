@@ -1,0 +1,160 @@
+.logo 
+{
+	position: fixed;
+	top: 25px; bottom: 0; right: 85%; left: 5%;
+	display : flex;
+	justify-content : left;
+}
+
+.logo img:hover
+{
+	transform: rotate();
+	transition: 2s;
+}
+
+.logo img	
+{
+	margin-left:20px ;
+	transition: 0.2s;
+}
+
+.logo h2
+{
+	position: absolute;
+	top: 100px; bottom: 0; right: auto ; left: -30px ;
+	display : flex;
+	justify-content : left;
+	color: #fff;
+	margin: 0;
+
+}
+
+/*___________________________________Logo2______________________________*/
+
+
+#usericon {
+	font-size: 60px;
+	color: rgb(33, 100, 177);;
+	text-align: left;
+	margin-left: 30px;
+}
+
+#companyicon {
+	font-size: 60px;
+	color: rgb(33, 100, 177);;
+	text-align: left;
+	margin-left: 30px;
+}
+
+/*___________________________________Logo3______________________________*/ 
+
+.star .iconlogo {
+	display: block;
+	float: right;
+	text-align: right;
+	align-items: right;
+	height: 10vh;
+	width: 10vh;
+  }
+  
+.star input[type = checkbox] {
+	display: none;
+}
+  
+.star input + label {
+	font-size: 4rem;
+	width: 0rem;
+	height: 0rem;
+	color: orange;
+	display: flex;
+	transition: .1s all;
+	cursor: pointer;
+	margin-top: -5px;
+}
+  
+.star input + label:hover {
+	transform: scale(.95);
+}
+  
+.star input + label:after {
+	content:"☆"
+}
+  
+.star input:checked + label:hover {
+	transform: scale(1);
+}
+  
+.star input:checked + label:after {
+	content: "★";
+}
+
+/*___Logo4__*/ 
+
+#usericon2 {
+    margin-top: 20px;
+    font-size: 50px;
+    color: rgb(33, 100, 177);
+    text-align: left;
+}
+
+.download {
+	display: inline-flex;
+	margin-top: 20px;
+}
+
+.download a {
+	display: block;
+	background: rgb(37, 194, 45);
+	color: #fff;
+	cursor: pointer;
+	text-decoration: none;
+	width: 230px;
+	height : 50px;
+	text-align: center;
+padding: 10px;
+	border-radius: 10px;
+	font-size: 20px;
+}
+
+.download a:hover {
+	background: rgb(37, 194, 45);
+    opacity: 80%;
+    color: black;
+	text-decoration: none;
+}
+
+.download .btn-2 {
+	background: rgb(226, 34, 34);
+}
+
+.download .btn-2:hover {
+	background: rgb(226, 34, 34);
+    opacity: 80%;
+    color: black;
+	text-decoration: none;
+}
+
+.download p {
+	color: #888;
+	padding: 15px;
+}
+
+.offers
+{
+	display: flex;
+	font-size: 40px;
+	flex-direction:row;
+	justify-content: center;
+}
+.refusedoffer
+{
+	margin-left: 40px;
+}
+
+.studentcount
+{
+	display: flex;
+	font-size: 40px;
+	flex-direction:row;
+	justify-content: center;
+}

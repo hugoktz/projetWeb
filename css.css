@@ -48,6 +48,8 @@ body
 	border :0 ;
 }
 
+/*_____________________________Logo________________________________*/
+
 .logo 
 {
 	position: fixed;
@@ -240,7 +242,16 @@ h2
 	padding-bottom: 15px;
 }
 
-input
+input[type=text]
+{
+	display: center;
+	width: 70%;
+	min-width: 200px;
+	border-radius: 7px;
+	padding-left: 2%;
+	padding-bottom: 0px;
+}
+input[type=password]
 {
 	display: center;
 	width: 70%;
@@ -250,24 +261,23 @@ input
 	padding-bottom: 0px;
 }
 
+
 legend
 {
 	text-align: left;
 	margin-left: 70px;
 	color: #fff;
-
 }
 
 .bouton
 {
-	display: block;
-	width: 30%;
-	margin-left: 110px;
-	margin-top: 30px;
-	padding:0;
-	align-items: center;
-	padding-bottom: 0px;
+	display: center;
+	width: 30px;
+	border-radius: 10%;
+	padding-left: 40%;
+	padding-top: 20px;
 }
+
 
 .text
 {
@@ -289,6 +299,7 @@ legend
 	height:40px;
 	bottom: 0;
 	padding:20px 0;
+	padding-bottom: 150px;
 	background-color: var(--clr);
 	box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
 	z-index: 1;
@@ -348,10 +359,7 @@ legend
 	margin-bottom:0;
   }
 
-.text 
-{
 
-}
 
 legend
 {
@@ -365,19 +373,81 @@ legend
 
 	.nav
 	{
+		transition: 00.2s;
 		margin-top: 120px;
+		right: 20%;
 	}
 
 	.logo h2
 	{
+		transition: 00.2s;
 		position: relative ;
 		width: 100%;
 		top:42px;
 		left: 65%;
 	}
 
+	.login
+	{
+		transition: 00.2s;
+		width: 70%; 
+		right:15%;
+		left:15%;
+	}
 
 
 }
 
+@media screen and (max-width: 610px) {
+	.nav
+	{
+		transition: 00.2s;
+		margin-top: 120px;
+		right: 10%;
+	}
 
+	.logo h2
+	{
+		transition: 00.2s;
+		position: relative ;
+		width: 100%;
+		top:42px;
+		left: 65%;
+	}
+
+	.login
+	{
+		transition: 00.2s;
+		width: 70%; 
+		right:15%;
+		left:15%;
+	}
+
+}
+
+@media screen and (max-width: 480px) {
+	.nav
+	{
+		transition: 00.2s;
+		margin-top: 120px;
+		right: 0;
+	}
+
+	.logo h2
+	{
+		transition: 00.2s;
+		position: relative ;
+		width: 100%;
+		top:42px;
+		left: 65%;
+	}
+
+	.login
+	{
+		transition: 00.2s;
+		width: 90%; 
+		right:5%;
+		left:5%;
+	}
+
+}
