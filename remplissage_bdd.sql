@@ -169,7 +169,7 @@ INSERT INTO being_in_charge_of (id_promotion, id_user) VALUES
 (5, 4);
 
 
-INSERT INTO possessing (id_role, id_user) VALUES
+INSERT INTO possessing (id_user) VALUES
 (2, 3),
 (1, 4),
 (3, 6),
