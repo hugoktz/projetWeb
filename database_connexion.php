@@ -18,7 +18,7 @@ function getDatabaseConnexion()
 
 function CreateRepresentative($login, $password, $center, $last_name, $first_name, $promotion, $permissions)
     {
-        
+        try {
         $connexion = getDatabaseConnexion();
                    
         $requete = $connexion->prepare("INSERT INTO table_of_users (login, password, first_name, last_name, center, promotion, permissions)
@@ -40,7 +40,11 @@ function CreateRepresentative($login, $password, $center, $last_name, $first_nam
         {
         $requete->execute();
         }
-        
+    }
+    catch(PDOException $e)
+    {
+        echo $requete. "<br>". $e->getMessage();
+    }
 
         
         
@@ -50,30 +54,32 @@ function CreateRepresentative($login, $password, $center, $last_name, $first_nam
 function CreatePilot($login, $password, $first_name, $last_name, $center, $promotion)
     {
         try {
-        $connexion = getDatabaseConnexion();
+            $connexion = getDatabaseConnexion();
+                       
+            $requete = $connexion->prepare("INSERT INTO table_of_users (login, password, first_name, last_name, center, promotion, permissions)
+            VALUES (:login, :password, :first_name, :last_name, :center, :promotion, :permissions);
+            INSERT INTO possessing (id_promotion)
+            VALUES (2)");
+    
+    
         
-        $requete = $connexion->prepare("INSERT INTO users (login, password, center, last_name, first_name, id_company, id_promotion)
-        VALUES (:login, :password, :center, :last_name, :first_name, :id_company, :id_promotion);
-        INSERT INTO possessing (id_role)
-        VALUES (3);");
-        $requete->bindParam(':login', $login);
-        $requete->bindParam(':password', $password);
-        $requete->bindParam(':first_name', $first_name);
-        $requete->bindParam(':last_name', $last_name);
-        $requete->bindParam(':center', $center);
-        $requete->bindParam(':permissions', $permissions);
-
-
-        if(isset($_POST['save']))
-        {
-        $connexion->exec($requete);
+            $requete->bindParam(':login', $login);
+            $requete->bindParam(':password', $password);
+            $requete->bindParam(':first_name', $first_name);
+            $requete->bindParam(':last_name', $last_name);
+            $requete->bindParam(':center', $center);
+            $requete->bindParam(':promotion', $promotion);
+            $requete->bindParam(':permissions', $permissions);
+    
+            if(!empty($_POST['save']))
+            {
+            $requete->execute();
+            }
         }
-    }
-    catch(PDOException $e)
+        catch(PDOException $e)
         {
             echo $requete. "<br>". $e->getMessage();
         }
-    }
 
 
 function CreateOffer($skills, $street_number, $street_name, $city, $postal_code, $company_name, $promotions, $start_date, $end_date, $salary, $offer_date, $nb_available)
@@ -112,28 +118,32 @@ function CreateOffer($skills, $street_number, $street_name, $city, $postal_code,
 function CreateStudent($login, $password, $first_name, $last_name, $center, $promotion)
     {
         try {
-        $connexion = getDatabaseConnexion();
+            $connexion = getDatabaseConnexion();
+                       
+            $requete = $connexion->prepare("INSERT INTO table_of_users (login, password, first_name, last_name, center, promotion, permissions)
+            VALUES (:login, :password, :first_name, :last_name, :center, :promotion, :permissions);
+            INSERT INTO possessing (id_promotion)
+            VALUES (4)");
+    
+    
         
-        
-        $requete = $connexion->prepare( "INSERT INTO user (login, password, first_name, last_name, center, promotion)
-                    VALUES (:login, :password, :first_name, :last_name, :center, :promotion);");
-        $requete->bindParam(':login', $login);
-        $requete->bindParam(':password', $password);
-        $requete->bindParam(':first_name', $first_name);
-        $requete->bindParam(':last_name', $last_name);
-        $requete->bindParam(':center', $center);
-        $requete->bindParam(':promotion', $promotion);
-        
-        if(isset($_POST['save']))
-        {
-        $connexion->exec($requete);
+            $requete->bindParam(':login', $login);
+            $requete->bindParam(':password', $password);
+            $requete->bindParam(':first_name', $first_name);
+            $requete->bindParam(':last_name', $last_name);
+            $requete->bindParam(':center', $center);
+            $requete->bindParam(':promotion', $promotion);
+            $requete->bindParam(':permissions', $permissions);
+    
+            if(!empty($_POST['save']))
+            {
+            $requete->execute();
+            }
         }
-    }
-    catch(PDOException $e)
+        catch(PDOException $e)
         {
             echo $requete. "<br>". $e->getMessage();
         }
-    }
     
 function readPilot($First_Name_Pilot, $Last_Name_Pilot) 
     {
