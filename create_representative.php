@@ -20,12 +20,14 @@
         <br><br>
         First name <br> <input type = "text" name = "first_name"/>
         <br><br>  
-        Last name <br> <input type = "tex" name = "last_name"/>
+        Last name <br> <input type = "text" name = "last_name"/>
         <br><br>
-        Permissions <br><input type="text" name="permissions"/>
+        center <br> <input type="text" name="center"/>
         <br><br>
-        
-        
+        promotion <br><input type="text" name="promotion"/>
+        <br><br>
+        permissions <br><input type="text" name="permissions"/>
+        <br><br>
         <input type="submit" name="save" value="submit"/>
     </form>
 
@@ -39,14 +41,11 @@
             $first_name = $_POST['first_name'];
             $last_name = $_POST['last_name'];
             $center = $_POST['center'];
+            $promotion = $_POST['promotion'];
             $permissions = $_POST['permissions'];
 
-            $create_company = CreateRepresentative($login, $password, $first_name, $last_name, $center, $permissions);
-            
+            $create_company = CreateRepresentative($login, $password, $center, $last_name, $first_name, $promotion, $permissions);
         }
-    
-    ?>
-
-    
+    ?>    
 </body>
 </html>

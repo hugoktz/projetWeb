@@ -16,33 +16,34 @@ function getDatabaseConnexion()
         }
     }
 
-function CreateRepresentative($login, $password, $first_name, $last_name, $center, $permissions)
+function CreateRepresentative($login, $password, $center, $last_name, $first_name, $promotion, $permissions)
     {
-        try 
-        {
-        $connexion = getDatabaseConnexion();
         
-               
-        $requete = $connexion->prepare("INSERT INTO representatives (login, password, first_name, last_name, center, permissions)
-        VALUES (:login, :password, :first_name, :last_name, :center, :permissions)");
-            
+        $connexion = getDatabaseConnexion();
+                   
+        $requete = $connexion->prepare("INSERT INTO table_of_users (login, password, first_name, last_name, center, promotion, permissions)
+        VALUES (:login, :password, :first_name, :last_name, :center, :promotion, :permissions);
+        INSERT INTO possessing (id_promotion)
+        VALUES (3)");
+
+
+    
         $requete->bindParam(':login', $login);
         $requete->bindParam(':password', $password);
         $requete->bindParam(':first_name', $first_name);
         $requete->bindParam(':last_name', $last_name);
         $requete->bindParam(':center', $center);
+        $requete->bindParam(':promotion', $promotion);
         $requete->bindParam(':permissions', $permissions);
 
         if(!empty($_POST['save']))
         {
         $requete->execute();
         }
+        
 
-        }
-        catch(PDOException $e)
-        {
-            echo $requete. "<br>". $e->getMessage();
-        }
+        
+        
     }
 
 
@@ -51,8 +52,10 @@ function CreatePilot($login, $password, $first_name, $last_name, $center, $promo
         try {
         $connexion = getDatabaseConnexion();
         
-        $requete = $connexion->prepare( "INSERT INTO pilots (login, password, first_name, last_name, center, promotion)
-                    VALUES (:login, :password, :first_name, :last_name, :center, :promotion);");
+        $requete = $connexion->prepare("INSERT INTO users (login, password, center, last_name, first_name, id_company, id_promotion)
+        VALUES (:login, :password, :center, :last_name, :first_name, :id_company, :id_promotion);
+        INSERT INTO possessing (id_role)
+        VALUES (3);");
         $requete->bindParam(':login', $login);
         $requete->bindParam(':password', $password);
         $requete->bindParam(':first_name', $first_name);
@@ -79,7 +82,7 @@ function CreateOffer($skills, $street_number, $street_name, $city, $postal_code,
         $connexion = getDatabaseConnexion();
 
         
-        $requete = $connexion->prepare( "INSERT INTO internship2 (skills, street_number, street_name, city, postal_code, company_name, promotions, start_date, end_date, salary, offer_date, nb_available)
+        $requete = $connexion->prepare( "INSERT INTO internships (skills, street_number, street_name, city, postal_code, company_name, promotions, start_date, end_date, salary, offer_date, nb_available)
                     VALUES (:skills, :street_number, :street_name, :city, :postal_code, :company_name, :promotions, :start_date, :end_date, :salary, :offer_date, :nb_available);");
         $requete->bindParam(':skills', $skills);
         $requete->bindParam(':street_number', $street_number);
@@ -112,7 +115,7 @@ function CreateStudent($login, $password, $first_name, $last_name, $center, $pro
         $connexion = getDatabaseConnexion();
         
         
-        $requete = $connexion->prepare( "INSERT INTO students (login, password, first_name, last_name, center, promotion)
+        $requete = $connexion->prepare( "INSERT INTO user (login, password, first_name, last_name, center, promotion)
                     VALUES (:login, :password, :first_name, :last_name, :center, :promotion);");
         $requete->bindParam(':login', $login);
         $requete->bindParam(':password', $password);

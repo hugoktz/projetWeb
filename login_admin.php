@@ -24,25 +24,25 @@
 
 
 <?php
-    $connect = mysqli_connect("127.0.0.1","root","","web_project_try_4") or die("Connection failed");
+    $connect = mysqli_connect("127.0.0.1","root","","web_project_try_5") or die("Connection failed");
     if(!empty($_POST['save']))
-    {
+    {   
+        $login = $_POST['login'];
+        $password = $_POST['password'];
         
-        $username = $_COOKIE['login'];
-        $password = $_COOKIE['password'];
-        $query = "select * from user 
+        
+        $query = "select * from users 
                     INNER JOIN possessing 
-                    ON user.id_user = possessing.id_user 
+                    ON users.id_user = possessing.id_user 
                     INNER JOIN roles 
                     ON possessing.id_role = roles.id_role
                     WHERE roles.id_role = 1
-                    and user.login = '$username' and user.password = '$password'";
+                    and users.login = '$login' and users.password = '$password'";
         $result = mysqli_query($connect, $query);
         $count = mysqli_num_rows($result);
         if($count>0)
         {
-            header("Location: perms_admin.php");
-                        
+            header("Location: perms_admin.php");         
         }
         else
         {
