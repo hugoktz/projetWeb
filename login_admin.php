@@ -14,6 +14,7 @@
     
 
     <form method = "post">
+    <input type = "hidden" name = "action" value = "registration">
         Enter your login <input type="text" name="login"/>
         <br>
         Enter your password <input type="password" name="password"/>
@@ -26,9 +27,10 @@
 <?php
     $connect = mysqli_connect("127.0.0.1","root","","web_project_try_5") or die("Connection failed");
     if(!empty($_POST['save']))
-    {   
+    {
+           
         $login = $_POST['login'];
-        $password = $_POST['password'];
+        $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
         
         
         $query = "select * from users 

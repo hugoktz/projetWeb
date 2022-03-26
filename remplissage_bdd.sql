@@ -282,3 +282,37 @@ INNER JOIN company
         INNER JOIN promotions
         ON being_in_charge_of.id_promotion = promotions.id_promotion;
 */
+
+
+INSERT INTO internships (id_internship, skills, promotions_needed, street_number, street_name, city, postal_code, company_name, start_date, end_date, salary, date_offer, nb_available)
+SELECT internship.id_internship, internship.internship_skills, internship.internship_type_promotion, places.street_number, places.street_name, places.city, places.postal_code, company.company_name, DATEDIFF(day, internship.internship_start_date, internship.internship_end_date) AS amount_of_time, internship.internship_offer_date, company.internship_nb_available
+ FROM internship 
+INNER JOIN company
+ON company.id_company = internship.id_company
+INNER JOIN being_located_in
+ON being_located_in.id_company = company.id_company
+INNER JOIN places
+ON being_located_in.id_place = places.id_place;
+
+
+CREATE TABLE internships (id_internship INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+                          skills VARCHAR(255),
+                          promotions_needed VARCHAR(255),
+                          street_number INT, 
+                          street_name VARCHAR(255), 
+                          city VARCHAR(255), 
+                          postal_code INT, 
+                          company_name VARCHAR(255), 
+                          start_date DATE,
+                          end_date DATE, 
+                          salary FLOAT, 
+                          date_offer date, 
+                          nb_available INT);
+
+INSERT INTO companies (company_name, company_sector, company_street_number, company_street_name, company_city, company_postal_code, nb_CESI_interns, interns_evaluation, Pilote_trust)
+SELECT company.company_name, company.company_sector, places.street_number, places.street_name, places.city, places.postal_code, company.nb_CESI_intern, company.interns_evaluation, company.Pilote_trust
+FROM company 
+INNER JOIN being_located_in
+ON company.id_company = being_located_in.id_company
+INNER JOIN places
+ON being_located_in.id_place = places.id_place;

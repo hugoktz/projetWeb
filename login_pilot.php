@@ -13,7 +13,8 @@
 
     
 
-    <form method = "post">
+    <form method = "post" autocomplete="off">
+        <input type = "hidden" name = "action" value = "registration">
         Enter your login <input type="text" name="login"/>
         <br>
         Enter your password <input type="password" name="password"/>

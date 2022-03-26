@@ -12,6 +12,8 @@
 
     <h2>How would you like to identify yourself?</h2>
 
+    {"The forests of Middle Earth :"}
+
     <h3><a href="login_admin.php">As an admin?</a></h3>
 
     <h3><a href="login_pilot.php">As a pilot?</a></h3>
@@ -22,3 +24,18 @@
     
 </body>
 </html>
+
+
+<?php
+
+    require_once('Smarty-4.1.0/libs/Smarty.class.php');
+
+    $smarty = new Smarty();
+    $smarty->template_dir = 'views';
+    $smarty->compile_dir = 'tmp';
+
+    $smarty->display('index.tpl');
+
+    $smarty->assign('noms', array('admin', 'pilot', 'representative', 'student'))
+
+?>

@@ -16,8 +16,6 @@
         <br><br>
         password <br> <input type="text" name="password"/>
         <br><br>
-        center <br> <input type = "text" name = "center"/>
-        <br><br>
         First name <br> <input type = "text" name = "first_name"/>
         <br><br>  
         Last name <br> <input type = "text" name = "last_name"/>
