@@ -169,7 +169,7 @@ function readCompany($Company_Name)
     {
         try {
         $connexion = getDatabaseConnexion();
-        $requete = "SELECT * FROM company2 WHERE company_name = '$Company_Name';";
+        $requete = "SELECT * FROM companies WHERE company_name = '$Company_Name';";
         $stmt = $connexion->query($requete);  
         $row = $stmt->fetchAll();
         if (!empty($row))
@@ -240,7 +240,7 @@ function readRepresentative($First_Name_Representative, $Last_Name_Representativ
         try {
         $connexion = getDatabaseConnexion();
         
-        $requete = "SELECT * FROM students WHERE first_name = '$First_Name_Student' and last_name = '$Last_Name_Student';";
+        $requete = "SELECT * FROM users WHERE first_name = '$First_Name_Student' and last_name = '$Last_Name_Student';";
         
         $stmt = $connexion->query($requete);  
         $row = $stmt->fetchAll();
@@ -706,4 +706,5 @@ function change_step_number6($seeked_application)
         echo $requete. "<br>". $e->getMessage();
         }
 }
-?> 
+    }
+}

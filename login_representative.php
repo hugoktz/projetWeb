@@ -24,6 +24,7 @@
 
 
 <?php
+    include 'generate_cookie.php';
     $connect = mysqli_connect("127.0.0.1","root","","web_project_try_4") or die("Connection failed");
     if(!empty($_POST['save']))
     {
@@ -47,6 +48,17 @@
         {
             echo "Login not successful";
         }
+    }
+
+    $nom = null;
+    if(!empty($_COOKIE['user']))
+    {
+        $nom = $_COOKIE['user'];
+    }
+    if(!empty($_POST['login']))
+    {
+        setcookie('user', $_POST['login']);
+        $nom = $_POST['login'];
     }
 ?>
 

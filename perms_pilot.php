@@ -8,8 +8,12 @@
 </head>
 <body>
 
-    <h1>Interact with an account</h1>
+<?php
 
+require 'generate_cookie.php';
+
+if ($nom): ?>
+        <h1>Hello dear <?= htmlentities($nom) ?></h1>
 
     <h2>Interact with:</h2>
 
@@ -53,5 +57,6 @@
     <li><a href="application_step_3.php">Inform that an application is on step 3</a></li>
     <li><a href="application_step_4.php">Inform that an application is on step 4</a></li>
 </ul>
+<?php endif; ?>
 </body>
 </html>

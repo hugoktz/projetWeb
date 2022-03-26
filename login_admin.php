@@ -11,8 +11,6 @@
 
 <body>
 
-    
-
     <form method = "post">
     <input type = "hidden" name = "action" value = "registration">
         Enter your login <input type="text" name="login"/>
@@ -24,13 +22,18 @@
 </body>
 
 
+
+
+
+
 <?php
+    include 'generate_cookie.php';
     $connect = mysqli_connect("127.0.0.1","root","","web_project_try_5") or die("Connection failed");
     if(!empty($_POST['save']))
     {
            
         $login = $_POST['login'];
-        $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
+        $password = $_POST['password'];
         
         
         $query = "select * from users 
@@ -42,6 +45,7 @@
                     and users.login = '$login' and users.password = '$password'";
         $result = mysqli_query($connect, $query);
         $count = mysqli_num_rows($result);
+        
         if($count>0)
         {
             header("Location: perms_admin.php");         
@@ -50,8 +54,26 @@
         {
             echo "Login not successful";
         }
+        
     }
+    
+    $nom = null;
+    if(!empty($_COOKIE['user']))
+    {
+        $nom = $_COOKIE['user'];
+    }
+    if(!empty($_POST['login']))
+    {
+        setcookie('user', $_POST['login']);
+        $nom = $_POST['login'];
+    }
+
 ?>
+<h1>Bonjour <?php
+
+
+
+?> </h1>
 
 
 
