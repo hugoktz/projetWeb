@@ -5,7 +5,7 @@ function getDatabaseConnexion()
         try {
             $user = "root";
             $pass = "";
-            $dbh = new PDO('mysql:host=127.0.0.1;dbname=web_project_try_5', $user, $pass);
+            $dbh = new PDO('mysql:host=127.0.0.1;dbname=web_project', $user, $pass);
             $dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             return $dbh;
 
@@ -261,8 +261,10 @@ function readRepresentative($First_Name_Representative, $Last_Name_Representativ
         $connexion = getDatabaseConnexion();
         
         
-        $requete = $connexion->prepare("INSERT INTO company2 (company_name, company_sector, nb_CESI_intern, interns_evaluation, Pilote_trust, internship_nb_available, id_place, street_number, street_name, city, postal_code)
-                    VALUES (:company_name, :company_sector, :nb_CESI_intern, :interns_evaluation, :Pilote_trust, :internship_nb_available, :id_place, :street_number, :street_name, :city, :postal_code);");
+        $requete = $connexion->prepare("INSERT INTO places (city, street_name, street_number, postal_code)
+                                        VALUES (:city, :street_name, :street_number, :postal_code);
+                                        INSERT INTO company (company_name, company_sector, nb_CESI_intern, interns_evaluation, Pilote_trust, internship_nb_available)
+                                        VALUES (:company_name, :company_sector, :nb_CESI_intern, :interns_evaluation, :Pilote_trust, :internship_nb_available);");
         
         $requete->bindParam(':company_name', $company_name);
         $requete->bindParam(':company_sector', $company_sector);

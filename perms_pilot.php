@@ -14,7 +14,10 @@ require 'generate_cookie.php';
 
 if ($nom): ?>
         <h1>Hello dear <?= htmlentities($nom) ?></h1>
+        <?php
+$str = 'apple';
 
+?>
     <h2>Interact with:</h2>
 
     <h3>a company account</h3>

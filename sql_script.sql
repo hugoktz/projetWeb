@@ -78,11 +78,11 @@ CREATE TABLE promotions(
 
 
 #------------------------------------------------------------
-# Table: user
+# Table: users
 #------------------------------------------------------------
 
-CREATE TABLE user(
-        id_user      Int  Auto_increment  NOT NULL ,
+CREATE TABLE users(
+        id_users      Int  Auto_increment  NOT NULL ,
         login        Varchar (255) NOT NULL ,
         password     Varchar (255) NOT NULL ,
         promotion    Varchar (255) NOT NULL ,
@@ -91,10 +91,10 @@ CREATE TABLE user(
         first_name   Varchar (255) NOT NULL ,
         id_company   Int ,
         id_promotion Int
-	,CONSTRAINT user_PK PRIMARY KEY (id_user)
+	,CONSTRAINT users_PK PRIMARY KEY (id_users)
 
-	,CONSTRAINT user_company_FK FOREIGN KEY (id_company) REFERENCES company(id_company)
-	,CONSTRAINT user_promotions0_FK FOREIGN KEY (id_promotion) REFERENCES promotions(id_promotion)
+	,CONSTRAINT users_company_FK FOREIGN KEY (id_company) REFERENCES company(id_company)
+	,CONSTRAINT users_promotions0_FK FOREIGN KEY (id_promotion) REFERENCES promotions(id_promotion)
 )ENGINE=InnoDB;
 
 
@@ -108,11 +108,11 @@ CREATE TABLE application(
         application_motivation_letter Varchar (255) NOT NULL ,
         rejected                      Bool NOT NULL ,
         step_number                   Int NOT NULL ,
-        id_user                       Int NOT NULL ,
+        id_users                       Int NOT NULL ,
         id_internship                 Int NOT NULL
 	,CONSTRAINT application_PK PRIMARY KEY (id_application)
 
-	,CONSTRAINT application_user_FK FOREIGN KEY (id_user) REFERENCES user(id_user)
+	,CONSTRAINT application_users_FK FOREIGN KEY (id_users) REFERENCES users(id_users)
 	,CONSTRAINT application_internship0_FK FOREIGN KEY (id_internship) REFERENCES internship(id_internship)
 )ENGINE=InnoDB;
 
@@ -133,11 +133,11 @@ CREATE TABLE permissions(
 #------------------------------------------------------------
 
 CREATE TABLE wish_list(
-        id_user       Int NOT NULL ,
+        id_users       Int NOT NULL ,
         id_internship Int NOT NULL
-	,CONSTRAINT wish_list_PK PRIMARY KEY (id_user,id_internship)
+	,CONSTRAINT wish_list_PK PRIMARY KEY (id_users,id_internship)
 
-	,CONSTRAINT wish_list_user_FK FOREIGN KEY (id_user) REFERENCES user(id_user)
+	,CONSTRAINT wish_list_users_FK FOREIGN KEY (id_users) REFERENCES users(id_users)
 	,CONSTRAINT wish_list_internship0_FK FOREIGN KEY (id_internship) REFERENCES internship(id_internship)
 )ENGINE=InnoDB;
 
@@ -162,11 +162,11 @@ CREATE TABLE being_located_in(
 
 CREATE TABLE living(
         id_place Int NOT NULL ,
-        id_user  Int NOT NULL
-	,CONSTRAINT living_PK PRIMARY KEY (id_place,id_user)
+        id_users  Int NOT NULL
+	,CONSTRAINT living_PK PRIMARY KEY (id_place,id_users)
 
 	,CONSTRAINT living_places_FK FOREIGN KEY (id_place) REFERENCES places(id_place)
-	,CONSTRAINT living_user0_FK FOREIGN KEY (id_user) REFERENCES user(id_user)
+	,CONSTRAINT living_users0_FK FOREIGN KEY (id_users) REFERENCES users(id_users)
 )ENGINE=InnoDB;
 
 
@@ -176,11 +176,11 @@ CREATE TABLE living(
 
 CREATE TABLE possessing(
         id_role Int NOT NULL ,
-        id_user Int NOT NULL
-	,CONSTRAINT possessing_PK PRIMARY KEY (id_role,id_user)
+        id_users Int NOT NULL
+	,CONSTRAINT possessing_PK PRIMARY KEY (id_role,id_users)
 
 	,CONSTRAINT possessing_roles_FK FOREIGN KEY (id_role) REFERENCES roles(id_role)
-	,CONSTRAINT possessing_user0_FK FOREIGN KEY (id_user) REFERENCES user(id_user)
+	,CONSTRAINT possessing_users0_FK FOREIGN KEY (id_users) REFERENCES users(id_users)
 )ENGINE=InnoDB;
 
 
@@ -190,11 +190,11 @@ CREATE TABLE possessing(
 
 CREATE TABLE being_in_charge_of(
         id_promotion Int NOT NULL ,
-        id_user      Int NOT NULL
-	,CONSTRAINT being_in_charge_of_PK PRIMARY KEY (id_promotion,id_user)
+        id_users      Int NOT NULL
+	,CONSTRAINT being_in_charge_of_PK PRIMARY KEY (id_promotion,id_users)
 
 	,CONSTRAINT being_in_charge_of_promotions_FK FOREIGN KEY (id_promotion) REFERENCES promotions(id_promotion)
-	,CONSTRAINT being_in_charge_of_user0_FK FOREIGN KEY (id_user) REFERENCES user(id_user)
+	,CONSTRAINT being_in_charge_of_users0_FK FOREIGN KEY (id_users) REFERENCES users(id_users)
 )ENGINE=InnoDB;
 
 
@@ -217,7 +217,7 @@ CREATE TABLE application (
         application_motivation_letter Varchar(255),
         rejected Bool,
         step_number int,
-        id_user int not null,
+        id_users int not null,
         id_internship int not null,
 
         
