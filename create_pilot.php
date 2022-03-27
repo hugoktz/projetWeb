@@ -7,43 +7,53 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>Create a pilot account</h1>
+    <h1>Create a company account</h1>
 
     <div class="container">
     <form method = "POST" action="">
     <br>
-        login <br> <input type="text" name="login"/>
+        <label>Pilot login</label> <br> <input type="text" name="pilot_login"/>
         <br><br>
-        password <br> <input type="text" name="password"/>
+        <label>Pilot password</label> <br> <input type="text" name="pilot_password"/>
         <br><br>
-        first name <br> <input type = "text" name = "first_name"/>
+        <label>Pilot firstname</label> <br> <input type="text" name="pilot_firstname"/>
         <br><br>
-        last name <br> <input type = "text" name = "last_name"/>
+        <label>Pilot lastname</label> <br> <input type="text" name="pilot_lastname"/>
+        <br><br>
+        <label>Pilot center</label> <br> <input type = "text" name = "pilot_center"/>
+        <br><br>
+        <label>Pilot promotions</label> <br> <input type = "text" name = "id_promotion"/>
         <br><br>  
-        center <br> <input type = "tex" name = "center"/>
-        <br><br>
-        Promotion <br><input type="text" name="promotion"/>
-        <br><br>
+        
+        <?php echo md5('syhe') ?>
         
         
         <input type="submit" name="save" value="submit"/>
     </form>
-    </div>
 
     <?php
         include 'database_connexion.php';
+        error_reporting(0);
         $connexion = getDatabaseConnexion();
-        if(!empty($_POST['save']))
+        if(isset($_POST['save']))
         {
-            $login = $_POST['login'];
-            $password = $_POST['password'];
-            $center = $_POST['center'];
-            $last_name = $_POST['last_name'];
-            $first_name = $_POST['first_name'];
-            $promotion = $_POST['promotion'];
+            $pilot_login = $_POST['pilot_login'];
+            $pilot_password = $_POST['pilot_password'];
+            $pilot_firstname = $_POST['pilot_firstname'];
+            $pilot_lastname = $_POST['pilot_lastname'];
+            $pilot_center = $_POST['pilot_center'];
+            $id_promotion = $_POST['id_promotion'];
+            $encpassword = md5('$pilot_password');
 
-            $create_company = CreatePilot($login, $password, $first_name, $last_name, $center, $promotion);
+            $requete = $connexion->prepare("INSERT INTO users (login, password, center, last_name, first_name, id_company, id_promotion)
+            VALUES (?, ?, ?, ?, ?, ?, ?);
+            INSERT INTO possessing (id_role, id_users)
+            SELECT roles.id_role, users.id_users
+            FROM users, roles
+            WHERE users.last_name = ? and roles.role_name = 'pilot';");
 
+            $requete->execute(array($pilot_login, $encpassword, $pilot_center, $pilot_lastname, $pilot_firstname, 12, $id_promotion, $pilot_lastname));
+            $connexion->exec($requete);
         }
     
     ?>

@@ -81,7 +81,7 @@ function CreateRepresentative($login, $password, $center, $last_name, $first_nam
         
     }
 
-
+/*
 function CreatePilot($login, $password, $first_name, $last_name, $center, $promotion)
     {
         try {
@@ -111,7 +111,7 @@ function CreatePilot($login, $password, $first_name, $last_name, $center, $promo
         {
             echo $requete. "<br>". $e->getMessage();
         }
-
+*/
 
 function CreateOffer($skills, $street_number, $street_name, $city, $postal_code, $company_name, $promotions, $start_date, $end_date, $salary, $offer_date, $nb_available)
     {
@@ -703,4 +703,4 @@ function change_step_number6($seeked_application)
         }
 }
     }
-}
+

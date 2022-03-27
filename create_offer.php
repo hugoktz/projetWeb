@@ -7,35 +7,31 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>Create a offer</h1>
+    <h1>Create a company account</h1>
 
-
+    <div class="container">
     <form method = "POST" action="">
     <br>
-    skills needed <br> <input type="text" name="skills"/>
+        <label>Company name</label> <br> <input type="text" name="company_name"/>
         <br><br>
-        street_number <br> <input type="text" name="street_number"/>
+        <label>Company sector</label> <br> <input type="text" name="company_sector"/>
         <br><br>
-        street name <br> <input type = "text" name = "street_name"/>
+        <label>Number of student already taken:</label> <br> <input type = "text" name = "nb_CESI_intern"/>
         <br><br>
-        city <br> <input type = "text" name = "city"/>
+        <label>Evaluation of the interns (if none insert the average value of 3):</label> <br> <input type = "text" name = "interns_evaluation"/>
         <br><br>  
-        Postal code <br> <input type = "tex" name = "postal_code"/>
+        <label>Pilot trust rate:</label> <br> <input type = "tex" name = "Pilote_trust"/>
         <br><br>
-        Company name <br> <input type="text" name = "company_name"/>
+        <label>Number of available internships:</label> <br> <input type="text" name = "internship_nb_available"/>
         <br><br>
-        promotions<br><input type="text" name="promotions"/>
+        <label>Street number</label> <br> <input type="text" name="street_number"/>
         <br><br>
-        start date<br> <input type="text" name="start_date"/>
+        <label>Street name</label> <br> <input type="text" name="street_name"/>
         <br><br>
-        end date<br> <input type="text" name="end_date"/>
+        <label>City</label> <br> <input type = "text" name = "city"/>
         <br><br>
-        Salary <br> <input type = "text" name = "salary"/>
-        <br><br>
-        Offer date <br> <input type = "text" name = "offer_date"/>
+        <label> Postal code</label> <br> <input type = "text" name = "postal_code"/>
         <br><br>      
-        number of places available<br> <input type = "text" name = "nb_available"/>
-        <br><br> 
         
         
         <input type="submit" name="save" value="submit"/>
@@ -43,24 +39,28 @@
 
     <?php
         include 'database_connexion.php';
+        error_reporting(0);
         $connexion = getDatabaseConnexion();
-        if(!empty($_POST['save']))
+        if(isset($_POST['save']))
         {
-            $skills = $_POST['skills'];
+            $company_name = $_POST['company_name'];
+            $company_sector = $_POST['company_sector'];
+            $nb_CESI_intern = $_POST['nb_CESI_intern'];
+            $interns_evaluation = $_POST['interns_evaluation'];
+            $Pilote_trust = $_POST['Pilote_trust'];
+            $internship_nb_available = $_POST['internship_nb_available'];
             $street_number = $_POST['street_number'];
             $street_name = $_POST['street_name'];
             $city = $_POST['city'];
             $postal_code = $_POST['postal_code'];
-            $company_name = $_POST['company_name'];
-            $promotions = $_POST['promotions'];
-            $start_date = $_POST['start_date'];
-            $end_date = $_POST['end_date'];
-            $salary = $_POST['salary'];
-            $offer_date = $_POST['offer_date'];
-            $nb_available = $_POST['nb_available'];
 
-            $create_offer = CreateOffer($skills, $street_number, $street_name, $city, $postal_code, $company_name, $promotions, $start_date, $end_date, $salary, $offer_date, $nb_available);
-            
+            $requete = $connexion->prepare("INSERT INTO places (city, street_name, street_number, postal_code)
+            VALUES (?, ?, ?, ?);
+            INSERT INTO company (company_name, company_sector, nb_CESI_intern, interns_evaluation, Pilote_trust, internship_nb_available)
+            VALUES (?, ?, ?, ?, ?, ?);");
+
+            $requete->execute(array($city, $street_name, $street_number, $postal_code, $company_name, $company_sector, $nb_CESI_intern, $interns_evaluation, $Pilote_trust, $internship_nb_available));
+            $connexion->exec($requete);
         }
     
     ?>
