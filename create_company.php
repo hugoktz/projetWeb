@@ -9,30 +9,28 @@
 <body>
     <h1>Create a company account</h1>
 
-
+    <div class="container">
     <form method = "POST" action="">
     <br>
-        Company name <br> <input type="text" name="company_name"/>
+        <label>Company name</label> <br> <input type="text" name="company_name"/>
         <br><br>
-        Company sector <br> <input type="text" name="company_sector"/>
+        <label>Company sector</label> <br> <input type="text" name="company_sector"/>
         <br><br>
-        Number of student already taken: <br> <input type = "text" name = "nb_CESI_intern"/>
+        <label>Number of student already taken:</label> <br> <input type = "text" name = "nb_CESI_intern"/>
         <br><br>
-        Evaluation of the interns (if none insert the average value of 3): <br> <input type = "text" name = "interns_evaluation"/>
+        <label>Evaluation of the interns (if none insert the average value of 3):</label> <br> <input type = "text" name = "interns_evaluation"/>
         <br><br>  
-        Pilot trust rate: <br> <input type = "tex" name = "Pilote_trust"/>
+        <label>Pilot trust rate:</label> <br> <input type = "tex" name = "Pilote_trust"/>
         <br><br>
-        Number of available internships: <br> <input type="text" name = "internship_nb_available"/>
+        <label>Number of available internships:</label> <br> <input type="text" name = "internship_nb_available"/>
         <br><br>
-        Id Place<br><input type="text" name="id_place"/>
+        <label>Street number</label> <br> <input type="text" name="street_number"/>
         <br><br>
-        Street number <br> <input type="text" name="street_number"/>
+        <label>Street name</label> <br> <input type="text" name="street_name"/>
         <br><br>
-        Street name <br> <input type="text" name="street_name"/>
+        <label>City</label> <br> <input type = "text" name = "city"/>
         <br><br>
-        City <br> <input type = "text" name = "city"/>
-        <br><br>
-        Postal code <br> <input type = "text" name = "postal_code"/>
+        <label> Postal code</label> <br> <input type = "text" name = "postal_code"/>
         <br><br>      
         
         
@@ -41,8 +39,9 @@
 
     <?php
         include 'database_connexion.php';
+        error_reporting(0);
         $connexion = getDatabaseConnexion();
-        if(!empty($_POST['save']))
+        if(isset($_POST['save']))
         {
             $company_name = $_POST['company_name'];
             $company_sector = $_POST['company_sector'];
@@ -50,14 +49,18 @@
             $interns_evaluation = $_POST['interns_evaluation'];
             $Pilote_trust = $_POST['Pilote_trust'];
             $internship_nb_available = $_POST['internship_nb_available'];
-            $id_place = $_POST['id_place'];
             $street_number = $_POST['street_number'];
             $street_name = $_POST['street_name'];
             $city = $_POST['city'];
             $postal_code = $_POST['postal_code'];
 
-            $create_company = CreateCompany($company_name, $company_sector, $nb_CESI_intern, $interns_evaluation, $Pilote_trust, $internship_nb_available, $id_place, $street_number, $street_name, $city, $postal_code);
-            
+            $requete = $connexion->prepare("INSERT INTO places (city, street_name, street_number, postal_code)
+            VALUES (?, ?, ?, ?);
+            INSERT INTO company (company_name, company_sector, nb_CESI_intern, interns_evaluation, Pilote_trust, internship_nb_available)
+            VALUES (?, ?, ?, ?, ?, ?);");
+
+            $requete->execute(array($city, $street_name, $street_number, $postal_code, $company_name, $company_sector, $nb_CESI_intern, $interns_evaluation, $Pilote_trust, $internship_nb_available));
+            $connexion->exec($requete);
         }
     
     ?>

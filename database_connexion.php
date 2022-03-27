@@ -2,6 +2,7 @@
 
 function getDatabaseConnexion()
     {
+        
         try {
             $user = "root";
             $pass = "";
@@ -9,12 +10,42 @@ function getDatabaseConnexion()
             $dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             return $dbh;
 
-        } catch (PDOException $e) 
-        {
+        } catch (PDOException $e) {
             print "Erreur !: " . $e->getMessage() . "<br/>";
             die();
         }
     }
+
+function CreateCompany($company_name, $company_sector, $nb_CESI_intern, $interns_evaluation, $Pilote_trust, $internship_nb_available, $street_number, $street_name, $city, $postal_code)
+  {
+    try 
+    {
+        $connexion = getDatabaseConnexion();        
+        $requete = "INSERT INTO places (city, street_name, street_number, postal_code)
+                                        VALUES ($city, $street_name, $street_number, $postal_code);
+                                        INSERT INTO company (company_name, company_sector, nb_CESI_intern, interns_evaluation, Pilote_trust, internship_nb_available)
+                                        VALUES ($company_name, $company_sector, $nb_CESI_intern, $interns_evaluation, $Pilote_trust, $internship_nb_available);
+                                        ";
+        /*
+        $requete->bindParam(':company_name', $company_name);
+        $requete->bindParam(':company_sector', $company_sector);
+        $requete->bindParam(':nb_CESI_intern', $nb_CESI_intern);
+        $requete->bindParam(':interns_evaluation', $interns_evaluation);
+        $requete->bindParam(':Pilote_trust', $Pilote_trust);
+        $requete->bindParam(':internship_nb_available', $internship_nb_available);
+        $requete->bindParam(':street_number', $street_number);
+        $requete->bindParam(':street_name', $street_name);
+        $requete->bindParam(':city', $city);
+        $requete->bindParam(':postal_code', $postal_code);
+        */
+        $connexion->exec($requete);
+        
+    }
+    catch(PDOException $e)
+        {
+            echo $requete. "<br>". $e->getMessage();
+        }
+}
 
 function CreateRepresentative($login, $password, $center, $last_name, $first_name, $promotion, $permissions)
     {
@@ -167,20 +198,17 @@ function readPilot($First_Name_Pilot, $Last_Name_Pilot)
 
 function readCompany($Company_Name) 
     {
-        try {
+       
         $connexion = getDatabaseConnexion();
-        $requete = "SELECT * FROM companies WHERE company_name = '$Company_Name';";
+        $requete = "SELECT * FROM company WHERE company_name = '$Company_Name';";
         $stmt = $connexion->query($requete);  
         $row = $stmt->fetchAll();
         if (!empty($row))
         {
             return $row[0];
         }
-    }
-    catch(PDOException $e)
-        {
-            echo $requete. "<br>". $e->getMessage();
-        }
+    
+    
     }
 
 function readOffer($id_internship) //sert à trouver le Pilot
@@ -247,40 +275,6 @@ function readRepresentative($First_Name_Representative, $Last_Name_Representativ
         if (!empty($row))
         {
             return $row[0];
-        }
-    }
-    catch(PDOException $e)
-        {
-            echo $requete. "<br>". $e->getMessage();
-        }
-    }
-
-    function CreateCompany($company_name, $company_sector, $nb_CESI_intern, $interns_evaluation, $Pilote_trust, $internship_nb_available, $id_place, $street_number, $street_name, $city, $postal_code)
-    {
-        try {
-        $connexion = getDatabaseConnexion();
-        
-        
-        $requete = $connexion->prepare("INSERT INTO places (city, street_name, street_number, postal_code)
-                                        VALUES (:city, :street_name, :street_number, :postal_code);
-                                        INSERT INTO company (company_name, company_sector, nb_CESI_intern, interns_evaluation, Pilote_trust, internship_nb_available)
-                                        VALUES (:company_name, :company_sector, :nb_CESI_intern, :interns_evaluation, :Pilote_trust, :internship_nb_available);");
-        
-        $requete->bindParam(':company_name', $company_name);
-        $requete->bindParam(':company_sector', $company_sector);
-        $requete->bindParam(':nb_CESI_intern', $nb_CESI_intern);
-        $requete->bindParam(':interns_evaluation', $interns_evaluation);
-        $requete->bindParam(':Pilote_trust', $Pilote_trust);
-        $requete->bindParam(':internship_nb_available', $internship_nb_available);
-        $requete->bindParam(':id_place', $id_place);
-        $requete->bindParam(':street_number', $street_number);
-        $requete->bindParam(':street_name', $street_name);
-        $requete->bindParam(':city', $city);
-        $requete->bindParam(':postal_code', $postal_code);
-        
-        if(isset($_POST['save']))
-        { 
-        $connexion->exec($requete);
         }
     }
     catch(PDOException $e)
