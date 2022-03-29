@@ -41,6 +41,10 @@
 	 text-align: left;
 	 padding-left: 100px;
  }
+
+ ul{
+	 list-style-type: none;
+ }
  
  a:link { 
 	 text-decoration:none; 

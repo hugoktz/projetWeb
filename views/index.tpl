@@ -82,6 +82,7 @@
         <div id="centrer" class="centrage">
             <h1 id="titreSection">Interact With An Account</h1>
             <div class=box id="margintop">
+            <ul>
                 <h1 id="textSection">Interact with an account of :</h1>
                 
                 {foreach from=$roles item=p}
@@ -89,6 +90,7 @@
                 <li id="list"><h4>As <a href="login_{$p}.php">{$p}</a></h4> </li>
 
                 {/foreach}
+            </ul>
         </div>
 		</div>
 

@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.1.0, created on 2022-03-29 10:29:41
+/* Smarty version 4.1.0, created on 2022-03-29 13:52:00
   from 'C:\xampp3\htdocs\xampp\Web_Project\views\perms_admin.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.1.0',
-  'unifunc' => 'content_6242c3752a9235_21773199',
+  'unifunc' => 'content_6242f2e0e1c020_96269559',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '17fa3b65ea59d6669eaea929c46ad1f2fae9e3ca' => 
     array (
       0 => 'C:\\xampp3\\htdocs\\xampp\\Web_Project\\views\\perms_admin.tpl',
-      1 => 1648510410,
+      1 => 1648554719,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_6242c3752a9235_21773199 (Smarty_Internal_Template $_smarty_tpl) {
+function content_6242f2e0e1c020_96269559 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="en">
 <head>
@@ -51,7 +51,7 @@ _company.php"><?php echo $_smarty_tpl->tpl_vars['p']->value;?>
 }
 $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
     <li><a href="evaluate_company.php">Evaluate a company</a></li>
-    <li><a href="see_companys_stats.php">See a company's stats</a></li>
+    <li><a href="compare_companies.php">See a company's stats</a></li>
 </ul>
 <h3>a student account</h3>
 <ul>
