@@ -25,7 +25,7 @@
 
 <?php
     include 'generate_cookie.php';
-    $connect = mysqli_connect("127.0.0.1","root","","web_project") or die("Connection failed");
+    $connect = mysqli_connect("127.0.0.1","root","","web_project_try_5") or die("Connection failed");
     if(!empty($_POST['save']))
     {
         $username = $_POST['login'];
