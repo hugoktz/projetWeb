@@ -1,17 +1,10 @@
-AddDefaultCharset utf-8
-
-AddCharset utf-8 .html .css .js .php .tpl
-
+#DirectoryIndex ./Views/Accueil.php
 
 Options +Indexes
-
-#order deny, allow
-deny from 127.0.0.1
-allow from all
-
-
 AuthType Basic
-AuthName "The Web Project"
-AuthUserFile /xampp/Web_Project/.htpasswd
+AuthName "Page protégée"
+
+AuthBasicProvider file
+AuthUserFile "C:\xampp3\apache\conf\user"
+
 Require valid-user
-Require user Maxime

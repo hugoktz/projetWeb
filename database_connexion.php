@@ -16,6 +16,28 @@ function getDatabaseConnexion()
         }
     }
 
+function seeStudentstats($First_Name_Student, $Last_Name_Student)
+    {
+        try {
+        $connexion = getDatabaseConnexion();
+        
+        $requete = "SELECT * FROM users INNER JOIN application
+                    ON users.id_user = application.id_user
+                    WHERE first_name = '$First_Name_Student' and last_name = '$Last_Name_Student';";
+        
+        $stmt = $connexion->query($requete);  
+        $row = $stmt->fetchAll();
+        if (!empty($row))
+        {
+            return $row[0];
+        }
+    }
+    catch(PDOException $e)
+        {
+            echo $requete. "<br>". $e->getMessage();
+        }
+    }
+
 function CompareCompany($data, $value)
 {
     $connexion = getDatabaseConnexion();
@@ -77,7 +99,7 @@ function readOffer($id_internship) //sert à trouver le Pilot
     {
         
         $connexion = getDatabaseConnexion();
-        $requete = "SELECT internship_skills, street_number, street_name, city, postal_code, company_name, internship_duration, internship_salary, internship_offer_date, company.internship_nb_available FROM internship 
+        $requete = "SELECT internship_skills, internship_type_promotion, internship_salary, internship_offer_date, duration, company.internship_nb_available FROM internship 
         INNER JOIN company
         ON internship.id_company = company.id_company
         INNER JOIN being_located_in

@@ -7,14 +7,15 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>See a company's stats</h1>
+    <h1>Read a student account</h1>
     <div class="container">
     <form method = "POST">
-        <label>Company name</label> <br> <input type="text" name="Company_name"/>
+        <label>First name</label> <br> <input type="text" name="First_name"/>
+        <br>
+        <label>Last name</label> <br> <input type="text" name="Last_name"/>
         <br><br>
 
         <input type="submit" name="insert" value="submit"/>
-        <br>
     </form>
 </div>
 
@@ -26,14 +27,15 @@
 
     if(isset($_POST['insert']))
     {
-        $Company_name = $_POST['Company_name'];
+        $read_pilot = null;
+        $First_name = $_POST['First_name'];
+        $Last_name = $_POST['Last_name'];
 
-        $read_company = readCompany($Company_name);
-        
-        for ($i=0; $i < 7; $i++) { 
-            echo $read_company[$i]." "."/"." ";
-            
-        }
+       $read_pilot = readPilot($First_name, $Last_name);
+
+       for ($i=0; $i < 8; $i++) { 
+           echo $read_pilot[$i]." "."/"." ";
+       }
     }
 
 
