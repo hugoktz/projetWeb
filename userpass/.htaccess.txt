@@ -5,12 +5,8 @@ AddCharset utf-8 .html .css .js .php .tpl
 
 Options -Indexes
 
-Order deny, allow
-deny all
-allow user Maxime
-
 
 AuthType Basic
 AuthName "The Web Project"
-AuthUserFile /xampp/Web_Project/.htpasswd
+AuthUserFile /xampp/Web_Project/userpass/.htpasswd
 Require valid-user
