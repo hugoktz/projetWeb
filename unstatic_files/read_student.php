@@ -31,9 +31,10 @@
         $First_name = $_POST['First_name'];
         $Last_name = $_POST['Last_name'];
 
-       $read_pilot = readPilot($First_name, $Last_name);
+       $read_pilot = readStudent($First_name, $Last_name);
 
-       for ($i=0; $i < 8; $i++) { 
+       for ($i=0; $i < 8; $i++) 
+       { 
            echo $read_pilot[$i]." "."/"." ";
        }
     }

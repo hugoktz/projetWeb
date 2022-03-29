@@ -12,7 +12,7 @@
 
     <form method = "POST" action="">
     <br>
-        Which company? <br> <input type="text" name="id_company"/>
+        Which company? <br> <input type="text" name="company_name"/>
         <br><br>
         How do you rate it? (out of 5)<br> <input type="text" name="rating"/>
         <br><br>
@@ -27,16 +27,15 @@
         $connexion = getDatabaseConnexion();
         if(!empty($_POST['save']))
         {
-            $id_company = $_POST['id_company'];
+            $company_name = $_POST['company_name'];
             $rating = $_POST['rating'];
             
 
-            $requete = $connexion->prepare("UPDATE company SET number_of_grades = number_of_grades + 1)
+            $requete = $connexion->prepare("UPDATE company SET interns_evaluation = ((interns_evaluation * number_of_grades) + ?) / (number_of_grades+1)  ,number_of_grades = number_of_grades + 1
+                                            WHERE company_name = ?;");
             
-            ");
-            /*
-            $create_company = updateCompany($id_company, $company_name, $company_sector, $nb_CESI_intern, $interns_evaluation, $Pilote_trust, $internship_nb_available, $id_place, $street_number, $street_name, $city, $postal_code);
-            */
+            $requete->execute(array($rating, $company_name));
+           
         }
     
     ?>

@@ -18,7 +18,7 @@
     <li><a href="{$p}_company.php">{$p} a company</a></li>
 
     {/foreach}
-    <li><a href="evaluate_company.php">Evaluate a company</a></li>
+    <li><a href="rating_company.php">Evaluate a company</a></li>
     <li><a href="compare_company.php">See a company's stats</a></li>
 </ul>
 <h3>a student account</h3>

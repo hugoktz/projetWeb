@@ -28,7 +28,7 @@
 
         $read_offer = readOffer($id_internship);
 
-        for ($i=0; $i < 9; $i++) { 
+        for ($i=0; $i < 6; $i++) { 
             echo $read_offer[$i]." "."/"." ";
             
         }
