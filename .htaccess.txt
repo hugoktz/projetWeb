@@ -1,0 +1,12 @@
+AddDefaultCharset utf-8
+
+AddCharset utf-8 .html .css .js .json .php
+
+Options -Indexes
+
+AuthUserFile /xampp2/htdocs/xampp/Web_project/projetWeb-main/.htpasswd
+AuthGroupFile /dev/null
+AuthName "Restricted Access - Please Identify yourself"
+AuthType Basic
+Require user Maxime
+#Require valid-user

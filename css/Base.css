@@ -1,0 +1,162 @@
+@import url('https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900');
+
+*
+{
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: 'Poppins', sans-serif;
+}
+
+:root
+{
+	--clr: #222327;
+}
+
+/*_________________________Texte______________________________*/
+
+.text
+{
+	color: #fff;
+	margin-top: 200px;
+	margin-left: 50px;
+	margin-right: 50px;
+}
+
+#titreSection {
+	color: white;
+	font-weight: 200;
+	position: relative;
+	margin-top: 200px;
+ }
+ 
+ #textSection {
+	 color: white;
+	 font-weight: 200;
+	 font-size: 20px;
+ }
+
+ 
+ #list {
+	 text-align: left;
+	 padding-left: 100px;
+ }
+ 
+ a:link { 
+	 text-decoration:none; 
+ } 
+
+ a:visited {
+	 color: white;
+	 font-weight: 200;
+ }
+
+ .titlebox {
+	margin-top: 20px;
+	font-weight: 150;
+	font-size:x-large;
+	margin-left: 20px;
+}
+
+.titlewishlist {
+	margin-top: 20px;
+	font-weight: 400;
+	font-size: 30px;
+}
+
+
+/*_________________________Elements______________________________*/
+
+.box {
+    background-color: #1f1f1f;
+	box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+    position: relative;
+    height: auto;
+	padding: 15px;
+	/*
+	border: solid;
+	border-color: white;
+	border-width: 1px;
+    border-radius: 10px;
+	*/
+}
+
+.fieldset {
+	border: solid;
+	border-color: white;
+	border-width: 0.5px;
+    border-radius: 10px;
+}
+
+#margintop {
+    margin-top: 40px;
+}
+
+#selection {
+	border-radius: 5px;
+	margin-top: 20px;
+}
+
+#selection2 {
+	border-radius: 5px;
+}
+.left {
+	text-align:left;
+	margin-top: 20px;
+}
+
+.input {
+	border-radius: 5px;
+}
+
+.titleInput {
+	margin-left: 10px;
+	margin-top: 20px;
+	border-radius: 5px;
+}
+
+
+
+
+/*_________________________Centrer_au_milieu______________________________*/
+
+.centrage {text-align: center;}
+
+#centrer {
+	margin-left: auto;
+	margin-right: auto;
+	width: 60%; /* largeur obligatoire pour être centré */
+  }
+
+/*_________________________Barre de defilement______________________________*/
+
+body::-webkit-scrollbar {
+	width: 12px; 
+  }
+
+body::-webkit-scrollbar-track {
+	background: rgb(78, 78, 88); 
+  }
+
+body::-webkit-scrollbar-thumb {
+  background-color: #222327; 
+  border-radius: 50px; 
+  border: 3.7px solid rgb(78, 78, 78); 
+}
+
+/*_________________________Base______________________________*/
+
+html body
+{
+	background-color: var(--clr);
+	color: #fff;
+}
+
+body
+{
+	justify-content:center ;
+	align-items: center;
+	min-height: 100vh;
+	background-color: #222327;
+	border :0 ;
+}
