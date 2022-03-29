@@ -19,7 +19,7 @@
 
     {/foreach}
     <li><a href="evaluate_company.php">Evaluate a company</a></li>
-    <li><a href="see_companys_stats.php">See a company's stats</a></li>
+    <li><a href="compare_company.php">See a company's stats</a></li>
 </ul>
 <h3>a student account</h3>
 <ul>
