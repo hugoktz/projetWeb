@@ -18,7 +18,7 @@
 
     <body>
 		<div class="logo">
-			<a href="home.html"><img src="logo.png" alt="logo" width="100px" height="100px"></a>
+			<a href="home.html"><img src="static_files/logo.png" alt="logo" width="100px" height="100px"></a>
 			<h2>
 				InternSearch
 			</h2>
