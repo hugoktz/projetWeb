@@ -99,7 +99,7 @@ function readOffer($id_internship) //sert à trouver le Pilot
     {
         
         $connexion = getDatabaseConnexion();
-        $requete = "SELECT internship_skills, internship_type_promotion, internship_salary, internship_offer_date, duration, company.internship_nb_available FROM internship 
+        $requete = "SELECT internship_skills, internship_type_promotion, internship_salary, internship_offer_date, duration, company.internship_nb_available, street_number, street_name, city, postal_code FROM internship 
         INNER JOIN company
         ON internship.id_company = company.id_company
         INNER JOIN being_located_in

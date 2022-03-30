@@ -56,7 +56,7 @@
             $city = $_POST['city'];
             $postal_code = $_POST['postal_code'];
 
-            $requete = $connexion->prepare("UPDATE places SET places.city = ?, places.street_name = ?, places.street_number = ?, places.postal_code = ?, company_name = ?, company_sector = ?, nb_CESI_inter = ?, interns_evaluation = ?, Pilote_trust = ?, internship_nb_available = ?                  
+            $requete = $connexion->prepare("UPDATE places SET places.city = ?, places.street_name = ?, places.street_number = ?, places.postal_code = ?, company_name = ?, company_sector = ?, nb_CESI_inter = ?, interns_evaluation = ?, number_of_grades = 1, Pilote_trust = ?, internship_nb_available = ?                  
                                             FROM places INNER JOIN being_located_in
                                             ON places.id_place = being_located_in.id_place
                                             INNER JOIN company

@@ -1,10 +1,14 @@
-#DirectoryIndex ./Views/Accueil.php
+DirectoryIndex .\first_page.php
 
 Options +Indexes
-AuthType Basic
+
 AuthName "Page protégée"
 
 AuthBasicProvider file
-AuthUserFile "C:\xampp3\apache\conf\user"
+AuthUserFile "C:\xampp3\apache\conf\.htpasswd"
+AuthType Basic
+
+<LIMIT GET POST>
 
 Require valid-user
+</LIMIT>
