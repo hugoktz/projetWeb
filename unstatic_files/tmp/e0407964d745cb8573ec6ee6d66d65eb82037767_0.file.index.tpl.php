@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.1.0, created on 2022-03-29 23:19:02
+/* Smarty version 4.1.0, created on 2022-03-30 09:25:59
   from 'C:\xampp3\htdocs\xampp\Web_Project\unstatic_files\views\index.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.1.0',
-  'unifunc' => 'content_624377c613b8e1_42552274',
+  'unifunc' => 'content_62440607733e78_42713379',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'e0407964d745cb8573ec6ee6d66d65eb82037767' => 
     array (
       0 => 'C:\\xampp3\\htdocs\\xampp\\Web_Project\\unstatic_files\\views\\index.tpl',
-      1 => 1648588740,
+      1 => 1648625150,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_624377c613b8e1_42552274 (Smarty_Internal_Template $_smarty_tpl) {
+function content_62440607733e78_42713379 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <!DOCTYPE html>
 <html>
@@ -37,7 +37,8 @@ function content_624377c613b8e1_42552274 (Smarty_Internal_Template $_smarty_tpl)
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css">
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
 		<link rel="icon" type="image/png" sizes="16x16" href="logo.png">
-    </head>
+
+	</head>
 
     <body>
 		<div class="logo">
@@ -168,6 +169,10 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
 >
 		<?php echo '<script'; ?>
  nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"><?php echo '</script'; ?>
+>
+
+<?php echo '<script'; ?>
+ src="js/app.js"><?php echo '</script'; ?>
 >
 
 	</body>

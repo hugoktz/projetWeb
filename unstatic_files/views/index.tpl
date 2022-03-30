@@ -14,7 +14,8 @@
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css">
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
 		<link rel="icon" type="image/png" sizes="16x16" href="logo.png">
-    </head>
+
+	</head>
 
     <body>
 		<div class="logo">
@@ -127,6 +128,8 @@
 	
 		<script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
 		<script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
+<script src="js/app.js"></script>
 
 	</body>
 </html>
