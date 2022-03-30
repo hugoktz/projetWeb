@@ -2,7 +2,7 @@
     "name": "InternSearch",
     "short_name": "IS",
     "lang":"fr",
-    "start_url": "unstatic_files/views/index.tpl",
+    "start_url": "unstatic_files/first_page.html",
     "display": "standalone",
     "background_color": "white",
     "theme_color": "white",

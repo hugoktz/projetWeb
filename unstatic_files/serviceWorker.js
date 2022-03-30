@@ -1,7 +1,8 @@
 var cacheName = 'cache_v2';
 var filesToCache = [
     '/',
-    'first_page.php'
+    'first_page.php',
+    'first_page.html'
 ];
 
 // install service worker
