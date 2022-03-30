@@ -1,0 +1,7 @@
+<Files first_page.php>
+AuthUserFile C:/xampp3/apache/conf/.htpasswd
+AuthName "Accès refusé"
+AuthType Basic
+require valid-user
+#require user Maxime
+</Files>

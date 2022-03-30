@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.1.0, created on 2022-03-30 10:55:51
+/* Smarty version 4.1.0, created on 2022-03-30 16:38:27
   from 'C:\xampp3\htdocs\xampp\Web_Project\unstatic_files\views\perms_admin.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.1.0',
-  'unifunc' => 'content_62441b178d4206_59457280',
+  'unifunc' => 'content_62446b63405888_34222661',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '1d6a1fa451567692157ecfb8433f9e1f0bba4026' => 
     array (
       0 => 'C:\\xampp3\\htdocs\\xampp\\Web_Project\\unstatic_files\\views\\perms_admin.tpl',
-      1 => 1648579361,
+      1 => 1648651105,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_62441b178d4206_59457280 (Smarty_Internal_Template $_smarty_tpl) {
+function content_62446b63405888_34222661 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="en">
 <head>
@@ -124,7 +124,7 @@ _offer.php"><?php echo $_smarty_tpl->tpl_vars['p']->value;?>
     <?php
 }
 $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
-    <li><a href="see_stats_offer.php">See an offer's stats</a></li>
+    <li><a href="compare_offer.php">See an offer's stats</a></li>
 </ul>
 
 <h3>an application</h3>

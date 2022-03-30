@@ -56,7 +56,7 @@
     <li><a href="{$p}_offer.php">{$p} a offer</a></li>
 
     {/foreach}
-    <li><a href="see_stats_offer.php">See an offer's stats</a></li>
+    <li><a href="compare_offer.php">See an offer's stats</a></li>
 </ul>
 
 <h3>an application</h3>
