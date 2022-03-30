@@ -2,55 +2,55 @@
     "name": "InternSearch",
     "short_name": "IS",
     "lang":"fr",
-    "start_url": "unstatic_files/first_page.html",
+    "start_url": "first_page.php",
     "display": "standalone",
     "background_color": "white",
     "theme_color": "white",
     "orientation": "portrait-primary",
     "icons": [
         {
-            "src": "static_files/logo.png",
+            "src": "logo.png",
             "type": "image/png",
             "size": "144x144"
         },
         {
-            "src": "static_files/logo2.png",
+            "src": "logo2.png",
             "type": "image/png",
             "size": "96x96"
         },
         {
-            "src": "static_files/logo3.png",
+            "src": "logo3.png",
             "sizes": "144x144",
             "type": "image/png",
             "purpose": "any maskable"
         },
         {
-            "src": "static_files/logo4.png",
+            "src": "logo4.png",
             "sizes": "512x512",
             "type": "image/png"
         },
         {
-            "src": "static_files/logo5.png",
+            "src": "logo5.png",
             "sizes": "72x72",
             "type": "image/png"
         },
         {
-            "src": "static_files/logo6.png",
+            "src": "logo6.png",
             "sizes": "152x152",
             "type": "image/png"
         },
         {
-            "src": "static_files/logo7.png",
+            "src": "logo7.png",
             "sizes": "192x192",
             "type": "image/png"
         },
         {
-            "src": "static_files/logo8.png",
+            "src": "logo8.png",
             "sizes": "384x384",
             "type": "image/png"
         },
         {
-            "src": "static_files/logo9.png",
+            "src": "logo9.png",
             "sizes": "512x512",
             "type": "image/png"
         }
