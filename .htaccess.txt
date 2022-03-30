@@ -6,6 +6,7 @@ AuthName "Page protégée"
 
 AuthBasicProvider file
 AuthUserFile "C:\xampp3\apache\conf\.htpasswd"
+AuthName "Accès sécurisé au site internet"
 AuthType Basic
 
 <LIMIT GET POST>
